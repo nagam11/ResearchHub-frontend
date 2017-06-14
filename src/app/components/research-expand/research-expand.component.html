@@ -1,0 +1,30 @@
+
+<h3>Topics</h3>
+<ul class="heroes">
+  <li *ngFor="let research of researches" (click)="onSelect(research)"
+      [class.selected]="research === selectedResearch">
+    <h4>Research Topic: {{research.ResearchTopic}} </h4>
+    <h3>Faculty: {{research.Faculty}} </h3>
+    <span class="badge">
+
+  <div class="container">
+    <h2></h2>
+
+    <!-- <button routerLink="/expand" routerLinkActive="active">Expand</button> -->
+    <button type="button" class="btn btn-info" [routerLink]="['/rating', research.id]"routerLinkActive="active">Rating</button>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#Example">See More...</button>
+    <div id="Example" class="collapse">
+
+      <span>
+      <h3>Needed Skills: {{research.NeededSkills}}</h3>
+      <h3>Rated by: {{research.RatedBy}}</h3>
+      <h3>Description: {{research.Description}}</h3>
+      </span>
+
+    </div>
+  </div>
+
+    </span>
+  </li>
+</ul>
+

@@ -1,0 +1,24 @@
+<h2>Ratings</h2>
+<div>
+  <label>Researche name:</label> <input #researchName />
+  <button (click)="add(researchName.value); researchName.value=''">
+    Add
+  </button>
+  <h3>company name | Interested in fields | Description</h3>
+</div>
+<ul class="heroes">
+  <li *ngFor="let research of researches" (click)="onSelect(research)"
+      [class.selected]="research === selectedResearch">
+    <span class="badge">{{research.CompanyName}}</span>
+    <span>{{research.InterestedInFields}}</span>
+    <span>{{research.Description}}</span>
+    <button class="delete"
+            (click)="delete(research); $event.stopPropagation()">x</button>
+  </li>
+</ul>
+<div *ngIf="selectedResearch">
+  <h2>
+    {{selectedResearch.name | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

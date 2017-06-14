@@ -1,0 +1,22 @@
+<h1>Rating</h1>
+<div *ngIf="researches">
+<h2>Research Topic:  {{researches.ResearchTopic}}</h2>
+  <div>
+  <div>
+    <label>Company Name:</label>
+    <input [(ngModel)]="researches.CompanyName" placeholder="name" />
+  </div>
+
+  <div>
+    <label>Interested In Fields:</label>
+    <input [(ngModel)]="researches.InterestedInFields" placeholder="name" />
+  </div>
+
+  <div>
+    <label>How does this project overlaps with the company's future vision:</label>
+    <input [(ngModel)]="researches.Description" placeholder="name" />
+  </div>
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Submit</button>
+</div>
