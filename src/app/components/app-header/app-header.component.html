@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">ResearchHub</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">Dashboard</a></li>
+        <li><a href="#services">More</a></li>
+        <li><a href="#portfolio">My profile</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div>
+    <h1>{{Logo}} {{UserInfo}}</h1>
+    <label>Search:</label>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  </div>
+
+  <nav>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/edit" routerLinkActive="active">Rating Summary</a>
+    <a routerLink="/search" routerLinkActive="active">Rate based on Number</a>
+    <a routerLink="/expand" routerLinkActive="active">Create new project</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
