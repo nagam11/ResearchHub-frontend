@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 @Component({
   selector: 'my-expansion',
   templateUrl: './research-expand.component.html',
+  styleUrls: [ './research-expand.component.css' ]
 })
 export class ResearchExpandComponent implements OnInit {
   researches: Research[] = [];

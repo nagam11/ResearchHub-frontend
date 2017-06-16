@@ -1,22 +1,36 @@
+<h2>Topics</h2>
 
-<h3>Topics</h3>
-<ul class="heroes">
-  <li *ngFor="let research of researches" (click)="onSelect(research)"
-      [class.selected]="research === selectedResearch">
-    <h4>Research Topic: </h4>
-    <span class="badge">{{research.ResearchTopic}}
-      <a routerLink="/expand" routerLinkActive="active">Expand</a>
-      <a [routerLink]="['/rating', research.id]"routerLinkActive="active">Rating</a>
+<div class="panel-group">
+  <div class="panel panel-default" *ngFor="let research of researches" (click)="onSelect(research)"
+       [class.selected]="research === selectedResearch">
 
 
-    </span>
-    <h3>Faculty: </h3>
-    <span>{{research.Faculty}}</span>
-    <h3>Needed Skills: </h3>
-    <span>{{research.NeededSkills}}</span>
-    <h3>Rated by: </h3>
-    <span>{{research.RatedBy}}</span>
+    <div class="panel-heading">
+
+      <div class="panel-title pull-left">
+        <h3>Research Topic: {{research.ResearchTopic}} </h3>
+        <h3>Faculty: {{research.Faculty}} </h3>
+      </div>
+
+      <div class="pull-right">
+        <button type="button" class="btn btn-info pull-right heading-button" data-toggle="collapse"
+                [attr.data-target]="'#' + research.id">See More..
+        </button>
+        <button type="button" class="btn btn-info pull-right heading-button" [routerLink]="['/rating', research.id]"
+                routerLinkActive="active">Rating
+        </button>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div id="{{research.id}}" class="panel-collapse collapse">
+      <div class="panel-body">
+        <h4>Needed Skills: {{research.NeededSkills}}</h4>
+        <h4>Rated by: {{research.RatedBy}}</h4>
+        <h4>Description: {{research.Description}}</h4>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
-  </li>
-</ul>
