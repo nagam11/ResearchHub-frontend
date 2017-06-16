@@ -13,7 +13,7 @@ import { Component }          from '@angular/core';
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       <a routerLink="/edit" routerLinkActive="active">Rating Summary</a>
       <a routerLink="/search" routerLinkActive="active">Rate based on Number</a>
-      <a routerLink="/expand" routerLinkActive="active">Expand</a>
+      <a routerLink="/expand" routerLinkActive="active">Create new project</a>
     </nav>
     <router-outlet></router-outlet>
     </div>

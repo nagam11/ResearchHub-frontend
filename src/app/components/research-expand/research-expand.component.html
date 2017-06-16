@@ -1,36 +1,172 @@
-<h2>Topics</h2>
-
-<div class="panel-group">
-  <div class="panel panel-default" *ngFor="let research of researches" (click)="onSelect(research)"
-       [class.selected]="research === selectedResearch">
-
-
-    <div class="panel-heading">
-
-      <div class="panel-title pull-left">
-        <h3>Research Topic: {{research.ResearchTopic}} </h3>
-        <h3>Faculty: {{research.Faculty}} </h3>
-      </div>
-
-      <div class="pull-right">
-        <button type="button" class="btn btn-info pull-right heading-button" data-toggle="collapse"
-                [attr.data-target]="'#' + research.id">See More... .
-        </button>
-        <button type="button" class="btn btn-info pull-right heading-button" [routerLink]="['/rating', research.id]"
-                routerLinkActive="active">Rating
-        </button>
-      </div>
-      <div class="clearfix"></div>
+<h2></h2>
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
     </div>
-    <div id="{{research.id}}" class="panel-collapse collapse">
-      <div class="panel-body">
-        <h4>Needed Skills: {{research.NeededSkills}}</h4>
-        <h4>Rated by: {{research.RatedBy}}</h4>
-        <h4>Description: {{research.Description}}</h4>
+    <div class="col-sm-12 text-left">
+      <h2>Create new project</h2>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+             style="width:70%">
+          <span class="sr-only">10% Complete</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-3">
+            <label>Project title</label></div>
+          <div class="col-sm-9"><input type="text" placeholder="Please enter title" ng-model="$ctrl.project.title"
+                                       class="form-control" id="">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <div class="dropdown">
+            <div class="col-sm-3">
+              <label>Project type</label></div>
+            <br>
+            <div class="col-sm-9">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bachelor thesis
+                <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Master thesis</a></li>
+                <li><a href="#">Guided Research</a></li>
+                <li><a href="#">IDP</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <label>Required level</label></div>
+        <div class="col-sm-9">
+          <div class="radio">
+            <label><input type="radio" name="level">Bachelor</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="level">Master</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="dropdown">
+          <div class="col-sm-3">
+            <label>Faculty</label></div>
+          <br>
+          <div class="col-sm-9">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bachelor thesis
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#"></a>Mathematics</li>
+              <li><a href="#">Informatics</a></li>
+              <li><a href="#">Mechanical Engineering</a></li>
+              <li><a hred="#">Electrical Engineering</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="dropdown">
+          <div class="col-sm-3">
+            <label>Chair</label></div>
+          <br>
+          <div class="col-sm-9">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Chair
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">SEBIS</a></li>
+              <li><a href="#">Winfo</a></li>
+              <li><a href="#">Rechnernetze</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <label>Language</label></div>
+        <div class="col-sm-9">
+          <div class="radio">
+            <label><input type="radio" name="level">English</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="level">German</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <label>Company partner</label></div>
+        <div class="col-sm-9">
+          <div class="radio">
+            <label><input type="radio" name="level">Yes</label>
+          </div>
+          <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Company
+                <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Siemens</a></li>
+                <li><a href="#">BMW</a></li>
+                <li><a href="#">IBM</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <label>Description</label></div>
+        <div class="col-sm-9">
+          <div class="form-group">
+            <textarea class="form-control" rows="5" id="description"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-3">
+            <label>Advisor</label></div>
+          <div class="col-sm-9"><input type="text" placeholder="Please enter name" ng-model="$ctrl.project.advisor"
+                                       class="form-control" id="">
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-3">
+            <label>Supervisor</label></div>
+          <div class="col-sm-9"><input type="text" placeholder="Please enter name" ng-model="$ctrl.project.supervisor"
+                                       class="form-control" id="">
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <button type="button" class="btn btn-warning btn-block">Create</button>
+        </div>
+      </div>
+
+      <div class="">
+        <br>
       </div>
 
     </div>
   </div>
 </div>
-
-
