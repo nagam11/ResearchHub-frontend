@@ -2,3 +2,18 @@
   margin-left: 5px;
   margin-right: 5px;
 }
+
+.btn-info {
+	border-color: #50a1ed !important;
+    background-color: #55a7f3 !important;
+}
+
+.btn-info:hover {
+	border-color: #50a1ed !important;
+    background-color: #FFF !important;
+    color: #50a1ed !important;
+}
+
+.btn-info:focus {
+    outline-width: 0;
+}

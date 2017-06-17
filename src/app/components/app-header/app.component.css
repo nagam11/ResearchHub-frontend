@@ -1,8 +1,9 @@
 /*#86BCFF*/
 .navbar {
+  height: 150px;
   margin-bottom: 0;
   min-height:45px !important;
-  background-color: #000;
+  background-color: #FFF;
   z-index: 9999;
   border: 0;
   font-size: 16px !important;
@@ -10,11 +11,34 @@
   letter-spacing: 4px;
   border-radius: 0;
   font-family: Montserrat, sans-serif;
+  border-bottom: 2px solid #55a7f3;
 }
 
-.navbar li a, .navbar .navbar-brand {
-  color: #fff !important;
+.navbar-brand {
+    color: #50a1ed !important;
 }
+
+#logo {
+  height: 50px;
+}
+
+.navbuttons {
+  color: #FFF !important;
+  display: block;
+  height: 50px;
+  background-color: #55a7f3;
+  margin-top: 15px;
+  margin-left: 15px;
+  border: 1px solid transparent;
+  border-color: #50a1ed;
+  border-radius: 5px;
+}
+
+.navbar-nav>li>a:hover {
+  color: #50a1ed !important;
+  background-color: #FFF;
+}
+
 /*.navbar-nav li a:hover, .navbar-nav li.active a {
   color: #f4511e !important;
   background-color: #fff !important;
@@ -24,9 +48,18 @@
   color: #fff !important;
 }
 .searchinput{
-  border-radius:6px;
+  color: #50a1ed !important;
+  padding: 10px;
+  font-size: 16pt;
+  border: 2px solid transparent;
+  border-color: #50a1ed;
+  border-radius:5px;
+  margin-top: 65px;
 }
 
+.searchinput:focus {
+    outline-width: 0;
+}
 
 #wrapper {
   padding-left: 0;
@@ -48,7 +81,7 @@
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #86BCFF;
+  background: #555555;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -62,6 +95,7 @@
 #page-content-wrapper {
   width: 100%;
   position: absolute;
+  padding-top: 150px;
   padding: 15px;
 }
 
@@ -73,7 +107,7 @@
 /* Sidebar Styles */
 
 .sidebar1 {
-  background: #000;
+  background: #55a7f3;
   /* For browsers that do not support gradients */
   //background: -webkit-linear-gradient(#F17153, #F58D63, #f1ab53);
   /* For Safari 5.1 to 6.0 */
@@ -89,7 +123,7 @@
 
 .sidebar-nav {
   position: absolute;
-  top: 0;
+  top: 150px;
   width: 250px;
   margin: 0;
   padding: 0;
@@ -110,8 +144,8 @@
 
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: #fff;
-  background: rgba(255,255,255,0.2);
+  color: #50a1ed;
+  background: #FFF;
 }
 
 .sidebar-nav li a:active,
@@ -133,6 +167,7 @@
   color: #fff;
   background: none;
 }
+
 
 
 @media(min-width:768px) {
