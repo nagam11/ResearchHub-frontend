@@ -1,6 +1,5 @@
 /*#86BCFF*/
 .navbar {
-  height: 150px;
   margin-bottom: 0;
   min-height:45px !important;
   background-color: #FFF;
@@ -54,7 +53,6 @@
   border: 2px solid transparent;
   border-color: #50a1ed;
   border-radius:5px;
-  margin-top: 65px;
 }
 
 .searchinput:focus {
@@ -123,7 +121,7 @@
 
 .sidebar-nav {
   position: absolute;
-  top: 150px;
+  top: 50px;
   width: 250px;
   margin: 0;
   padding: 0;

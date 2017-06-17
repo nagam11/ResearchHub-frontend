@@ -7,4 +7,5 @@ import { Component }          from '@angular/core';
 export class AppComponent {
   Logo = 'ResearchHub';
   UserInfo = 'username';
+  logoPath = 'logo.png';
 }
