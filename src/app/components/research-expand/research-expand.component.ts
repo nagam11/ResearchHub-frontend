@@ -15,28 +15,35 @@ import 'rxjs/add/operator/map';
 })
 export class ResearchExpandComponent implements OnInit {
   researches: Research[] = [];
+  selectedItem: String = 'Please select';
   constructor(
     private researchService: ResearchService,
     private location: Location
     ) { }
 
   ngOnInit(): void {
-    this.researchService.getResearches()
-      .then(researches => this.researches = researches);
+    this.researchService.getResearches().then(researches => this.researches = researches);
   }
 
   cancel(): void {
+    console.log('My name is Marla');
     this.location.back();
   }
 
-  save(): void {
-
-    this.researchService.create(name)
+  save(title: string): void {
+    title = title.trim();
+    if (!title) { return; }
+    this.researchService.create(title)
       .then(research => {
         this.researches.push(research);
         this.cancel();
       });
 
+  }
+
+  dropdownselected(research: Research): void {
+    console.log('dropdown selected');
+    this.selectedItem = research.ResearchTopic;
   }
 }
 
