@@ -27,9 +27,9 @@ export class ResearchService {
       .then(() => null)
       .catch(this.handleError);
   }
-  create(name: string): Promise<Research> {
+  create(ResearchTopic: string): Promise<Research> {
     return this.http
-      .post(this.researchesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.researchesUrl, JSON.stringify({ResearchTopic: ResearchTopic}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Research)
       .catch(this.handleError);
