@@ -1,18 +1,26 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import {  Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Research } from '../research';
+
 @Injectable()
 export class ResearchService {
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers: Headers;
   private researchesUrl = 'api/researches';  // URL to web api
-  constructor(private http: Http) { }
-  getResearches(): Promise<Research[]> {
+  options: RequestOptions;
+
+  constructor(private http: Http) {
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
+  }
+
+  getResearches(): Promise<any> {
     return this.http.get(this.researchesUrl)
       .toPromise()
-      .then(response => response.json().data as Research[])
+      .then(response => response.json().data)
       .catch(this.handleError);
   }
+
   getResearch(id: number): Promise<Research> {
     const url = `${this.researchesUrl}/${id}`;
     return this.http.get(url)
@@ -34,6 +42,7 @@ export class ResearchService {
       .then(res => res.json().data as Research)
       .catch(this.handleError);
   }
+
   update(research: Research): Promise<Research> {
     const url = `${this.researchesUrl}/${research.id}`;
     return this.http
@@ -47,3 +56,4 @@ export class ResearchService {
     return Promise.reject(error.message || error);
   }
 }
+

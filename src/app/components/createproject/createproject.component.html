@@ -16,44 +16,24 @@
         <div class="form-group">
           <div class="col-sm-3">
             <label>Project title</label></div>
-          <div class="col-sm-9"><input type="text" placeholder="Please enter title" class="form-control" id="" #projectTitle >
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          <div class="dropdown">
-            <div class="col-sm-3">
-              <label>Test</label></div>
-            <br>
-            <div class="col-sm-9">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedItem}}
-                <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li *ngFor="let research of researches"><a (click)="dropdownselected(research)">{{research.ResearchTopic}}</a></li>
-              </ul>
-            </div>
+          <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="project.title" class="form-control" >
           </div>
         </div>
       </div>
       <br>
 
-
-
       <div class="row">
         <div class="form-group">
           <div class="dropdown">
             <div class="col-sm-3">
+              <br>
               <label>Project type</label></div>
             <br>
             <div class="col-sm-9">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bachelor thesis
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedProjectType}}
                 <span class="caret"></span></button>
               <ul class="dropdown-menu">
-                <li><a href="#">Master thesis</a></li>
-                <li><a href="#">Guided Research</a></li>
-                <li><a href="#">IDP</a></li>
+                <li *ngFor="let projectType of projectTypes"><a (click)="dropdownselectedProjectType(projectType)">{{projectType.projectType}}</a></li>
               </ul>
             </div>
           </div>
@@ -63,6 +43,7 @@
 
       <div class="row">
         <div class="col-sm-3">
+          <br>
           <label>Required level</label></div>
         <div class="col-sm-9">
           <div class="radio">
@@ -77,16 +58,14 @@
       <div class="row">
         <div class="dropdown">
           <div class="col-sm-3">
+            <br>
             <label>Faculty</label></div>
           <br>
           <div class="col-sm-9">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bachelor thesis
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedFaculty}}
               <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><a href="#"></a>Mathematics</li>
-              <li><a href="#">Informatics</a></li>
-              <li><a href="#">Mechanical Engineering</a></li>
-              <li><a hred="#">Electrical Engineering</a></li>
+              <li *ngFor="let faculty of faculties"><a (click)="dropdownselectedFaculty(faculty)">{{faculty.name}}</a></li>
             </ul>
           </div>
         </div>
@@ -95,15 +74,14 @@
       <div class="row">
         <div class="dropdown">
           <div class="col-sm-3">
+            <br>
             <label>Chair</label></div>
           <br>
           <div class="col-sm-9">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Chair
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedChair}}
               <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><a href="#">SEBIS</a></li>
-              <li><a href="#">Winfo</a></li>
-              <li><a href="#">Rechnernetze</a></li>
+              <li *ngFor="let chair of chairs"><a (click)="dropdownselectedChair(chair)">{{chair.name}}</a></li>
             </ul>
           </div>
         </div>
@@ -112,6 +90,7 @@
 
       <div class="row">
         <div class="col-sm-3">
+          <br>
           <label>Language</label></div>
         <div class="col-sm-9">
           <div class="radio">
@@ -125,6 +104,7 @@
 
       <div class="row">
         <div class="col-sm-3">
+          <br>
           <label>Company partner</label></div>
         <div class="col-sm-9">
           <div class="radio">
@@ -145,10 +125,11 @@
 
       <div class="row">
         <div class="col-sm-3">
+          <br>
           <label>Description</label></div>
         <div class="col-sm-9">
           <div class="form-group">
-            <textarea class="form-control" rows="5" id="description"></textarea>
+            <textarea class="form-control" rows="5" id="description" [(ngModel)]="project.description" ></textarea>
           </div>
         </div>
       </div>
@@ -157,8 +138,8 @@
         <div class="form-group">
           <div class="col-sm-3">
             <label>Advisor</label></div>
-          <div class="col-sm-9"><input type="text" placeholder="Please enter name" ng-model="$ctrl.project.advisor"
-                                       class="form-control" id="">
+          <div class="col-sm-9"><input type="text" placeholder="Please enter name" [(ngModel)]="project.advisor"
+                                       class="form-control" >
           </div>
         </div>
       </div>
@@ -168,8 +149,8 @@
         <div class="form-group">
           <div class="col-sm-3">
             <label>Supervisor</label></div>
-          <div class="col-sm-9"><input type="text" placeholder="Please enter name" ng-model="$ctrl.project.supervisor"
-                                       class="form-control" id="">
+          <div class="col-sm-9"><input type="text" placeholder="Please enter name" [(ngModel)]="project.supervisor"
+                                       class="form-control">
           </div>
         </div>
       </div>
@@ -178,7 +159,7 @@
       <div class="row">
         <div class="col-sm-6"></div>
         <div class="col-sm-6">
-          <button type="button" (click)="save(projectTitle.value); projectTitle.value=''" class="btn btn-warning ">Create</button>
+          <button type="button" (click)="save();" class="btn btn-warning ">Create</button>
           <button type="button" (click)="cancel()" class="btn btn-warning ">Cancel</button>
         </div>
       </div>

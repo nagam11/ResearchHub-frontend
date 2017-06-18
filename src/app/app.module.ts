@@ -5,23 +5,30 @@ import { HttpModule }    from '@angular/http';
 import { AppRoutingModule } from './config/app-routing.module';
 
 // Imports for loading & configuring the in-memory web api
+//TODO delete in memory data service
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
+//import Components
 import { AppComponent }         from './components/app-header/app.component';
 import { DashboardComponent }   from './components/dashboard/dashboard.component';
 import { ResearchEditComponent }      from './components/research-edit/research-edit.component';
 import { ResearchRatingComponent }  from './components/research-rating/research-rating.component';
-import { ResearchService }          from './services/research.service';
 import { ResearchSearchComponent }  from './components/research-search/research-search.component';
+import { CreateProjectComponent }  from './components/createproject/createproject.component';
+//import Services
+import { ResearchService }          from './services/research.service';
+import {ProjectsService} from './services/projects.service';
+import {ChairsService} from './services/chairs.service';
+import {FacultiesService} from './services/faculties.service';
 import { SearchService }          from './services/search.service';
-import { ResearchExpandComponent }  from './components/research-expand/research-expand.component';
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
+    InMemoryWebApiModule.forRoot(InMemoryDataService,{passThruUnknownUrl: true}),
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
@@ -29,10 +36,10 @@ import { ResearchExpandComponent }  from './components/research-expand/research-
     ResearchRatingComponent,
     ResearchEditComponent,
     ResearchSearchComponent,
-    ResearchExpandComponent
+    CreateProjectComponent
   ],
   providers: [ ResearchService,
-               SearchService
+               SearchService, ProjectsService, ChairsService, FacultiesService
   ],
   bootstrap: [ AppComponent ]
 })
