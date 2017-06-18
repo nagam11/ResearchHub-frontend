@@ -1,0 +1,15 @@
+.jumbotron{
+  background-image: url("/app/bootstrap/jumbo.jpg");
+  background-size:auto!important;
+  background-position: center;
+}
+h1{
+  color: #fff;
+  font-family: "Avenir Next";
+  font-size: 40px;
+}
+
+.huge {
+  font-size: 40px;
+}
+

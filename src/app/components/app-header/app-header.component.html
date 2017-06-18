@@ -6,37 +6,59 @@
       <ul class="nav navbar-nav navbar-right">
         <li><input #searchBox id="search-box" class="form-control searchinput" (keyup)="search(searchBox.value)" placeholder="Search"/></li>
         <!--TODO fix dropdowns-->
-        <li class="nav-item dropdown" ngbDropdown>
-          <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
-            <i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
           </a>
-          <ul class="dropdown-menu dropdown-menu-right messages">
-            <li class="media">
-              <img class="d-flex align-self-center mr-3" src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg" alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mt-0 mb-1">John Smith</h5>
-                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
-              </div>
+          <ul class="dropdown-menu dropdown-messages">
+            <li>
+              <a href="#">
+                <div>
+                  <strong class="customerDropdown">Marla Narazani</strong>
+                  <span class="pull-right text-muted">
+                                        <em class="custom-em">Yesterday</em>
+                                    </span>
+                </div>
+                <div>Test message</div>
+              </a>
             </li>
-            <li class="media">
-              <img class="d-flex align-self-center mr-3" src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg" alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mt-0 mb-1">John Smith</h5>
-                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
-              </div>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <strong class="customerDropdown">Muawiya Assali</strong>
+                  <span class="pull-right text-muted">
+                                        <em class="custom-em">Yesterday</em>
+                                    </span>
+                </div>
+                <div>Test message</div>
+              </a>
             </li>
-            <li class="media">
-              <img class="d-flex align-self-center mr-3" src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg" alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mt-0 mb-1">John Smith</h5>
-                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
-              </div>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <strong class="customerDropdown">Wagram Aiiran</strong>
+                  <span class="pull-right text-muted">
+                                        <em class="custom-em">Yesterday</em>
+                                    </span>
+                </div>
+                <div>Test 3</div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a class="text-center" href="#">
+                <strong class="customerDropdown">Read All Messages</strong>
+                <i class="fa fa-angle-right"></i>
+              </a>
             </li>
           </ul>
+          <!-- /.dropdown-messages -->
         </li>
+
         <li class="nav-item dropdown" ngbDropdown>
           <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
             <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
@@ -120,11 +142,10 @@
 <div class="page-content">
   <div id="content-wrapper">
 
-<div class="container">
+
   <div>
   <br>
     <br>
   </div>
   <router-outlet></router-outlet>
-</div>
   </div></div>
