@@ -18,8 +18,8 @@ import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'create-project',
-  templateUrl: './createproject.component.html',
-  styleUrls: [ './createproject.component.css' ]
+  templateUrl: './view-project-create.component.html',
+  styleUrls: [ './view-project-create.component.css' ]
 })
 export class CreateProjectComponent implements OnInit {
   researches: Research[] = [];

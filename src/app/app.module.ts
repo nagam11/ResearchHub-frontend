@@ -5,17 +5,18 @@ import { HttpModule }    from '@angular/http';
 import { AppRoutingModule } from './config/app-routing.module';
 
 // Imports for loading & configuring the in-memory web api
-//TODO delete in memory data service
+// TODO delete in memory data service
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
-//import Components
+// import Components
 import { AppComponent }         from './components/app-header/app.component';
 import { DashboardComponent }   from './components/dashboard/dashboard.component';
 import { ResearchEditComponent }      from './components/research-edit/research-edit.component';
 import { ResearchRatingComponent }  from './components/research-rating/research-rating.component';
 import { ResearchSearchComponent }  from './components/research-search/research-search.component';
-import { CreateProjectComponent }  from './components/createproject/createproject.component';
-//import Services
+import { CreateProjectComponent }  from './components/view-project-create/view-project-create.component';
+import { ViewProjectsComponent }  from './components/view-projects/view-projects.component';
+// import Services
 import { ResearchService }          from './services/research.service';
 import {ProjectsService} from './services/projects.service';
 import {ChairsService} from './services/chairs.service';
@@ -36,7 +37,8 @@ import { SearchService }          from './services/search.service';
     ResearchRatingComponent,
     ResearchEditComponent,
     ResearchSearchComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    ViewProjectsComponent
   ],
   providers: [ ResearchService,
                SearchService, ProjectsService, ChairsService, FacultiesService

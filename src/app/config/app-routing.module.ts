@@ -4,7 +4,8 @@ import { DashboardComponent }   from '../components/dashboard/dashboard.componen
 import { ResearchRatingComponent }  from '../components/research-rating/research-rating.component';
 import {ResearchEditComponent} from '../components/research-edit/research-edit.component';
 import {ResearchSearchComponent} from '../components/research-search/research-search.component';
-import {CreateProjectComponent} from '../components/createproject/createproject.component';
+import {CreateProjectComponent} from '../components/view-project-create/view-project-create.component';
+import {ViewProjectsComponent} from "../components/view-projects/view-projects.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'rating/:id', component: ResearchRatingComponent },
   { path: 'edit',     component: ResearchEditComponent },
   { path: 'search',     component: ResearchSearchComponent },
-  { path: 'createproject',     component: CreateProjectComponent }
+  { path: 'createproject',     component: CreateProjectComponent },
+  { path: 'projects',     component: ViewProjectsComponent }
 ];
 
 @NgModule({
