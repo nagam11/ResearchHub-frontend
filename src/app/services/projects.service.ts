@@ -5,11 +5,12 @@ import { Injectable }    from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Research } from '../research';
+import {Project} from "../data-model/project";
 
 @Injectable()
 export class ProjectsService {
   private headers: Headers;
-  private url = 'http://localhost:3002/api/projects';
+  private url = 'http://localhost:3000/api/projects';
   options: RequestOptions;
 
   constructor(private http: Http) {
@@ -41,7 +42,7 @@ export class ProjectsService {
       .then(() => null)
       .catch(this.handleError);
   }
-  create(project): Promise<any> {
+  create(project: any): Promise<any> {
     let options = new RequestOptions({ headers: this.headers });
     return this.http.post(this.url, project, options).toPromise()
       .then(this.extractData)

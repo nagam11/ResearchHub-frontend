@@ -2,3 +2,15 @@
   margin-left: 5px;
   margin-right: 5px;
 }
+
+h2 {
+  font-family: "Avenir Next";
+}
+
+.panel-heading {
+  font-family: "Avenir Next";
+}
+
+.panel-body {
+  font-family: "Avenir Next";
+}

@@ -1,4 +1,39 @@
-/*#86BCFF*/
+/**
+ * Created by MarlaN 18.06.2017
+ */
+
+.custom-footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  padding-top:-30px;
+}
+
+.custom-footer a {
+  color: #fff;
+}
+
+.list-group-item {
+  background:  #000;
+  border: 0;
+  border-radius: 0;
+  color: #999;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: "Avenir Next";
+}
+
+.list-group a:hover {
+  background: #222;
+  color: #fff;
+}
+
+.list-group a.router-link-active {
+  background: #222;
+  color: #fff;
+}
+
 .navbar {
   margin-bottom: 0;
   max-height:15px !important;
@@ -29,6 +64,7 @@
   margin-bottom: 30px;
   padding-bottom: 8px;
 }
+
 
 #wrapper {
   padding-left: 0;

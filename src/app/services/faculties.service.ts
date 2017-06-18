@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class FacultiesService {
   private headers: Headers;
-  private url = 'http://localhost:3002/api/faculties';
+  private url = 'http://localhost:3000/api/faculties';
   options: RequestOptions;
   constructor(private http: Http) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });

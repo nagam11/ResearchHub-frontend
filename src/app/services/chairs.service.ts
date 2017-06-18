@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ChairsService {
   private headers: Headers;
-  private url = 'http://localhost:3002/api/chairs';
+  private url = 'http://localhost:3000/api/chairs';
   options: RequestOptions;
   constructor(private http: Http) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
