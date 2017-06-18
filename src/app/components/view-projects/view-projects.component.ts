@@ -15,6 +15,7 @@ import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {Project} from "../../data-model/project";
 
 @Component({
   selector: 'view-projects',
@@ -22,12 +23,13 @@ import 'rxjs/add/operator/map';
   styleUrls: [ './view-projects.component.css' ]
 })
 export class ViewProjectsComponent implements OnInit {
+  projects: Project[] = [];
 
-  constructor(
-  ) { }
+  constructor(private ProjectsService: ProjectsService  ) { }
 
   ngOnInit(): void {
     console.log('Component created');
+    this.ProjectsService.getProjects().then(projects => this.projects = projects);
   }
 
 }

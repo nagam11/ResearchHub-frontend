@@ -16,6 +16,7 @@ import { ResearchRatingComponent }  from './components/research-rating/research-
 import { ResearchSearchComponent }  from './components/research-search/research-search.component';
 import { CreateProjectComponent }  from './components/view-project-create/view-project-create.component';
 import { ViewProjectsComponent }  from './components/view-projects/view-projects.component';
+import {CreateProjectSuccessComponent} from './components/view-project-create-success/view-project-create-success.component';
 // import Services
 import { ResearchService }          from './services/research.service';
 import {ProjectsService} from './services/projects.service';
@@ -38,7 +39,9 @@ import { SearchService }          from './services/search.service';
     ResearchEditComponent,
     ResearchSearchComponent,
     CreateProjectComponent,
-    ViewProjectsComponent
+    ViewProjectsComponent,
+    CreateProjectSuccessComponent
+
   ],
   providers: [ ResearchService,
                SearchService, ProjectsService, ChairsService, FacultiesService

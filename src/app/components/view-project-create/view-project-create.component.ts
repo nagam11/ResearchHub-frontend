@@ -2,6 +2,7 @@
  * created by MarlaN. 13.06.2017
  */
 import { Component, OnInit } from '@angular/core';
+import { Router }            from '@angular/router';
 import { Research } from '../../research';
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
@@ -35,11 +36,12 @@ export class CreateProjectComponent implements OnInit {
     private researchService: ProjectsService,
     private chairsService: ChairsService,
     private facultiesService: FacultiesService,
-    private location: Location
+    private location: Location,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
-    this.researchService.getResearches().then(researches => this.researches = researches);
+    this.researchService.getProjects().then(researches => this.researches = researches);
     this.chairsService.getChairs().then(chairs => this.chairs = chairs);
     this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
   }
@@ -49,8 +51,8 @@ export class CreateProjectComponent implements OnInit {
   }
 
   save(): void {
-    // TODO fix
-    //title = title.trim();
+    // TODO show alert that title should be filled
+    //this.project.title = this.project.title.trim();
    // if (!title) { return; }
     /*this.researchService.create(title)
       .then(research => {
@@ -58,6 +60,7 @@ export class CreateProjectComponent implements OnInit {
         this.cancel();
       });*/
     this.researchService.create(this.project);
+    this.router.navigate(['/createsuccess']);
 
   }
 

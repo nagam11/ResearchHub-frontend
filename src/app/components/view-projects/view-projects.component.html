@@ -1,4 +1,15 @@
 <div class="col-sm-2 sidenav">
 </div>
-<div class="col-sm-8 text-left">
-  <h1>Hello</h1></div>
+
+<div class="col-sm-8 text-left"><br>
+  <h2>Topics</h2>
+  <div class="panel-group">
+    <div class="panel panel-primary" *ngFor="let project of projects">
+      <div class="panel-heading"> Research Topic: {{project.title}}</div>
+      <div class="panel-body">Description: {{project.description}}</div>
+      <div class="panel-body">Advisor: {{project.advisor}}</div>
+      <div class="panel-body">Supervisor: {{project.supervisor}}</div>
+      </div>
+    </div>
+</div>
+

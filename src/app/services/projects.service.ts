@@ -9,7 +9,7 @@ import { Research } from '../research';
 @Injectable()
 export class ProjectsService {
   private headers: Headers;
-  private researchesUrl = 'http://localhost:3002/api/projects';
+  private url = 'http://localhost:3002/api/projects';
   options: RequestOptions;
 
   constructor(private http: Http) {
@@ -17,22 +17,25 @@ export class ProjectsService {
     this.options = new RequestOptions({ headers: this.headers });
   }
 
-  getResearches(): Promise<any> {
-    return this.http.get(this.researchesUrl)
+  getProjects(): Promise<any> {
+    /*return this.http.get(this.url)
       .toPromise()
       .then(response => response.json().data)
+      .catch(this.handleError);*/
+    return this.http.get(this.url).toPromise()
+      .then(this.extractDataGet)
       .catch(this.handleError);
   }
 
   getResearch(id: number): Promise<Research> {
-    const url = `${this.researchesUrl}/${id}`;
+    const url = `${this.url}/${id}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Research)
       .catch(this.handleError);
   }
   delete(id: number): Promise<void> {
-    const url = `${this.researchesUrl}/${id}`;
+    const url = `${this.url}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
@@ -40,12 +43,12 @@ export class ProjectsService {
   }
   create(project): Promise<any> {
     let options = new RequestOptions({ headers: this.headers });
-    return this.http.post(this.researchesUrl, project, options).toPromise()
+    return this.http.post(this.url, project, options).toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
   update(research: Research): Promise<Research> {
-    const url = `${this.researchesUrl}/${research.id}`;
+    const url = `${this.url}/${research.id}`;
     return this.http
       .put(url, JSON.stringify(research), {headers: this.headers})
       .toPromise()
@@ -56,6 +59,14 @@ export class ProjectsService {
     let body = res.json();
     return body.data || {};
   }
+
+  private extractDataGet(res: Response) {
+    let body = res.json();
+    console.log(body);
+    //return body.data || {};
+    return body;
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

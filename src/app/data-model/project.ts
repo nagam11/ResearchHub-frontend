@@ -4,4 +4,7 @@
 export class Project {
   _id: number;
   title: string;
+  description: string;
+  advisor: string;
+  supervisor: string;
 }
