@@ -9,7 +9,7 @@ import {ViewProjectsComponent} from "../components/view-projects/view-projects.c
 import {CreateProjectSuccessComponent} from "../components/view-project-create-success/view-project-create-success.component";
 import {ViewDashboardComponent} from "../components/view-dashboard/view-dashboard.component";
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'app.html', redirectTo: '/dashboard', pathMatch: 'prefix' },
   { path: 'dashboard',  component: DashboardComponent },
   { path: 'rating/:id', component: ResearchRatingComponent },
   { path: 'edit',     component: ResearchEditComponent },
