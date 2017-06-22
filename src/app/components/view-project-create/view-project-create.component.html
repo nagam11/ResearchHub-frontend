@@ -31,11 +31,16 @@
               <label>Project type</label></div>
             <br>
             <div class="col-sm-9">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedProjectType}}
+            <button class="btn btn-primary dropdown-toggle" value="Please select" type="button" data-toggle="dropdown">{{selectedProjectType.protjectType}}
                 <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li *ngFor="let projectType of projectTypes"><a (click)="dropdownselectedProjectType(projectType)">{{projectType.projectType}}</a></li>
+
+             <ul class="dropdown-menu">
+                <li *ngFor="let projectType of projectTypes"><a (click)="dropdownselectedProjectType(projectType)">{{projectType.protjectType}}</a></li>
               </ul>
+
+
+              <!-- <select ng-options="projectType._id as projectType.protjectType for projectType in projectTypes" /> -->
+
             </div>
           </div>
         </div>
@@ -63,7 +68,7 @@
             <label>Faculty</label></div>
           <br>
           <div class="col-sm-9">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedFaculty}}
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedFaculty.name}}
               <span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li *ngFor="let faculty of faculties"><a (click)="dropdownselectedFaculty(faculty)">{{faculty.name}}</a></li>
@@ -79,7 +84,7 @@
             <label>Chair</label></div>
           <br>
           <div class="col-sm-9">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedChair}}
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedChair.name}}
               <span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li *ngFor="let chair of chairs"><a (click)="dropdownselectedChair(chair)">{{chair.name}}</a></li>

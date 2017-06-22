@@ -3,5 +3,5 @@
  */
 export class ProjectType {
   _id: number;
-  projectType: String;
+  protjectType: String;
 }

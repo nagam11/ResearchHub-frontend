@@ -24,6 +24,7 @@ import {ProjectsService} from './services/projects.service';
 import {ChairsService} from './services/chairs.service';
 import {FacultiesService} from './services/faculties.service';
 import { SearchService }          from './services/search.service';
+import {ProjectTypeService} from "./services/projectType.service";
 
 @NgModule({
   imports: [
@@ -46,7 +47,7 @@ import { SearchService }          from './services/search.service';
 
   ],
   providers: [ ResearchService,
-               SearchService, ProjectsService, ChairsService, FacultiesService
+               SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService
   ],
   bootstrap: [ AppComponent ]
 })
