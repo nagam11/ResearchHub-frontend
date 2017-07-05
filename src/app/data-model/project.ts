@@ -4,7 +4,7 @@
 import {Chair} from './chair';
 import {ProjectType} from "./projectType";
 export class Project {
-  _id: number;
+  _id: string;
   title: string;
   _projetType: ProjectType;
   _chair: Chair;

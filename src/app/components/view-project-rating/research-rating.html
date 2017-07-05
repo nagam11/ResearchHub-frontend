@@ -2,22 +2,22 @@
 </div>
 <div class="col-sm-8 text-left"><br>
 <h1>Rating</h1>
-<div *ngIf="projects" >
-<h2>Research Topic:  {{projects.title}}</h2>
+<div *ngIf="project">
+<h2>Research Topic:  {{project.title}}</h2>
   <div>
   <div>
     <label>Company Name:</label>
-    <input [(ngModel)]="projects.ratings" placeholder="name" />
+    <input [(ngModel)]="project.ratings" placeholder="name" />
   </div>
 
   <div>
     <label>Interested In Fields:</label>
-    <input [(ngModel)]="projects.ratings" placeholder="name" />
+    <input [(ngModel)]="project.title" placeholder="name" />
   </div>
 
   <div>
     <label>How does this project overlaps with the company's future vision:</label>
-    <input [(ngModel)]="projects.ratings" placeholder="name" />
+    <input [(ngModel)]="project._id" placeholder="name" />
   </div>
   </div>
   <button (click)="goBack()">Back</button>

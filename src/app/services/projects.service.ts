@@ -35,11 +35,12 @@ export class ProjectsService {
       .then(response => response.json().data as Research)
       .catch(this.handleError);
   }*/
-  getProject(id: number): Promise<Project> {
-    const url = `${this.url}/${id}`;
+  getProject(id: string): Promise<Project> {
+    const url = encodeURI(`${this.url}/${id}`);
+    console.log(url);
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Project)
+      .then(response => response.json() as Project)
       .catch(this.handleError);
   }
   delete(id: number): Promise<void> {
@@ -59,10 +60,11 @@ export class ProjectsService {
   }
   update(project: Project): Promise<Project> {
     const url = `${this.url}/${project._id}`;
+    console.log(url);
     return this.http
       .put(url, JSON.stringify(project), {headers: this.headers})
       .toPromise()
-      .then(() => project)
+      .then(response => response.json() as Project)
       .catch(this.handleError);
   }
     /* update(research: Research): Promise<Research> {
