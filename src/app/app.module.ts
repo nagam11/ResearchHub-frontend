@@ -10,9 +10,9 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
 // import Components
 import { AppComponent }         from './components/app-header/app.component';
-import { DashboardComponent }   from './components/dashboard/dashboard.component';
+import { DashboardComponent }   from './components/view-rating-dashboard/view-rating-dashboard.component';
 import { ResearchEditComponent }      from './components/research-edit/research-edit.component';
-import { ResearchRatingComponent }  from './components/research-rating/research-rating.component';
+import { ResearchRatingComponent }  from './components/view-project-rating/research-rating.component';
 import { ResearchSearchComponent }  from './components/research-search/research-search.component';
 import { CreateProjectComponent }  from './components/view-project-create/view-project-create.component';
 import { ViewProjectsComponent }  from './components/view-projects/view-projects.component';
@@ -24,7 +24,7 @@ import {ProjectsService} from './services/projects.service';
 import {ChairsService} from './services/chairs.service';
 import {FacultiesService} from './services/faculties.service';
 import { SearchService }          from './services/search.service';
-import {ProjectTypeService} from "./services/projectType.service";
+import {ProjectTypeService} from './services/projectType.service';
 
 @NgModule({
   imports: [

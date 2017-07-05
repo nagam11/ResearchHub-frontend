@@ -1,7 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent }   from '../components/dashboard/dashboard.component';
-import { ResearchRatingComponent }  from '../components/research-rating/research-rating.component';
+import { DashboardComponent }   from '../components/view-rating-dashboard/view-rating-dashboard.component';
+import { ResearchRatingComponent }  from '../components/view-project-rating/research-rating.component';
 import {ResearchEditComponent} from '../components/research-edit/research-edit.component';
 import {ResearchSearchComponent} from '../components/research-search/research-search.component';
 import {CreateProjectComponent} from '../components/view-project-create/view-project-create.component';
