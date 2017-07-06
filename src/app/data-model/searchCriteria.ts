@@ -1,4 +1,5 @@
 import {ProjectType} from "./projectType";
+import {Language} from "./language";
 /**
  * Created by Devgen on 06.07.2017.
  */
@@ -27,7 +28,7 @@ export class SearchCriteria {
       this.selectedProjectTypes.push(this.newSelectedProejctType);
     }
   }
-  setSelectableLanguages(selectableLanguages: string[]) {
+  setSelectableLanguages(selectableLanguages: Language[]) {
     for (let selectableLanguage of selectableLanguages) {
       this.newSelectableLangauge = new SelectedLanguage(selectableLanguage);
       this.selectedLaguages.push(this.newSelectableLangauge);
@@ -46,8 +47,8 @@ export class SelectedProjectType {
 
 export class SelectedLanguage {
   selected: boolean;
-  language: string;
-  constructor(language: string) {
+  language: Language;
+  constructor(language: Language) {
     this.language = language;
     this.selected = false;
   }
