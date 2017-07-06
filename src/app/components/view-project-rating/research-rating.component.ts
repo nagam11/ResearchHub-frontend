@@ -2,7 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import {Component, OnInit}      from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location}               from '@angular/common';
-import {Research}        from '../../research';
+
 import {ProjectsService} from '../../services/projects.service';
 import {Project} from '../../data-model/project';
 @Component({
@@ -11,7 +11,7 @@ import {Project} from '../../data-model/project';
   styleUrls: ['./research-rating.component.css']
 })
 export class ResearchRatingComponent implements OnInit {
-  researches: Research;
+  researches: Project;
   project: Project;
 
   constructor(

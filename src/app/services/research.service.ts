@@ -1,7 +1,8 @@
 import { Injectable }    from '@angular/core';
 import {  Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Research } from '../research';
+import {Project} from "../data-model/project";
+
 
 @Injectable()
 export class ResearchService {
@@ -21,11 +22,11 @@ export class ResearchService {
       .catch(this.handleError);
   }
 
-  getResearch(id: number): Promise<Research> {
+  getResearch(id: number): Promise<Project> {
     const url = `${this.researchesUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Research)
+      .then(response => response.json().data as Project)
       .catch(this.handleError);
   }
   delete(id: number): Promise<void> {
@@ -35,16 +36,16 @@ export class ResearchService {
       .then(() => null)
       .catch(this.handleError);
   }
-  create(ResearchTopic: string): Promise<Research> {
+  create(ResearchTopic: string): Promise<Project> {
     return this.http
       .post(this.researchesUrl, JSON.stringify({ResearchTopic: ResearchTopic}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data as Research)
+      .then(res => res.json().data as Project)
       .catch(this.handleError);
   }
 
-  update(research: Research): Promise<Research> {
-    const url = `${this.researchesUrl}/${research.id}`;
+  update(research: Project): Promise<Project> {
+    const url = `${this.researchesUrl}/${research._id}`;
     return this.http
       .put(url, JSON.stringify(research), {headers: this.headers})
       .toPromise()

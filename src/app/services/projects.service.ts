@@ -4,7 +4,6 @@
 import { Injectable }    from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Research } from '../research';
 import {Project} from '../data-model/project';
 
 @Injectable()

@@ -2,7 +2,6 @@
  * created by MarlaN. 18.06.2017
  */
 import { Component, OnInit } from '@angular/core';
-import { Research } from '../../research';
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
 import {ProjectType} from '../../data-model/projectType';

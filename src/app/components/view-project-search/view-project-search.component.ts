@@ -2,27 +2,14 @@
  * Created by Devgen on 06.07.2017.
  */
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
-import { Research } from '../../research';
-import {Chair} from '../../data-model/chair';
-import {Faculty} from '../../data-model/faculty';
 import {ProjectType} from '../../data-model/projectType';
-import { ProjectsService } from '../../services/projects.service';
-import { ChairsService } from '../../services/chairs.service';
-import { FacultiesService } from '../../services/faculties.service';
-import { Location }               from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Injectable } from '@angular/core';
-import { Http }       from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {ProjectTypeService} from "../../services/projectType.service";
-import {Project} from "../../data-model/project";
-import {ProjectSearchValues} from "../../data-model/projectSearchValues";
-import {SearchCriteria} from "../../data-model/searchCriteria";
-import {SearchService} from "../../services/search.service";
-import {LanguageService} from "../../services/languages.service";
-import {Language} from "../../data-model/language";
+import {ProjectTypeService} from '../../services/projectType.service';
+import {Project} from '../../data-model/project';
+import {SearchCriteria} from '../../data-model/searchCriteria';
+import {SearchService} from '../../services/search.service';
+import {LanguageService} from '../../services/languages.service';
+
 
 
 @Component({
