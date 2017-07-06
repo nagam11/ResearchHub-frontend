@@ -199,4 +199,24 @@
     position: relative;
     margin-right: 0;
   }
+  .dropdown-messages {
+    width: 310px;
+    min-width: 0;
+    margin-left: 5px;
+  }
+
+  .customerDropdown{
+    color: #000;
+    font-size: 15px;
+  }
+  .custom-em{
+    font-size: 10px;
+  }
+
+  @media(min-width:768px) {
+    .dropdown-messages{
+      margin-left: auto;
+    }
+  }
+
 }
