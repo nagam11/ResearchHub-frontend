@@ -24,7 +24,12 @@ import {ProjectsService} from './services/projects.service';
 import {ChairsService} from './services/chairs.service';
 import {FacultiesService} from './services/faculties.service';
 import { SearchService }          from './services/search.service';
+<<<<<<< HEAD
 import {ProjectTypeService} from './services/projectType.service';
+=======
+import {ProjectTypeService} from "./services/projectType.service";
+import {SearchProjectComponent} from "./components/view-project-search/view-project-search.component";
+>>>>>>> refs/remotes/origin/master
 
 @NgModule({
   imports: [
@@ -43,7 +48,8 @@ import {ProjectTypeService} from './services/projectType.service';
     CreateProjectComponent,
     ViewProjectsComponent,
     CreateProjectSuccessComponent,
-    ViewDashboardComponent
+    ViewDashboardComponent,
+    SearchProjectComponent
 
   ],
   providers: [ ResearchService,
