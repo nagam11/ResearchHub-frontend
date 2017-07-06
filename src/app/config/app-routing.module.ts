@@ -8,6 +8,7 @@ import {CreateProjectComponent} from '../components/view-project-create/view-pro
 import {ViewProjectsComponent} from "../components/view-projects/view-projects.component";
 import {CreateProjectSuccessComponent} from "../components/view-project-create-success/view-project-create-success.component";
 import {ViewDashboardComponent} from "../components/view-dashboard/view-dashboard.component";
+import {SearchProjectComponent} from "../components/view-project-search/view-project-search.component";
 const routes: Routes = [
   { path: 'app.html', redirectTo: '/dashboard', pathMatch: 'prefix' },
   { path: 'dashboard',  component: DashboardComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'createproject',     component: CreateProjectComponent },
   { path: 'projects',     component: ViewProjectsComponent },
   { path: 'createsuccess',     component: CreateProjectSuccessComponent },
-  { path: 'viewdashboard',     component: ViewDashboardComponent }
+  { path: 'viewdashboard',     component: ViewDashboardComponent },
+  { path: 'searchproject',   component: SearchProjectComponent}
 ];
 
 @NgModule({
