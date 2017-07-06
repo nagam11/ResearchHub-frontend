@@ -3,7 +3,6 @@ import {Component, OnInit}      from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location}               from '@angular/common';
 import {Research}        from '../../research';
-import {ResearchService} from '../../services/research.service';
 import {ProjectsService} from '../../services/projects.service';
 import {Project} from '../../data-model/project';
 @Component({
@@ -15,7 +14,7 @@ export class ResearchRatingComponent implements OnInit {
   researches: Research;
   project: Project;
 
-  constructor(private researchService: ResearchService,
+  constructor(
               private ProjectsService: ProjectsService,
               private route: ActivatedRoute,
               private location: Location) {

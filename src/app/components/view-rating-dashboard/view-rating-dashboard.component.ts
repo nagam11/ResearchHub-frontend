@@ -3,9 +3,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Research } from '../../research';
-import { ResearchService } from '../../services/research.service';
 import { ProjectsService } from '../../services/projects.service';
-import {Project} from "../../data-model/project";
+import {Project} from '../../data-model/project';
 
 
 import { Injectable } from '@angular/core';
