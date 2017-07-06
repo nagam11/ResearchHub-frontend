@@ -24,8 +24,9 @@ import {ProjectsService} from './services/projects.service';
 import {ChairsService} from './services/chairs.service';
 import {FacultiesService} from './services/faculties.service';
 import { SearchService }          from './services/search.service';
-import {ProjectTypeService} from "./services/projectType.service";
-import {SearchProjectComponent} from "./components/view-project-search/view-project-search.component";
+import {ProjectTypeService} from './services/projectType.service';
+import {SearchProjectComponent} from './components/view-project-search/view-project-search.component';
+import {AcademicsService} from './services/academics.service';
 
 @NgModule({
   imports: [
@@ -49,7 +50,7 @@ import {SearchProjectComponent} from "./components/view-project-search/view-proj
 
   ],
   providers: [ ResearchService,
-               SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService
+               SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService, AcademicsService
   ],
   bootstrap: [ AppComponent ]
 })

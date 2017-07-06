@@ -7,9 +7,11 @@ import { Research } from '../../research';
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
 import {ProjectType} from '../../data-model/projectType';
+import {Academic} from '../../data-model/academic';
 import { ProjectsService } from '../../services/projects.service';
 import { ChairsService } from '../../services/chairs.service';
 import { FacultiesService } from '../../services/faculties.service';
+import {AcademicsService} from '../../services/academics.service';
 import { Location }               from '@angular/common';
 
 import { Injectable } from '@angular/core';
@@ -18,7 +20,6 @@ import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {ProjectTypeService} from "../../services/projectType.service";
 import {Project} from "../../data-model/project";
-// import {Project} from "../../data-model/project";
 
 @Component({
   selector: 'create-project',
@@ -28,26 +29,21 @@ import {Project} from "../../data-model/project";
 export class CreateProjectComponent implements OnInit {
   researches: Research[] = [];
   chairs: Chair[] = [];
+  academics: Academic[] = [];
   faculties: Faculty[] = [];
   projectTypes: ProjectType[] = [];
- // projectTypes: ProjectType[] = [{'_id': 0, 'projectType' : 'Master thesis' }, {'_id': 1, 'projectType' : 'Bachelor thesis' },{'_id': 2, 'projectType' : 'IDP' }];
-  // selectedChair: String = 'Please select';
   selectedChair: Chair;
- // projectTypes = {};
-  // selectedFaculty: String = 'Please select';
   selectedFaculty: Faculty;
-  // selectedProjectType: String = 'Please select';
   selectedProjectType: ProjectType;
+  selectedAcademic: Academic;
   project: Project;
-  /// /project = {};
-
-  // project: {};
 
   constructor(
     private researchService: ProjectsService,
     private chairsService: ChairsService,
     private facultiesService: FacultiesService,
     private projectTypeService: ProjectTypeService,
+    private academicsService: AcademicsService,
     private location: Location,
     private router: Router
     ) { }
@@ -60,11 +56,12 @@ export class CreateProjectComponent implements OnInit {
     this.selectedChair.name = 'Please select';
     this.selectedFaculty = new Faculty();
     this.selectedFaculty.name = 'Please select';
-    // this.researchService.getProjects().then(researches => this.researches = researches);
+    this.selectedAcademic = new Academic();
+    this.selectedAcademic.firstname = 'Please select';
     this.projectTypeService.getProjectTypes().then(projectTypes => this.projectTypes = projectTypes);
     this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
     this.chairsService.getChairs().then(chairs => this.chairs = chairs);
-
+    this.academicsService.getAcademics().then(academics => this.academics = academics);
   }
 
   cancel(): void {
@@ -72,23 +69,12 @@ export class CreateProjectComponent implements OnInit {
   }
 
   save(): void {
-    // TODO show alert that title should be filled
-    // this.project.title = this.project.title.trim();
-   // if (!title) { return; }
-    /*this.researchService.create(title)
-      .then(research => {
-       // this.researches.push(research);
-        this.cancel();
-      });*/
-    // this.project['projetType'] = this.selectedProjectType['_id'];
-    // this.project.chair = this.selectedChair._id;
     this.project._chair = this.selectedChair;
     this.project._projetType = this.selectedProjectType;
     console.log(this.selectedChair);
     // this.project['chairs'] = this.selectedChair['_id'];
     this.researchService.create(this.project);
     this.router.navigate(['/createsuccess']);
-
   }
 
   dropdownselectedProjectType(projectType: ProjectType): void {
@@ -102,6 +88,17 @@ export class CreateProjectComponent implements OnInit {
   dropdownselectedFaculty(faculty: Faculty): void {
     this.selectedFaculty = faculty;
   }
+
+  onSubmit() {
+    this.project._chair = this.selectedChair;
+    this.project._projetType = this.selectedProjectType;
+    console.log(this.selectedChair);
+    console.log("it worked");
+    // this.project['chairs'] = this.selectedChair['_id'];
+   // this.researchService.create(this.project);
+  //  this.router.navigate(['/createsuccess']);
+  }
+
 
 }
 
