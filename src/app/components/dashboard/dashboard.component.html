@@ -1,3 +1,4 @@
+<div class="container">
 <div class="col-sm-2 sidenav">
 </div>
 <div class="col-sm-8 text-left"><br>
@@ -5,7 +6,6 @@
 <div class="panel-group">
   <div class="panel panel-primary" *ngFor="let research of researches" (click)="onSelect(research)"
        [class.selected]="research === selectedResearch">
-
 
     <div class="panel-heading"> Research Topic: {{research.ResearchTopic}} </div>
     <div class="panel-body">Faculty: {{research.Faculty}}
@@ -27,9 +27,8 @@
         Rated by: {{research.RatedBy}} <br>
         Description: {{research.Description}}
       </div>
-
     </div>
   </div>
 </div>
 </div>
-
+</div>
