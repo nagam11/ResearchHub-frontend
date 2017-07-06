@@ -28,13 +28,6 @@ export class ProjectsService {
       .catch(this.handleError);
   }
 
-  /*getResearch(id: number): Promise<Research> {
-    const url = `${this.url}/${id}`;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json().data as Research)
-      .catch(this.handleError);
-  }*/
   getProject(id: string): Promise<Project> {
     const url = encodeURI(`${this.url}/${id}`);
     console.log(url);
@@ -67,14 +60,6 @@ export class ProjectsService {
       .then(response => response.json() as Project)
       .catch(this.handleError);
   }
-    /* update(research: Research): Promise<Research> {
-     const url = `${this.url}/${research.id}`;
-     return this.http
-     .put(url, JSON.stringify(research), {headers: this.headers})
-     .toPromise()
-     .then(() => research)
-     .catch(this.handleError);
-     }*/
   private extractData(res: Response) {
     let body = res.json();
     return body.data || {};
@@ -90,4 +75,3 @@ export class ProjectsService {
     return Promise.reject(error.message || error);
   }
 }
-
