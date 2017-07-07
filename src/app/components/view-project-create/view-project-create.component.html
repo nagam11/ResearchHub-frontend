@@ -12,214 +12,203 @@
 
           <div class="panel-heading">
             <div class="progress">
-            <div class="progress-bar progress-bar-striped customProgress" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                 aria-valuemax="100"
-                 style="width:70%">
-              <span class="sr-only">10% Complete</span>
+              <div class="progress-bar progress-bar-striped customProgress" role="progressbar" aria-valuenow="70"
+                   aria-valuemin="0"
+                   aria-valuemax="100"
+                   style="width:70%">
+                <span class="sr-only">10% Complete</span>
+              </div>
             </div>
-          </div>
           </div>
 
           <div class="panel-body">
-        <!--Projects Form-->
-        <form #createProjectForm="ngForm" (ngSubmit)="onSubmit()">
-       <!--  <div class="progress">
-           <div class="progress-bar progress-bar-striped marla" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                 aria-valuemax="100"
-                 style="width:70%">
-              <span class="sr-only">10% Complete</span>
-            </div>
-          </div>  -->
-          <div class="row">
-            <div class="form-group">
-              <div class="col-sm-3">
-                <label>Project title *</label></div>
-              <div class="col-sm-9">
-                <input type="text" placeholder="Please enter title" [(ngModel)]="project.title" name="title"
-                       #title="ngModel" class="form-control" required minlength="4" maxlength="24">
-                <!--Angular Form Validations-->
-                <div *ngIf="title.errors && (title.dirty || title.touched)"
-                     class="alert alert-danger">
-                  <div [hidden]="!title.errors.required">
-                    Title is required
-                  </div>
-                  <div [hidden]="!title.errors.minlength">
-                    Title must be at least 4 characters long.
-                  </div>
-                  <div [hidden]="!title.errors.maxlength">
-                    Title cannot be more than 24 characters long.
+            <!--Projects Form-->
+            <form #createProjectForm="ngForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <label>Project title *</label></div>
+                  <div class="col-sm-9">
+                    <input type="text" placeholder="Please enter title" [(ngModel)]="project.title" name="title"
+                           #title="ngModel" class="form-control" required minlength="4" maxlength="24">
+                    <!--Angular Form Validations-->
+                    <div *ngIf="title.errors && (title.dirty || title.touched)"
+                         class="alert alert-danger">
+                      <div [hidden]="!title.errors.required">
+                        Title is required
+                      </div>
+                      <div [hidden]="!title.errors.minlength">
+                        Title must be at least 4 characters long.
+                      </div>
+                      <div [hidden]="!title.errors.maxlength">
+                        Title cannot be more than 24 characters long.
+                      </div>
+                    </div>
+                    <!--End Angular Form Validations-->
                   </div>
                 </div>
-                <!--End Angular Form Validations-->
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <div class="dropdown">
+              <div class="row">
+                <div class="form-group">
+                  <div class="dropdown">
+                    <div class="col-sm-3">
+                      <br>
+                      <label>Project type *</label>
+                    </div>
+                    <br>
+                    <div class="col-sm-9">
+                      <button class="btn btn-primary dropdown-toggle" value="Please select" type="button"
+                              data-toggle="dropdown">{{selectedProjectType.protjectType}}
+                        <span class="caret"></span></button>
+                      <ul class="dropdown-menu" required="true">
+                        <li *ngFor="let projectType of projectTypes"><a
+                          (click)="dropdownselectedProjectType(projectType)">{{projectType.protjectType}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-3">
+                  <label>Required level *</label></div>
+                <div class="col-sm-9">
+                  <div *ngFor="let educationLevel of educationLevels">
+                    <input type="checkbox" name="educationLevel"> {{educationLevel.level}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="dropdown">
+                  <div class="col-sm-3">
+                    <br>
+                    <label>Faculty *</label></div>
+                  <br>
+                  <div class="col-sm-9">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                      {{selectedFaculty.name}}
+                      <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li *ngFor="let faculty of faculties"><a
+                        (click)="dropdownselectedFaculty(faculty)">{{faculty.name}}</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="dropdown">
+                  <div class="col-sm-3">
+                    <br>
+                    <label>Chair *</label></div>
+                  <br>
+                  <div class="col-sm-9">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                      {{selectedChair.name}}
+                      <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li *ngFor="let chair of chairs"><a (click)="dropdownselectedChair(chair)">{{chair.name}}</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-3">
+                  <label>Language *</label>
+                </div>
+                <div class="col-sm-9">
+                  <div *ngFor="let language of languages">
+                    <input type="checkbox" name="language"> {{language.language}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-sm-3">
                   <br>
-                  <label>Project type *</label>
-                </div>
-                <br>
+                  <label>Company partner</label></div>
                 <div class="col-sm-9">
-                  <button class="btn btn-primary dropdown-toggle" value="Please select" type="button"
-                          data-toggle="dropdown">{{selectedProjectType.protjectType}}
-                    <span class="caret"></span></button>
-                  <ul class="dropdown-menu" required="true">
-                    <li *ngFor="let projectType of projectTypes"><a (click)="dropdownselectedProjectType(projectType)">{{projectType.protjectType}}</a>
-                    </li>
-                  </ul>
+                  <div class="checkbox">
+                    <label><input type="checkbox" name="company">Yes</label>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Company
+                      <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <!--Mocked data-->
+                      <li><a>Siemens</a></li>
+                      <li><a>BMW</a></li>
+                      <li><a>IBM</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-3">
               <br>
-              <label>Required level *</label></div>
-            <div class="col-sm-9">
-              <div class="checkbox">
-                <label><input type="checkbox" name="level">Bachelor</label>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" name="level">Master</label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="dropdown">
-              <div class="col-sm-3">
-                <br>
-                <label>Faculty *</label></div>
-                <br>
-              <div class="col-sm-9">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                  {{selectedFaculty.name}}
-                  <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li *ngFor="let faculty of faculties"><a
-                    (click)="dropdownselectedFaculty(faculty)">{{faculty.name}}</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="dropdown">
-              <div class="col-sm-3">
-                <br>
-                <label>Chair *</label></div>
-                <br>
-              <div class="col-sm-9">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                  {{selectedChair.name}}
-                  <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li *ngFor="let chair of chairs"><a (click)="dropdownselectedChair(chair)">{{chair.name}}</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-3">
-              <br>
-              <label>Language *</label>
-            </div>
-            <div class="col-sm-9">
-              <div class="checkbox">
-                <label><input type="checkbox" name="lang">English</label>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" name="lang">German</label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <br>
-              <label>Company partner</label></div>
-            <div class="col-sm-9">
-              <div class="checkbox">
-                <label><input type="checkbox" name="company">Yes</label>
-              </div>
-              <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Company
-                  <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <!--Mocked data-->
-                  <li><a >Siemens</a></li>
-                  <li><a >BMW</a></li>
-                  <li><a >IBM</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-3">
-              <br>
-              <label>Description</label></div>
-            <div class="col-sm-9">
-              <div class="form-group">
+              <div class="row">
+                <div class="col-sm-3">
+                  <br>
+                  <label>Description</label></div>
+                <div class="col-sm-9">
+                  <div class="form-group">
                 <textarea class="form-control" rows="5" id="description" [(ngModel)]="project.description"
-                          name="description" #description="ngModel" required minlength="10" ></textarea>
-                <!--Angular Form Validations-->
-                <div *ngIf="description.errors && (description.dirty || description.touched)"
-                     class="alert alert-danger">
-                  <div [hidden]="!description.errors.required">
-                    Description is required
-                  </div>
-                  <div [hidden]="!description.errors.minlength">
-                    Description must be at least 10 characters long.
+                          name="description" #description="ngModel" required minlength="10"></textarea>
+                    <!--Angular Form Validations-->
+                    <div *ngIf="description.errors && (description.dirty || description.touched)"
+                         class="alert alert-danger">
+                      <div [hidden]="!description.errors.required">
+                        Description is required
+                      </div>
+                      <div [hidden]="!description.errors.minlength">
+                        Description must be at least 10 characters long.
+                      </div>
+                    </div>
+                    <!--End Angular Form Validations-->
                   </div>
                 </div>
-                <!--End Angular Form Validations-->
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <div class="col-sm-3">
-                <label>Advisor</label></div>
-              <div class="col-sm-9"><input type="text" placeholder="The user's name" [(ngModel)]="project.advisor"
-                                           name="advisor" class="form-control">
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <label>Advisor</label></div>
+                  <div class="col-sm-9"><input type="text" placeholder="The user's name" [(ngModel)]="project.advisor"
+                                               name="advisor" class="form-control">
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="form-group">
-              <div class="col-sm-3">
-                <label>Supervisor</label></div>
-            <!--  <div class="col-sm-9"><input type="text" placeholder="Please enter name" [(ngModel)]="project.supervisor"
-                                           name="supervisor" class="form-control">
-              </div> -->
-              <div class="col-sm-9">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                  {{selectedAcademic.firstname}}
-                  <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li *ngFor="let academic of academics"><a (click)="dropdownselectedChair(chair)">{{academic.firstname}} {{academic.lastname}}</a></li>
-                </ul>
+              <br>
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <label>Supervisor</label></div>
+                  <!--  <div class="col-sm-9"><input type="text" placeholder="Please enter name" [(ngModel)]="project.supervisor"
+                                                 name="supervisor" class="form-control">
+                    </div> -->
+                  <div class="col-sm-9">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                      {{selectedAcademic.firstname}}
+                      <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li *ngFor="let academic of academics"><a (click)="dropdownselectedChair(chair)">{{academic.firstname}}
+                        {{academic.lastname}}</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6">
+                  <button type="submit" [disabled]="!createProjectForm.form.valid" class="btn btn-warning">Create
+                  </button>
+                  <button type="button" (click)="cancel()" class="btn btn-warning ">Cancel</button>
+                </div>
+              </div>
+              <br>
+            </form>
+            <!--End Projects Form-->
           </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-6"></div>
-            <div class="col-sm-6">
-              <button type="submit" [disabled]="!createProjectForm.form.valid" class="btn btn-warning">Create</button>
-              <button type="button" (click)="cancel()" class="btn btn-warning ">Cancel</button>
-            </div>
-          </div>
-          <br>
-        </form>
-        <!--End Projects Form-->
+        </div>
       </div>
     </div>
-    </div>
-  </div>
   </div>
 </div>

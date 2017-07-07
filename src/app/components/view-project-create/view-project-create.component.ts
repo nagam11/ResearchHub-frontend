@@ -14,12 +14,16 @@ import { ChairsService } from '../../services/chairs.service';
 import { FacultiesService } from '../../services/faculties.service';
 import {AcademicsService} from '../../services/academics.service';
 import { Location }               from '@angular/common';
+import {EducationLevelService} from '../../services/educationLevel.service';
+import {LanguagesService } from '../../services/languages.service';
 import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {ProjectTypeService} from "../../services/projectType.service";
 import {Project} from "../../data-model/project";
+import {EducationLevel} from "../../data-model/educationLevel";
+import {Language} from "../../data-model/language";
 
 @Component({
   selector: 'create-project',
@@ -32,6 +36,8 @@ export class CreateProjectComponent implements OnInit {
   academics: Academic[] = [];
   faculties: Faculty[] = [];
   projectTypes: ProjectType[] = [];
+  educationLevels: EducationLevel[] = [];
+  languages: Language[] = [];
   selectedChair: Chair;
   selectedFaculty: Faculty;
   selectedProjectType: ProjectType;
@@ -45,6 +51,8 @@ export class CreateProjectComponent implements OnInit {
     private facultiesService: FacultiesService,
     private projectTypeService: ProjectTypeService,
     private academicsService: AcademicsService,
+    private educationLevelService: EducationLevelService,
+    private languageService: LanguagesService,
     private location: Location,
     private router: Router
     ) { }
@@ -65,18 +73,12 @@ export class CreateProjectComponent implements OnInit {
     this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
     this.chairsService.getChairs().then(chairs => this.chairs = chairs);
     this.academicsService.getAcademics().then(academics => this.academics = academics);
+    this.educationLevelService.getEducationLevels().then(educationLevels => this.educationLevels = educationLevels );
+    this.languageService.getLanguagesLevels().then(languages => this.languages = languages);
   }
 
   cancel(): void {
     this.location.back();
-  }
-
-  save(): void {
-    this.project._chair = this.selectedChair;
-    this.project._projetType = this.selectedProjectType;
-    console.log(this.selectedChair);
-    this.researchService.create(this.project);
-    this.router.navigate(['/createsuccess']);
   }
 
   // ---setup dropdowns
@@ -98,9 +100,11 @@ export class CreateProjectComponent implements OnInit {
   onSubmit() {
     this.project._chair = this.selectedChair;
     this.project._projetType = this.selectedProjectType;
+    this.project._requeredLevel = this.educationLevels;
+    this.project._languages = this.languages;
     this.researchService.create(this.project);
     this.router.navigate(['/createsuccess']);
   }
-  
+
 }
 

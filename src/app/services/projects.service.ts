@@ -44,7 +44,6 @@ export class ProjectsService {
   }
   create(project: any): Promise<any> {
     let options = new RequestOptions({ headers: this.headers });
-
     //let user = this.UserService.getCurrentUser(); TODO user services
     return this.http.post(this.url, project, options).toPromise()
       .then(this.extractData)
@@ -65,8 +64,6 @@ export class ProjectsService {
 
   private extractDataGet(res: Response) {
     let body = res.json();
-    console.log(body);
-    //return body.data || {};
     return body;
   }
 
