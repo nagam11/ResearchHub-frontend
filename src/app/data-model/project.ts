@@ -5,6 +5,7 @@ import {Chair} from './chair';
 import {ProjectType} from "./projectType";
 import {EducationLevel} from"./educationLevel";
 import {Language} from "./language";
+import {Academic} from "./academic";
 export class Project {
   _id: number;
   title: string;
@@ -12,11 +13,11 @@ export class Project {
   _chair: Chair;
   _languages: Language[];
   description: string;
-  advisor: string;
-  supervisor: string;
-  requeredSkills: [{skill: string }];
+  _advisor: string;
+  _superadvisor: Academic;
+  _requeredSkills: [{skill: string }];
   ratings: string;
-  parner: string;
+  partner: string;
   _requeredLevel: EducationLevel[];
 
 }

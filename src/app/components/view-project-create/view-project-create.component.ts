@@ -90,6 +90,10 @@ export class CreateProjectComponent implements OnInit {
     this.selectedChair = chair;
   }
 
+  dropdownselectedAcademic(academic: Academic): void {
+    this.selectedAcademic = academic;
+  }
+
   dropdownselectedFaculty(faculty: Faculty): void {
     this.selectedFaculty = faculty;
     // If faculty selected, show only chairs of that faculty.
@@ -102,6 +106,7 @@ export class CreateProjectComponent implements OnInit {
     this.project._projetType = this.selectedProjectType;
     this.project._requeredLevel = this.educationLevels;
     this.project._languages = this.languages;
+    this.project._superadvisor = this.selectedAcademic;
     this.researchService.create(this.project);
     this.router.navigate(['/createsuccess']);
   }
