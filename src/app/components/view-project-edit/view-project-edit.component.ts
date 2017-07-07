@@ -1,9 +1,10 @@
 /**
- * created by MarlaN. 13.06.2017
+ * created by MarlaN. 08.07.2017
  */
 // ---imports
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
+import { ActivatedRoute, ParamMap ,Params, Router } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 import { Research } from '../../research';
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
@@ -26,12 +27,14 @@ import {EducationLevel} from "../../data-model/educationLevel";
 import {Language} from "../../data-model/language";
 
 @Component({
-  selector: 'create-project',
-  templateUrl: './view-project-create.component.html',
-  styleUrls: [ './view-project-create.component.css' ]
+  selector: 'edit-project',
+  templateUrl: './view-project-edit.component.html',
+  styleUrls: [ './view-project-edit.component.css' ]
 })
-export class CreateProjectComponent implements OnInit {
-  researches: Research[] = [];
+export class EditProjectComponent implements OnInit {
+  projectType: ProjectType;
+
+  projects: Project[] = [];
   chairs: Chair[] = [];
   academics: Academic[] = [];
   faculties: Faculty[] = [];
@@ -40,13 +43,13 @@ export class CreateProjectComponent implements OnInit {
   languages: Language[] = [];
   selectedChair: Chair;
   selectedFaculty: Faculty;
-  private selectedProjectType: ProjectType;
+  private selProjectType: ProjectType;
   selectedAcademic: Academic;
   project: Project;
 
   constructor(
     // Service init
-    private projectService: ProjectsService,
+    private projectsService: ProjectsService,
     private chairsService: ChairsService,
     private facultiesService: FacultiesService,
     private projectTypeService: ProjectTypeService,
@@ -54,20 +57,33 @@ export class CreateProjectComponent implements OnInit {
     private educationLevelService: EducationLevelService,
     private languageService: LanguagesService,
     private location: Location,
-    private router: Router
-    ) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   // ---init
   ngOnInit(): void {
     this.project = new Project();
-    this.selectedProjectType = new ProjectType();
-    this.selectedProjectType.protjectType = 'Select a type of project';
+    /*this.route.paramMap
+      .switchMap((params: ParamMap) => this.projectService.getProject(+params.get('id')))
+      .subscribe(projects => this.project = projects);*/
+
+    this.route.params
+      .subscribe((params: Params) => { this.projectsService.getProject(params['id']).then((project) => {
+        this.project = project;
+      });
+      } );
+
+    console.log(this.project);
+
+    // this.selectedProjectType = new ProjectType();
+    this.selProjectType = this.project._projetType;
     this.selectedChair = new Chair();
-    this.selectedChair.name = 'Please select';
+    // this.selectedChair.name = this.project._chair.name;
     this.selectedFaculty = new Faculty();
-    this.selectedFaculty.name = 'Please select';
+    // this.selectedFaculty.name = this.project._chair.faculty.
     this.selectedAcademic = new Academic();
-    this.selectedAcademic.firstname = 'Please select';
+    //this.selectedAcademic.firstname = this.project._advisor.firstname;
     // Perform service calls
     this.projectTypeService.getProjectTypes().then(projectTypes => this.projectTypes = projectTypes);
     this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
@@ -83,7 +99,7 @@ export class CreateProjectComponent implements OnInit {
 
   // ---setup dropdowns
   dropdownselectedProjectType(projectType: ProjectType): void {
-    this.selectedProjectType = projectType;
+    this.selProjectType = projectType;
   }
 
   dropdownselectedChair(chair: Chair): void {
@@ -103,7 +119,7 @@ export class CreateProjectComponent implements OnInit {
   // ---submit project
   onSubmit() {
     this.project._chair = this.selectedChair;
-    this.project._projetType = this.selectedProjectType;
+    this.project._projetType = this.selProjectType;
     this.project._requeredLevel = this.educationLevels;
     this.project._languages = this.languages;
     this.project._superadvisor = this.selectedAcademic;
@@ -111,7 +127,7 @@ export class CreateProjectComponent implements OnInit {
     //TODO add projects for academic
     //this.selectedAcademic.projects = [project];
     //this.academicsService.update(this.selectedAcademic);
-    this.projectService.create(this.project);
+    //this.projectsService.update(project);
     this.router.navigate(['/createsuccess']);
   }
 

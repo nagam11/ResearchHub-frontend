@@ -1,0 +1,48 @@
+/**
+ * created by MarlaN. 18.06.2017
+ */
+.progress-bar {
+  background-color: #86BCFF;
+}
+
+.dropdown-toggle {
+  background-color: #86BCFF;
+}
+
+h2 {
+  font-family: "Avenir Next";
+}
+
+.jumbotron{
+  background-image: url("/app/bootstrap/jumbo-create.jpg");
+  background-size:auto!important;
+  background-position: bottom;
+}
+h1{
+  color: #fff;
+  font-family: "Avenir Next";
+  font-size: 40px;
+}
+
+.huge {
+  font-size: 40px;
+}
+
+.customProgress {
+  background-color: #c4cacf;
+}
+
+.panel-heading{
+  height: 40px;
+}
+
+.dropdown-toggle,.dropdown-toggle:active{
+  background-color: #c4cacf !important;
+  border-color: #c4cacf !important;
+  background: #c4cacf !important;
+
+}
+
+.panel-default{
+  width: 980px;
+}

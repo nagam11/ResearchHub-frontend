@@ -18,6 +18,7 @@ import { CreateProjectComponent }  from './components/view-project-create/view-p
 import { ViewProjectsComponent }  from './components/view-projects/view-projects.component';
 import {CreateProjectSuccessComponent} from './components/view-project-create-success/view-project-create-success.component';
 import {ViewDashboardComponent} from './components/view-dashboard/view-dashboard.component';
+import {EditProjectComponent} from './components/view-project-edit/view-project-edit.component';
 // import Services
 import { ResearchService }          from './services/research.service';
 import {ProjectsService} from './services/projects.service';
@@ -48,7 +49,8 @@ import {LanguagesService } from './services/languages.service';
     ViewProjectsComponent,
     CreateProjectSuccessComponent,
     ViewDashboardComponent,
-    SearchProjectComponent
+    SearchProjectComponent,
+    EditProjectComponent
 
   ],
   providers: [ ResearchService,

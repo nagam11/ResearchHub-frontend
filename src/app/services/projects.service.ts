@@ -28,11 +28,11 @@ export class ProjectsService {
       .catch(this.handleError);
   }
 
-  getResearch(id: number): Promise<Research> {
+  getProject(id: number): Promise<any> {
     const url = `${this.url}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Research)
+      .then(this.extractDataGet)
       .catch(this.handleError);
   }
   delete(id: any): Promise<void> {
@@ -49,14 +49,16 @@ export class ProjectsService {
       .then(this.extractData)
       .catch(this.handleError);
   }
-  update(research: Research): Promise<Research> {
-    const url = `${this.url}/${research.id}`;
+  update(project: Project): Promise<Project> {
+    const url = `${this.url}/${project._id}`;
+    console.log(url);
     return this.http
-      .put(url, JSON.stringify(research), {headers: this.headers})
+      .put(url, JSON.stringify(project), {headers: this.headers})
       .toPromise()
-      .then(() => research)
+      .then(response => response.json() as Project)
       .catch(this.handleError);
   }
+
   private extractData(res: Response) {
     let body = res.json();
     return body.data || {};

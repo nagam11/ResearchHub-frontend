@@ -45,3 +45,13 @@ h1{
  background-color: #ff817b;
   border-color: #ff817b;
 }
+
+.customButton1{
+  background-color: #a0e7a0;
+  border-color: #a0e7a0;
+}
+
+.btn-toolbar {
+  height: 30px;
+  width: 200px;
+}

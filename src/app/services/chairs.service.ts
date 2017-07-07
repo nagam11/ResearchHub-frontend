@@ -21,7 +21,6 @@ export class ChairsService {
       .catch(this.handleError);
   }
   private extractData(res: Response) {
-    console.log(res);
     let body = res.json();
     //return body.data || {};
     return body;
