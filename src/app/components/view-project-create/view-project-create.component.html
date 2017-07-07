@@ -1,3 +1,6 @@
+<div class="jumbotron text-center">
+  <h1>New project</h1>
+</div>
 <div class="container">
   <h2></h2>
   <div class="container-fluid text-center">
@@ -5,16 +8,28 @@
       <div class="col-sm-2 sidenav">
       </div>
       <div class="col-sm-10 text-left col-lg-10">
-        <!--Projects Form-->
-        <form #createProjectForm="ngForm" (ngSubmit)="onSubmit()">
-          <h2>Create new project</h2>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            <div class="progress">
+            <div class="progress-bar progress-bar-striped customProgress" role="progressbar" aria-valuenow="70" aria-valuemin="0"
                  aria-valuemax="100"
                  style="width:70%">
               <span class="sr-only">10% Complete</span>
             </div>
           </div>
+          </div>
+
+          <div class="panel-body">
+        <!--Projects Form-->
+        <form #createProjectForm="ngForm" (ngSubmit)="onSubmit()">
+       <!--  <div class="progress">
+           <div class="progress-bar progress-bar-striped marla" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                 aria-valuemax="100"
+                 style="width:70%">
+              <span class="sr-only">10% Complete</span>
+            </div>
+          </div>  -->
           <div class="row">
             <div class="form-group">
               <div class="col-sm-3">
@@ -168,7 +183,7 @@
             <div class="form-group">
               <div class="col-sm-3">
                 <label>Advisor</label></div>
-              <div class="col-sm-9"><input type="text" placeholder="Please enter name" [(ngModel)]="project.advisor"
+              <div class="col-sm-9"><input type="text" placeholder="The user's name" [(ngModel)]="project.advisor"
                                            name="advisor" class="form-control">
               </div>
             </div>
@@ -204,5 +219,7 @@
         <!--End Projects Form-->
       </div>
     </div>
+    </div>
+  </div>
   </div>
 </div>

@@ -1,3 +1,6 @@
+/**
+ * created by MarlaN. 18.06.2017
+ */
 .heading-button {
   margin-left: 5px;
   margin-right: 5px;
@@ -13,4 +16,27 @@ h2 {
 
 .panel-body {
   font-family: "Avenir Next";
+}
+
+.jumbotron{
+  background-image: url("/app/bootstrap/jumbo-backup.jpg");
+  background-size:auto!important;
+  background-position: bottom;
+}
+h1{
+  color: #fff;
+  font-family: "Avenir Next";
+  font-size: 40px;
+}
+
+.customPanel {
+  background-color: #c4cacf;
+}
+
+.panel{
+  border-color: #c4cacf ;
+}
+
+.panel-group{
+  width: 980px;
 }

@@ -1,17 +1,17 @@
+<div class="jumbotron text-center">
+  <h1>My projects</h1>
+</div>
 <div class="container">
 <div class="col-sm-2 sidenav">
 </div>
-
 <div class="col-sm-10 text-left"><br>
-  <h2>My projects</h2>
-
   <div class="panel-group">
     <div class="panel panel-primary" *ngFor="let project of projects">
-      <div class="panel-heading"> Research Topic: {{project.title}}</div>
+      <div class="panel-heading customPanel"> Research Topic: {{project.title}}</div>
       <div class="panel-body">Description: {{project.description}}</div>
       <div class="panel-body">Advisor: {{project.advisor}}</div>
       <div class="panel-body">Supervisor: {{project.supervisor}}</div>
-      </div>
+    </div>
   </div>
 </div>
 </div>
