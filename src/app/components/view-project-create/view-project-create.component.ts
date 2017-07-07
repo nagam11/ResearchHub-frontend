@@ -1,6 +1,7 @@
 /**
  * created by MarlaN. 13.06.2017
  */
+// ---imports
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 import { Research } from '../../research';
@@ -13,7 +14,6 @@ import { ChairsService } from '../../services/chairs.service';
 import { FacultiesService } from '../../services/faculties.service';
 import {AcademicsService} from '../../services/academics.service';
 import { Location }               from '@angular/common';
-
 import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
@@ -39,6 +39,7 @@ export class CreateProjectComponent implements OnInit {
   project: Project;
 
   constructor(
+    // Service init
     private researchService: ProjectsService,
     private chairsService: ChairsService,
     private facultiesService: FacultiesService,
@@ -48,6 +49,7 @@ export class CreateProjectComponent implements OnInit {
     private router: Router
     ) { }
 
+  // ---init
   ngOnInit(): void {
     this.project = new Project();
     this.selectedProjectType = new ProjectType();
@@ -58,6 +60,7 @@ export class CreateProjectComponent implements OnInit {
     this.selectedFaculty.name = 'Please select';
     this.selectedAcademic = new Academic();
     this.selectedAcademic.firstname = 'Please select';
+    // Perform service calls
     this.projectTypeService.getProjectTypes().then(projectTypes => this.projectTypes = projectTypes);
     this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
     this.chairsService.getChairs().then(chairs => this.chairs = chairs);
@@ -72,11 +75,11 @@ export class CreateProjectComponent implements OnInit {
     this.project._chair = this.selectedChair;
     this.project._projetType = this.selectedProjectType;
     console.log(this.selectedChair);
-    // this.project['chairs'] = this.selectedChair['_id'];
     this.researchService.create(this.project);
     this.router.navigate(['/createsuccess']);
   }
 
+  // ---setup dropdowns
   dropdownselectedProjectType(projectType: ProjectType): void {
     this.selectedProjectType = projectType;
   }
@@ -87,18 +90,17 @@ export class CreateProjectComponent implements OnInit {
 
   dropdownselectedFaculty(faculty: Faculty): void {
     this.selectedFaculty = faculty;
+    // If faculty selected, show only chairs of that faculty.
+    this.chairs = faculty.chairs;
   }
 
+  // ---submit project
   onSubmit() {
     this.project._chair = this.selectedChair;
     this.project._projetType = this.selectedProjectType;
-    console.log(this.selectedChair);
-    console.log("it worked");
-    // this.project['chairs'] = this.selectedChair['_id'];
-   // this.researchService.create(this.project);
-  //  this.router.navigate(['/createsuccess']);
+    this.researchService.create(this.project);
+    this.router.navigate(['/createsuccess']);
   }
-
-
+  
 }
 

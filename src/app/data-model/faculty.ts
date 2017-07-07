@@ -1,8 +1,9 @@
 /**
  * created by MarlaN. 18.06.2017
  */
+import {Chair} from './chair';
 export class Faculty {
-  _id: number;
+  _id: string;
   name: String;
-  chair: [String];
+  chairs: [Chair];
 }
