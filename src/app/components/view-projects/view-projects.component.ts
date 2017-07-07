@@ -2,6 +2,7 @@
  * created by MarlaN. 18.06.2017
  */
 import { Component, OnInit } from '@angular/core';
+import { Router }            from '@angular/router';
 import { Research } from '../../research';
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
@@ -25,11 +26,20 @@ import {Project} from "../../data-model/project";
 export class ViewProjectsComponent implements OnInit {
   projects: Project[] = [];
 
-  constructor(private ProjectsService: ProjectsService  ) { }
+  constructor(
+    private projectsService: ProjectsService,
+    private location: Location,
+    private router: Router) { }
 
   ngOnInit(): void {
     console.log('Component created');
-    this.ProjectsService.getProjects().then(projects => this.projects = projects);
+    this.projectsService.getProjects().then(projects => this.projects = projects);
+  }
+
+  // --delete projects
+  delete(_id: string) {
+    this.projectsService.delete(_id);
+    location.reload();
   }
 
 }

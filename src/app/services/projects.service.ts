@@ -35,7 +35,7 @@ export class ProjectsService {
       .then(response => response.json().data as Research)
       .catch(this.handleError);
   }
-  delete(id: number): Promise<void> {
+  delete(id: any): Promise<void> {
     const url = `${this.url}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()

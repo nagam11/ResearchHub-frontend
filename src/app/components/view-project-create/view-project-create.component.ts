@@ -107,6 +107,10 @@ export class CreateProjectComponent implements OnInit {
     this.project._requeredLevel = this.educationLevels;
     this.project._languages = this.languages;
     this.project._superadvisor = this.selectedAcademic;
+    let project = new Project();
+    //TODO add projects for academic
+    //this.selectedAcademic.projects = [project];
+    //this.academicsService.update(this.selectedAcademic);
     this.researchService.create(this.project);
     this.router.navigate(['/createsuccess']);
   }

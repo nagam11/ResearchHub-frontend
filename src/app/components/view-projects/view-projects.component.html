@@ -1,3 +1,4 @@
+
 <div class="jumbotron text-center">
   <h1 class="animated slideInDown">My projects</h1>
 </div>
@@ -7,10 +8,10 @@
 <div class="col-sm-10 text-left"><br>
   <div class="panel-group">
     <div class="panel panel-primary" *ngFor="let project of projects">
-      <div class="panel-heading customPanel"> Research Topic: {{project.title}}</div>
+      <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px"> Research Topic: {{project.title}} <button type="button" (click)="delete(project._id)" class="btn btn-danger pull-right customButton">Delete</button></div>
       <div class="panel-body">Description: {{project.description}}</div>
-      <div class="panel-body">Advisor: {{project.advisor}}</div>
-      <div class="panel-body">Supervisor: {{project.supervisor}}</div>
+      <div class="panel-body">Chair: {{project._chair.name}}</div>
+      <div class="panel-body">Type of project: {{project._projetType.protjectType}}</div>
     </div>
   </div>
 </div>

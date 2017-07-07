@@ -25,6 +25,15 @@ export class AcademicsService {
     //return body.data || {};
     return body;
   }
+  update(academic: any): Promise<any> {
+    //const url = `${this.url}/${academic._id}`;
+    return this.http
+      .put(this.url, JSON.stringify(academic), {headers: this.headers})
+      .toPromise()
+      .then(() => academic)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
