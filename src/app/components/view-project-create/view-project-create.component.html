@@ -49,6 +49,7 @@
                   </div>
                 </div>
               </div>
+              <!--Project Type-->
               <div class="row">
                 <div class="form-group">
                   <div class="dropdown">
@@ -71,6 +72,7 @@
                 </div>
               </div>
               <br>
+              <!--Projects required level-->
               <div class="row">
                 <div class="col-sm-3">
                   <label>Required level *</label></div>
@@ -80,6 +82,7 @@
                   </div>
                 </div>
               </div>
+              <!--Projects faculty-->
               <div class="row">
                 <div class="dropdown">
                   <div class="col-sm-3">
@@ -97,6 +100,7 @@
                   </div>
                 </div>
               </div>
+              <!--Projects chair-->
               <div class="row">
                 <div class="dropdown">
                   <div class="col-sm-3">
@@ -114,6 +118,7 @@
                 </div>
               </div>
               <br>
+              <!--Projects language-->
               <div class="row">
                 <div class="col-sm-3">
                   <label>Language *</label>
@@ -124,6 +129,7 @@
                   </div>
                 </div>
               </div>
+              <!--Projects company partner-->
               <div class="row">
                 <div class="col-sm-3">
                   <br>
@@ -145,8 +151,7 @@
                 </div>
               </div>
               <br>
-
-
+              <!--Projects description-->
               <div class="row">
                 <div class="col-lg-3">
                   <br>
@@ -169,29 +174,30 @@
                   </div>
                 </div>
               </div>
-
-
+              <!--Projects skills-->
               <div class="row">
-                <div class="col-lg-3">
-                  <br>
-                  <label>Needed skills</label></div>
-                <div class="col-lg-9">
-                  <div class="form-group">
-                    <br>
-                    <input class="form-control" (input)="term$.next($event.target.value)">
-                    <br>
+                <div class="form-group">
+                  <div class="col-lg-3">
+                    <label>Needed skills</label></div>
+                  <div class="col-lg-9">
+                    <div class="form-group">
+                      <div class="btn-toolbar">
+                        <button *ngFor="let skill of selSkills" class="btn skillsButton1" type="button">
+                          {{skill.skill}}
+                        </button>
+                      </div>
+                      <input class="form-control" placeholder="Search for skills" (input)="term$.next($event.target.value)">
                       <div class="btn-toolbar">
                         <div *ngFor="let item of skills">
-                        <button class="btn skillsButton" type="button" (click)="selectedSkills(item)">
-                          {{item}}
-                        </button></div>
+                          <button class="btn skillsButton" type="button" (click)="selectedSkills(item)">
+                            {{item.skill}}
+                          </button></div>
                       </div>
-                    <p *ngFor="let skill of selSkills">{{skill}}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-
-
+              <!--Projects advisor-->
               <div class="row">
                 <div class="form-group">
                   <div class="col-sm-3">
@@ -202,13 +208,11 @@
                 </div>
               </div>
               <br>
+              <!--Projects supervisor-->
               <div class="row">
                 <div class="form-group">
                   <div class="col-sm-3">
                     <label>Supervisor</label></div>
-                  <!--  <div class="col-sm-9"><input type="text" placeholder="Please enter name" [(ngModel)]="project.supervisor"
-                                                 name="supervisor" class="form-control">
-                    </div> -->
                   <div class="col-sm-9">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                       {{selectedAcademic.firstname}}&nbsp;{{selectedAcademic.lastname}}
@@ -221,6 +225,7 @@
                 </div>
               </div>
               <br><br>
+              <!--Actions-->
               <div class="row">
                 <div class="col-lg-4"></div>
                 <div class="col-lg-8">
@@ -239,3 +244,5 @@
     </div>
   </div>
 </div>
+
+

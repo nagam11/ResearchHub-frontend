@@ -19,6 +19,7 @@ import {Academic} from '../../data-model/academic';
 import {Project} from '../../data-model/project';
 import {EducationLevel} from '../../data-model/educationLevel';
 import {Language} from '../../data-model/language';
+import {Skill} from '../../data-model/skill';
 // ---imports Services
 import { ProjectsService } from '../../services/projects.service';
 import { ChairsService } from '../../services/chairs.service';
@@ -44,9 +45,9 @@ export class CreateProjectComponent implements OnInit {
   educationLevels: EducationLevel[] = [];
   languages: Language[] = [];
   project: Project;
-  skills: Array<string>;
+  skills: Array<Skill>;
   term$ = new Subject<string>();
-  selSkills: Array<string> = [];
+  selSkills: Array<Skill> = [];
   // --selectedItems
   selectedChair: Chair;
   selectedFaculty: Faculty;
@@ -66,8 +67,7 @@ export class CreateProjectComponent implements OnInit {
     private router: Router
     ) {
     // --skills instant search
-    this.skillsService.search(this.term$)
-      .subscribe(results => this.skills = results);
+    this.skillsService.search(this.term$).subscribe(results => this.skills = results);
   }
   // ---init
   ngOnInit(): void {
@@ -126,7 +126,7 @@ export class CreateProjectComponent implements OnInit {
     this.router.navigate(['/createsuccess']);
   }
   // --save selected skills
-  selectedSkills(item: string) {
+  selectedSkills(item: Skill) {
     console.log(item + ' was selected as skill.');
     this.selSkills.push(item);
   }

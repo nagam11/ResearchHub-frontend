@@ -12,7 +12,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class SkillsService {
   private headers: Headers;
-  private url = 'http://localhost:3000/api/skills';
+  private url = 'http://localhost:3000/api/skills/terms/';
   options: RequestOptions;
   constructor(private http: Http, private jsonp: Jsonp) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
@@ -32,22 +32,19 @@ export class SkillsService {
     return Promise.reject(error.message || error);
   }
 
-  search(terms: Observable<string>, debounceMs=400) {
+  search(terms: Observable<string>, debounceMs = 400 ) {
     return terms.debounceTime(400)
       .distinctUntilChanged()
-      .switchMap(term => this.rawsearch(term)) //throw away previous observable & subscribe to next
+      .switchMap(term => this.rawsearch(term));
+  }
+  rawsearch(terms: string) {
+       return this.http.get(this.url + terms).toPromise()
+         .then(this.extractDataGet)
+         .catch(this.handleError);
   }
 
-  rawsearch(term: string) {
-    let search = new URLSearchParams();
-    search.set('action', 'opensearch');
-    search.set('search', term);
-    search.set('format', 'json');
-    let obs =  this.jsonp.get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', {search})
-      .map(response => response.json()[1]);
-    if (term.length === 2) {
-      obs = obs.delay(100);
-    } // simulate out of order response
-    return obs;
+  private extractDataGet(res: Response) {
+    let body = res.json();
+    return body;
   }
 }
