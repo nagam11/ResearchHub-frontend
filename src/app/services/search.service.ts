@@ -13,7 +13,6 @@ export class SearchService extends ResearchHubService {
   }
   searchForProjectsByCriteria(searchCriteria: SearchCriteria): Promise<any> {
     let options = new RequestOptions({ headers: this.getHeaders() });
-
     // let user = this.UserService.getCurrentUser(); TODO user services
     return this.http.post(this.getUrlAp() + this.resource, searchCriteria, options).toPromise()
       .then(this.extractData)

@@ -7,15 +7,21 @@
 }
 
 h2 {
-  font-family: "Avenir Next";
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
 .panel-heading {
-  font-family: "Avenir Next";
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
 .panel-body {
-  font-family: "Avenir Next";
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
 .jumbotron{
@@ -25,7 +31,9 @@ h2 {
 }
 h1{
   color: #fff;
-  font-family: "Avenir Next";
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
   font-size: 40px;
 }
 

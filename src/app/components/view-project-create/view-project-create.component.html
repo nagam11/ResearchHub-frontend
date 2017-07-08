@@ -1,5 +1,6 @@
 <div class="jumbotron text-center">
   <h1 class="animated slideInDown">New project</h1>
+  <p class="text-muted animated slideInDown ">Enter a new research project.</p>
 </div>
 <div class="container">
   <h2></h2>
@@ -194,13 +195,13 @@
                   </div>
                 </div>
               </div>
-              <br>
+              <br><br>
               <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                  <button type="submit" [disabled]="!createProjectForm.form.valid" class="btn btn-warning">Create
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8">
+                  <button type="submit" [disabled]="!createProjectForm.form.valid" class="btn btn-outline btn-xl btn-form">Create
                   </button>
-                  <button type="button" (click)="cancel()" class="btn btn-warning ">Cancel</button>
+                  <button type="button" (click)="cancel()" class="btn btn-outline btn-xl btn-form ">Cancel</button>
                 </div>
               </div>
               <br>

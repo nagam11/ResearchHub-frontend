@@ -13,6 +13,7 @@ export  class ResearchHubService {
   constructor() {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
+    console.log(this.options);
   }
 
   protected getUrlAp(): string {

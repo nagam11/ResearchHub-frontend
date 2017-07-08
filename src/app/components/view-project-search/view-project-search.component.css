@@ -7,7 +7,9 @@
 }
 
 h2 {
-  font-family: "Avenir Next";
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
 .jumbotron{
@@ -17,10 +19,25 @@ h2 {
 }
 h1{
   color: #000;
-  font-family: "Avenir Next";
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
   font-size: 40px;
 }
 
 .huge {
   font-size: 40px;
+}
+
+.customPanel{
+  width: 980px;
+}
+
+.customButton{
+  width: 30px;
+  height: 30px;
+}
+
+.customBody{
+
 }
