@@ -58,7 +58,7 @@
                     <br>
                     <div class="col-sm-9">
                       <button class="btn btn-primary dropdown-toggle" value="Please select" type="button"
-                              data-toggle="dropdown">
+                              data-toggle="dropdown">{{projectType.protjectType}}
                         <span class="caret"></span></button>
                       <ul class="dropdown-menu" required="true">
                         <li *ngFor="let projectType of projectTypes"><a
@@ -75,7 +75,7 @@
                   <label>Required level *</label></div>
                 <div class="col-sm-9">
                   <div *ngFor="let educationLevel of educationLevels">
-                    <input type="checkbox" name="educationLevel">
+                    <input type="checkbox" name="educationLevel"> {{educationLevel.level}}
                   </div>
                 </div>
               </div>
@@ -104,7 +104,7 @@
                   <br>
                   <div class="col-sm-9">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-
+                      {{chair.name}}
                       <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                       <li *ngFor="let chair of chairs"><a (click)="dropdownselectedChair(chair)"></a></li>

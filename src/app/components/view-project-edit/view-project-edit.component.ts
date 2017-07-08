@@ -33,13 +33,17 @@ import {Language} from "../../data-model/language";
 })
 export class EditProjectComponent implements OnInit {
   projectType: ProjectType;
+  chair: Chair;
+
+  educationLevels: EducationLevel[] = [];
+
+
 
   projects: Project[] = [];
   chairs: Chair[] = [];
   academics: Academic[] = [];
   faculties: Faculty[] = [];
   projectTypes: ProjectType[] = [];
-  educationLevels: EducationLevel[] = [];
   languages: Language[] = [];
   selectedChair: Chair;
   selectedFaculty: Faculty;
@@ -63,20 +67,20 @@ export class EditProjectComponent implements OnInit {
 
   // ---init
   ngOnInit(): void {
+    // -- init
     this.project = new Project();
-    /*this.route.paramMap
-      .switchMap((params: ParamMap) => this.projectService.getProject(+params.get('id')))
-      .subscribe(projects => this.project = projects);*/
-
+    this.projectType = new ProjectType();
+    this.chair = new Chair();
+    // --get selected Project from backend
     this.route.params
       .subscribe((params: Params) => { this.projectsService.getProject(params['id']).then((project) => {
         this.project = project;
+        this.projectType = this.project._projetType;
+        this.chair = this.project._chair;
       });
       } );
 
-    console.log(this.project);
 
-    // this.selectedProjectType = new ProjectType();
     this.selProjectType = this.project._projetType;
     this.selectedChair = new Chair();
     // this.selectedChair.name = this.project._chair.name;
@@ -84,6 +88,7 @@ export class EditProjectComponent implements OnInit {
     // this.selectedFaculty.name = this.project._chair.faculty.
     this.selectedAcademic = new Academic();
     //this.selectedAcademic.firstname = this.project._advisor.firstname;
+
     // Perform service calls
     this.projectTypeService.getProjectTypes().then(projectTypes => this.projectTypes = projectTypes);
     this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
