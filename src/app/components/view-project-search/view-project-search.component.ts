@@ -38,11 +38,6 @@ export class SearchProjectComponent implements OnInit {
 
 
   public searchForAproject(): void {
-    console.log(this.searchCriteria.searchText);
-    // --search for term either in title or description
-    this.searchCriteria.title = this.searchCriteria.searchText;
-    this.searchCriteria.description = this.searchCriteria.searchText;
-
     this.searchService.searchForProjectsByCriteria(this.searchCriteria).then(projects => this.projects = projects);
     console.log(JSON.stringify(this.searchCriteria));
 

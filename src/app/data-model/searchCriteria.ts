@@ -4,9 +4,6 @@ import {Language} from "./language";
  * Created by Devgen on 06.07.2017.
  */
 export class SearchCriteria {
-  title: string;
-  description: string;
-
   searchText: string;
   selectedProjectTypes: SelectedProjectType[];
   selectedLaguages: SelectedLanguage[];

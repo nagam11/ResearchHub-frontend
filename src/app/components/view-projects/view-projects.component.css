@@ -63,3 +63,13 @@ h1{
   height: 30px;
   width: 200px;
 }
+
+.modal {
+  top: 100px;
+  right: 100px;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
