@@ -41,3 +41,14 @@ button:disabled {
 h2 {
   margin-bottom: 1.5cm;
 }
+
+.jumbotron{
+  background-image: url("/app/bootstrap/about-bg.jpg");
+  background-size:auto!important;
+  background-position: top;
+}
+h1{
+  color: #fff;
+  font-family: "Avenir Next";
+  font-size: 40px;
+}

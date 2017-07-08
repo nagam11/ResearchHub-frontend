@@ -9,3 +9,18 @@
 h2 {
   font-family: "Avenir Next";
 }
+
+.jumbotron{
+  background-image: url("/app/bootstrap/jumbo-backup.jpg");
+  background-size:auto!important;
+  background-position: center;
+}
+h1{
+  color: #000;
+  font-family: "Avenir Next";
+  font-size: 40px;
+}
+
+.huge {
+  font-size: 40px;
+}
