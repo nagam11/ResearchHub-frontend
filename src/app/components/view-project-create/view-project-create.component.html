@@ -24,7 +24,7 @@
 
           <div class="panel-body">
             <!--Projects Form-->
-            <form #createProjectForm="ngForm" (ngSubmit)="onSubmit()">
+            <form #createProjectForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="form-group">
                   <div class="col-sm-3">
@@ -145,11 +145,13 @@
                 </div>
               </div>
               <br>
+
+
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-lg-3">
                   <br>
                   <label>Description</label></div>
-                <div class="col-sm-9">
+                <div class="col-lg-9">
                   <div class="form-group">
                 <textarea class="form-control" rows="5" id="description" [(ngModel)]="project.description"
                           name="description" #description="ngModel" required minlength="10"></textarea>
@@ -167,6 +169,29 @@
                   </div>
                 </div>
               </div>
+
+
+              <div class="row">
+                <div class="col-lg-3">
+                  <br>
+                  <label>Needed skills</label></div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <br>
+                    <input class="form-control" (input)="term$.next($event.target.value)">
+                    <br>
+                      <div class="btn-toolbar">
+                        <div *ngFor="let item of skills">
+                        <button class="btn skillsButton" type="button" (click)="selectedSkills(item)">
+                          {{item}}
+                        </button></div>
+                      </div>
+                    <p *ngFor="let skill of selSkills">{{skill}}</p>
+                  </div>
+                </div>
+              </div>
+
+
               <div class="row">
                 <div class="form-group">
                   <div class="col-sm-3">
@@ -190,7 +215,7 @@
                       <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                       <li *ngFor="let academic of academics"><a (click)="dropdownselectedAcademic(academic)">{{academic.firstname}}&nbsp;{{academic.lastname}}
-                       </a></li>
+                      </a></li>
                     </ul>
                   </div>
                 </div>
@@ -199,7 +224,8 @@
               <div class="row">
                 <div class="col-lg-4"></div>
                 <div class="col-lg-8">
-                  <button type="submit" [disabled]="!createProjectForm.form.valid" class="btn btn-outline btn-xl btn-form">Create
+                  <button type="submit" [disabled]="!createProjectForm.form.valid"
+                          class="btn btn-outline btn-xl btn-form">Create
                   </button>
                   <button type="button" (click)="cancel()" class="btn btn-outline btn-xl btn-form ">Cancel</button>
                 </div>

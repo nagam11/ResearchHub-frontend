@@ -85,3 +85,15 @@ p {
   color: #D3D3D3;
 }
 
+.skillsButton{
+  margin: 5px;
+  background-color: #fdcc52;
+  border-color: #fdcc52;
+  border-radius: 300px;
+  color: white;
+  border-color: white;
+  border: 1px solid;
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  font-size: 11px;
+  letter-spacing: 2px;
+}
