@@ -90,6 +90,15 @@
 
                           </div>
 
+                          <div class="row">
+
+                            <div class="col-lg-2" *ngFor="let language of searchCriteria.selectedLaguages">
+                              <input type="checkbox" value="{{language.selected}}">
+                              <label>{{language.language.language}}</label>
+                            </div>
+
+                          </div>
+
 
                         </div>
                       </div>

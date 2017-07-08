@@ -14,6 +14,7 @@ export class SearchService extends ResearchHubService {
   searchForProjectsByCriteria(searchCriteria: SearchCriteria): Promise<any> {
     let options = new RequestOptions({ headers: this.getHeaders() });
     // let user = this.UserService.getCurrentUser(); TODO user services
+    console.log(JSON.stringify(searchCriteria));
     return this.http.post(this.getUrlAp() + this.resource, searchCriteria, options).toPromise()
       .then(this.extractData)
       .catch(this.handleError);
