@@ -4,8 +4,7 @@
 import { Injectable }    from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Research } from '../research';
-import {Project} from "../data-model/project";
+import {Project} from '../data-model/project';
 
 @Injectable()
 export class ProjectsService {
@@ -63,15 +62,12 @@ export class ProjectsService {
     let body = res.json();
     return body.data || {};
   }
-
   private extractDataGet(res: Response) {
     let body = res.json();
     return body;
   }
-
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 }
-

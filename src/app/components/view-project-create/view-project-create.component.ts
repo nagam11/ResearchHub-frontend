@@ -4,7 +4,6 @@
 // ---imports
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
-import { Research } from '../../research';
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
 import {ProjectType} from '../../data-model/projectType';
@@ -31,7 +30,7 @@ import {Language} from "../../data-model/language";
   styleUrls: [ './view-project-create.component.css' ]
 })
 export class CreateProjectComponent implements OnInit {
-  researches: Research[] = [];
+  researches: Project[] = [];
   chairs: Chair[] = [];
   academics: Academic[] = [];
   faculties: Faculty[] = [];

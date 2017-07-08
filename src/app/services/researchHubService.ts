@@ -19,6 +19,9 @@ export  class ResearchHubService {
     return this.urlApi;
   }
 
+  protected  getHeaders() : Headers {
+    return this.headers;
+  }
 
 
   protected extractData(res: Response) {
