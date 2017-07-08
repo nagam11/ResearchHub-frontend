@@ -5,7 +5,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap ,Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import { Research } from '../../research';
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
 import {ProjectType} from '../../data-model/projectType';

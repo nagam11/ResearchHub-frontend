@@ -3,7 +3,6 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
-import { Research } from '../../research';
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
 import {ProjectType} from '../../data-model/projectType';

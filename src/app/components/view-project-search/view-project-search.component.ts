@@ -8,7 +8,7 @@ import {ProjectTypeService} from '../../services/projectType.service';
 import {Project} from '../../data-model/project';
 import {SearchCriteria} from '../../data-model/searchCriteria';
 import {SearchService} from '../../services/search.service';
-import {LanguageService} from '../../services/languages.service';
+import {LanguagesService} from '../../services/languages.service';
 
 
 
@@ -26,13 +26,13 @@ export class SearchProjectComponent implements OnInit {
   constructor(
     private projectTypeService: ProjectTypeService,
     private searchService: SearchService,
-    private languageService: LanguageService
+    private languageService: LanguagesService
   ) {};
 
   ngOnInit(): void {
     this.searchCriteria = new SearchCriteria();
     this.projectTypeService.getProjectTypes().then(projectTypes => this.searchCriteria.setProjectTypes(projectTypes as ProjectType[]));
-    this.languageService.getLangugaes().then(languages => this.searchCriteria.setSelectableLanguages(languages));
+    this.languageService.getLanguagesLevels().then(languages => this.searchCriteria.setSelectableLanguages(languages));
 
   };
 
