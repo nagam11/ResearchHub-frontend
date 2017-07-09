@@ -2,11 +2,9 @@
 
 ## Prerequisites
 
-First run backend..all details to run backend are provided in README...
+Start database server. Start [backend server](https://github.com/nagam11/ResearchHub-backend).
 
 ## Install Dependencies
-
-We get the tools we depend upon via `npm`, the [node package manager](https://www.npmjs.com).
 
 ```
 npm install
@@ -18,6 +16,6 @@ npm install
 npm start
 ```
 
-Now browse to the app at `http://localhost:8000/index.html`.
+Now browse to the app at `http://localhost:3001/`.
 
 
