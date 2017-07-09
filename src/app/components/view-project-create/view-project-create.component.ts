@@ -115,6 +115,10 @@ export class CreateProjectComponent implements OnInit {
   selectedSkills(item: Skill) {
     this.selSkills.push(item);
   }
+ // --show only chairs of selected faculty
+ dropdownselectedFaculty(faculty: Faculty) {
+    this.chairs = faculty.chairs;
+ }
 
   // --save selected required Levels
   levelsCheckbox(item: EducationLevel, element: HTMLInputElement): void {

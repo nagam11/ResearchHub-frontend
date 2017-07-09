@@ -66,7 +66,7 @@
                     <div class="col-sm-8">
                       <div class="form-group">
                         <select [(ngModel)]="selectedProjectType" class="form-control" required  #projectType ="ngModel" name='projectType'  >
-                          <option *ngFor="let projectType of projectTypes" (click)="dropdownselectedProjectType(faculty)" [ngValue]="projectType">{{projectType.protjectType}}</option>
+                          <option *ngFor="let projectType of projectTypes" [ngValue]="projectType">{{projectType.protjectType}}</option>
                         </select>
                       </div>
                   </div>
@@ -93,8 +93,8 @@
                   <br>
                   <div class="col-sm-8">
                     <div class="form-group">
-                      <select [(ngModel)]="selectedFaculty" class="form-control" required  #faculty ="ngModel" name='faculty'  >
-                        <option *ngFor="let faculty of faculties" (click)="dropdownselectedFaculty(faculty)" [ngValue]="faculty">{{faculty.name}}</option>
+                      <select [(ngModel)]="selectedFaculty" (ngModelChange)="dropdownselectedFaculty(selectedFaculty)" class="form-control" required  #faculty ="ngModel" name='faculty'  >
+                        <option *ngFor="let faculty of faculties" [ngValue]="faculty">{{faculty.name}}</option>
                       </select>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                   <div class="col-sm-8">
                     <div class="form-group">
                       <select [(ngModel)]="selectedChair" class="form-control" required  #chair ="ngModel" name='chair'  >
-                        <option *ngFor="let chair of chairs" (click)="dropdownselectedChair(chair)" [ngValue]="chair">{{chair.name}}</option>
+                        <option *ngFor="let chair of chairs"  [ngValue]="chair">{{chair.name}}</option>
                       </select>
                     </div>
                 </div>
