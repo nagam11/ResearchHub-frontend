@@ -1,8 +1,18 @@
-# frontend
+# ResearchHub frontend
+
+ResearchHub backend can be found [here](https://github.com/nagam11/ResearchHub-backend).
+
+## Technologies
+
+Angular2
+
+passport
+
+Heroku
 
 ## Prerequisites
 
-Start database server. Start [backend server](https://github.com/nagam11/ResearchHub-backend).
+Start database server. Start backend.
 
 ## Install Dependencies
 
