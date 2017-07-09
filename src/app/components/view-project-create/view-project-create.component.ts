@@ -17,6 +17,7 @@ import {Faculty} from '../../data-model/faculty';
 import {ProjectType} from '../../data-model/projectType';
 import {Academic} from '../../data-model/academic';
 import {Project} from '../../data-model/project';
+import {Company} from '../../data-model/company';
 import {EducationLevel} from '../../data-model/educationLevel';
 import {Language} from '../../data-model/language';
 import {Skill} from '../../data-model/skill';
@@ -29,6 +30,7 @@ import {EducationLevelService} from '../../services/educationLevel.service';
 import {ProjectTypeService} from '../../services/projectType.service';
 import {LanguagesService } from '../../services/languages.service';
 import {SkillsService} from '../../services/skills.service';
+import {CompaniesService} from '../../services/companies.service';
 
 @Component({
   selector: 'create-project',
@@ -40,11 +42,11 @@ import {SkillsService} from '../../services/skills.service';
 export class CreateProjectComponent implements OnInit {
   chairs: Chair[] = [];
   academics: Academic[] = [];
+  companies: Company[] = [];
   faculties: Faculty[] = [];
   projectTypes: ProjectType[] = [];
   educationLevels: EducationLevel[] = [];
   languages: Language[] = [];
-  companies: string[] = ['IBM', 'Siemens', 'BMW', 'Microsoft'];
   project: Project;
   skills: Array<Skill>;
   term$ = new Subject<string>();
@@ -54,7 +56,9 @@ export class CreateProjectComponent implements OnInit {
   selectedFaculty: Faculty;
   selectedProjectType: ProjectType;
   selectedAcademic: Academic;
-  selectedCompany: string = '';
+  selectedCompany: Company;
+  selectedRequiredLevel: EducationLevel[] = [];
+  selectedLanguages: Language[] = [];
 
   constructor(
     private projectService: ProjectsService,
@@ -65,6 +69,7 @@ export class CreateProjectComponent implements OnInit {
     private educationLevelService: EducationLevelService,
     private languageService: LanguagesService,
     private skillsService: SkillsService,
+    private companiesService: CompaniesService,
     private location: Location,
     private router: Router
     ) {
@@ -74,15 +79,6 @@ export class CreateProjectComponent implements OnInit {
   // ---init
   ngOnInit(): void {
     this.project = new Project();
-    this.selectedProjectType = new ProjectType();
-    this.selectedChair = new Chair();
-    this.selectedFaculty = new Faculty();
-    this.selectedAcademic = new Academic();
-    this.selectedCompany = 'Select if applicable';
-    this.selectedProjectType.protjectType = 'Select a type of project';
-    this.selectedChair.name = 'Please select';
-    this.selectedFaculty.name = 'Please select';
-    this.selectedAcademic.firstname = 'Please select';
     // Perform service calls
     this.projectTypeService.getProjectTypes().then(projectTypes => this.projectTypes = projectTypes);
     this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
@@ -90,33 +86,11 @@ export class CreateProjectComponent implements OnInit {
     this.academicsService.getAcademics().then(academics => this.academics = academics);
     this.educationLevelService.getEducationLevels().then(educationLevels => this.educationLevels = educationLevels );
     this.languageService.getLanguagesLevels().then(languages => this.languages = languages);
+    this.companiesService.getCompanies().then(companies => this.companies = companies);
   }
 
   cancel(): void {
     this.location.back();
-  }
-
-  // ---setup dropdowns
-  dropdownselectedProjectType(projectType: ProjectType): void {
-    this.selectedProjectType = projectType;
-  }
-
-  dropdownselectedChair(chair: Chair): void {
-    this.selectedChair = chair;
-  }
-
-  dropdownselectedAcademic(academic: Academic): void {
-    this.selectedAcademic = academic;
-  }
-
-  dropdownselectedFaculty(faculty: Faculty): void {
-    this.selectedFaculty = faculty;
-    // If faculty selected, show only chairs of that faculty.
-    this.chairs = faculty.chairs;
-  }
-
-  dropdownselectedCompany(company: string): void {
-    this.selectedCompany = company;
   }
 
   // ---submit project
@@ -127,9 +101,13 @@ export class CreateProjectComponent implements OnInit {
     this.project._languages = this.languages;
     this.project._superadvisor = this.selectedAcademic;
     this.project._requeredSkills = this.selSkills;
+    this.project._requeredLevel = this.selectedRequiredLevel;
+    this.project._languages = this.selectedLanguages;
+    this.project._partner = this.selectedCompany;
     //TODO add projects for academic
     //this.selectedAcademic.projects = [project];
     //this.academicsService.update(this.selectedAcademic);
+    console.log(this.project);
     this.projectService.create(this.project);
     this.router.navigate(['/createsuccess']);
   }
@@ -138,5 +116,28 @@ export class CreateProjectComponent implements OnInit {
     this.selSkills.push(item);
   }
 
+  // --save selected required Levels
+  levelsCheckbox(item: EducationLevel, element: HTMLInputElement): void {
+    if (element.checked) {
+      this.selectedRequiredLevel.push(item);
+    } else {
+      this.selectedRequiredLevel = this.selectedRequiredLevel.filter(arrayItem => arrayItem !== item);
+    }
+    for (let entry of this.selectedRequiredLevel) {
+      console.log(entry.level);
+    }
+  }
+
+  // --save selected languages
+  languageCheckbox(item: Language, element: HTMLInputElement): void {
+    if (element.checked) {
+      this.selectedLanguages.push(item);
+    } else {
+      this.selectedLanguages = this.selectedLanguages.filter(arrayItem => arrayItem !== item);
+    }
+    for (let entry of this.selectedLanguages) {
+      console.log(entry);
+    }
+  }
 }
 

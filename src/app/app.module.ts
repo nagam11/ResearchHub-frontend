@@ -28,6 +28,7 @@ import {AcademicsService} from './services/academics.service';
 import {EducationLevelService} from './services/educationLevel.service';
 import {LanguagesService } from './services/languages.service';
 import {SkillsService} from './services/skills.service';
+import {CompaniesService} from './services/companies.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -50,7 +51,7 @@ import {SkillsService} from './services/skills.service';
   ],
   providers: [ ProjectsService,
                SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService, AcademicsService,
-    EducationLevelService, LanguagesService, SkillsService
+    EducationLevelService, LanguagesService, SkillsService, CompaniesService
   ],
   bootstrap: [ AppComponent ]
 })

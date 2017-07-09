@@ -7,6 +7,7 @@ import {EducationLevel} from './educationLevel';
 import {Language} from './language';
 import {Academic} from './academic';
 import {Skill} from'./skill';
+import {Company} from './company';
 export class Project {
   _id: string;
   title: string;
@@ -18,7 +19,7 @@ export class Project {
   _superadvisor: Academic;
   _requeredSkills: Skill[];
   ratings: string;
-  partner: string;
+  _partner: Company;
   _requeredLevel: EducationLevel[];
 
 }

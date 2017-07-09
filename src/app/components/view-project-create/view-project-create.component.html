@@ -64,16 +64,11 @@
                     </div>
                     <br>
                     <div class="col-sm-8">
-                      <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" value="Please select" type="button"
-                              data-toggle="dropdown">{{selectedProjectType.protjectType}}
-                        <span class="caret"></span></button>
-                      <ul class="dropdown-menu" required="true">
-                        <li *ngFor="let projectType of projectTypes"><a
-                          (click)="dropdownselectedProjectType(projectType)">{{projectType.protjectType}}</a>
-                        </li>
-                      </ul>
-                    </div>
+                      <div class="form-group">
+                        <select [(ngModel)]="selectedProjectType" class="form-control" required  #projectType ="ngModel" name='projectType'  >
+                          <option *ngFor="let projectType of projectTypes" (click)="dropdownselectedProjectType(faculty)" [ngValue]="projectType">{{projectType.protjectType}}</option>
+                        </select>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -84,8 +79,9 @@
                   <h4>Required level *</h4></div>
                 <div class="col-sm-8">
                   <div *ngFor="let educationLevel of educationLevels">
-                    <input type="checkbox" name="educationLevel">
-                    <label class="customCheckbox">{{educationLevel.level}}</label>
+                    <label class="customCheckbox">
+                    <input type="checkbox" #cb1 name="educationLevel" (change)="levelsCheckbox(educationLevel,cb1)">
+                    {{educationLevel.level}}</label>
                   </div>
                 </div>
               </div>
@@ -96,15 +92,11 @@
                     <h4>Faculty *</h4></div>
                   <br>
                   <div class="col-sm-8">
-                    <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                      {{selectedFaculty.name}}
-                      <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li *ngFor="let faculty of faculties"><a
-                        (click)="dropdownselectedFaculty(faculty)">{{faculty.name}}</a></li>
-                    </ul>
-                  </div>
+                    <div class="form-group">
+                      <select [(ngModel)]="selectedFaculty" class="form-control" required  #faculty ="ngModel" name='faculty'  >
+                        <option *ngFor="let faculty of faculties" (click)="dropdownselectedFaculty(faculty)" [ngValue]="faculty">{{faculty.name}}</option>
+                      </select>
+                    </div>
                 </div>
               </div>
               <!--Projects chair-->
@@ -114,14 +106,11 @@
                     <h4>Chair *</h4></div>
                   <br>
                   <div class="col-sm-8">
-                    <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                      {{selectedChair.name}}
-                      <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li *ngFor="let chair of chairs"><a (click)="dropdownselectedChair(chair)">{{chair.name}}</a></li>
-                    </ul>
-                  </div>
+                    <div class="form-group">
+                      <select [(ngModel)]="selectedChair" class="form-control" required  #chair ="ngModel" name='chair'  >
+                        <option *ngFor="let chair of chairs" (click)="dropdownselectedChair(chair)" [ngValue]="chair">{{chair.name}}</option>
+                      </select>
+                    </div>
                 </div>
               </div>
               <br>
@@ -132,8 +121,9 @@
                 </div>
                 <div class="col-sm-8">
                   <div *ngFor="let language of languages">
-                    <input type="checkbox" name="language">
-                    <label class="customCheckbox">{{language.language}}</label>
+                    <label class="customCheckbox">
+                    <input type="checkbox" #cb2 name="language" (change)="languageCheckbox(language,cb2)">
+                   {{language.language}}</label>
                   </div>
                 </div>
               </div>
@@ -144,13 +134,11 @@
                   <h4>Company partner</h4></div>
                 <div class="col-sm-8">
                   <div class="form-group">
-                  <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedCompany}}
-                      <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li *ngFor="let company of companies"><a (click)="dropdownselectedCompany(company)">{{company}}</a></li>
-                    </ul>
-                  </div>
+                    <div class="form-group">
+                      <select [(ngModel)]="selectedCompany" class="form-control"  #partner ="ngModel" name='partner'  >
+                        <option *ngFor="let company of companies" [ngValue]="company">{{company.name}}</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -178,8 +166,6 @@
               <!--Projects skills-->
               <div class="row">
                 <div class="form-group">
-                <!--  <div class="col-lg-3">
-                    <h4>Needed skills</h4></div> -->
                   <div class="col-lg-12 col-centered">
                     <div class="form-group">
                       <div class="btn-toolbar">
@@ -215,15 +201,11 @@
                   <div class="col-sm-3">
                     <h4>Supervisor</h4></div>
                   <div class="col-sm-9">
-                    <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                      {{selectedAcademic.firstname}}&nbsp;{{selectedAcademic.lastname}}
-                      <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li *ngFor="let academic of academics"><a (click)="dropdownselectedAcademic(academic)">{{academic.firstname}}&nbsp;{{academic.lastname}}
-                      </a></li>
-                    </ul>
-                  </div>
+                    <div class="form-group">
+                      <select [(ngModel)]="selectedAcademic" class="form-control" required  #supervisor ="ngModel" name='supervisor'  >
+                        <option *ngFor="let academic of academics" [ngValue]="academic">{{academic.firstname}}&nbsp;{{academic.lastname}}</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
