@@ -44,6 +44,7 @@ export class CreateProjectComponent implements OnInit {
   projectTypes: ProjectType[] = [];
   educationLevels: EducationLevel[] = [];
   languages: Language[] = [];
+  companies: string[] = ['IBM', 'Siemens', 'BMW', 'Microsoft'];
   project: Project;
   skills: Array<Skill>;
   term$ = new Subject<string>();
@@ -53,6 +54,7 @@ export class CreateProjectComponent implements OnInit {
   selectedFaculty: Faculty;
   selectedProjectType: ProjectType;
   selectedAcademic: Academic;
+  selectedCompany: string = '';
 
   constructor(
     private projectService: ProjectsService,
@@ -76,6 +78,7 @@ export class CreateProjectComponent implements OnInit {
     this.selectedChair = new Chair();
     this.selectedFaculty = new Faculty();
     this.selectedAcademic = new Academic();
+    this.selectedCompany = 'Select if applicable';
     this.selectedProjectType.protjectType = 'Select a type of project';
     this.selectedChair.name = 'Please select';
     this.selectedFaculty.name = 'Please select';
@@ -110,6 +113,10 @@ export class CreateProjectComponent implements OnInit {
     this.selectedFaculty = faculty;
     // If faculty selected, show only chairs of that faculty.
     this.chairs = faculty.chairs;
+  }
+
+  dropdownselectedCompany(company: string): void {
+    this.selectedCompany = company;
   }
 
   // ---submit project

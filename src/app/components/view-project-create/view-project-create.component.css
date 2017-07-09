@@ -9,8 +9,30 @@
   background-color: #86BCFF;
 }
 
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.customCheckbox {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 13px;
+  color: #c4cacf;
+}
+
+.customInputSkills{
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #000;
+  height: 40px;
+}
+
 .container {
-  background-image:  url("/app/bootstrap/1.jpg");
+  background-image:  url("/app/bootstrap/banner-bg.jpg");
   background-attachment: fixed;
   background-size: cover;
   margin-right: 0px;
@@ -20,6 +42,14 @@ h2 {
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
+}
+
+h3 {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: #D3D3D3;
 }
 
 h4 {
@@ -76,7 +106,7 @@ h1{
 .btn-outline:active,
 .btn-outline.active {
   color: white;
-  background-color: #19b9e7;;
+  background-color: #19b9e7;
   border-color: #19b9e7;;
 }
 .btn-form {
@@ -117,12 +147,12 @@ p {
 
 .skillsButton1{
   margin: 5px;
-  background-color: #fdcc52;
-  border-color: #fdcc52;
+  background-color: #19b9e7;
+  border-color: #19b9e7;
   border-radius: 300px;
   color: white;
-  border-color: white;
-  border: 1px solid;
+  border-color: #19b9e7;
+  border: 0px solid;
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   font-size: 11px;
   letter-spacing: 2px;

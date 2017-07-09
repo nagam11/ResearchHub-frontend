@@ -13,14 +13,20 @@
         <div class="form-box animated fadeIn">
           <div class="form-top">
             <div class="form-top-left">
+              <div class="col-lg-12 col-centered">
+                <h3>Create a new project</h3>
             <div class="progress">
               <div class="progress-bar progress-bar-striped customProgress" role="progressbar" aria-valuenow="70"
                    aria-valuemin="0"
                    aria-valuemax="100"
-                   style="width:70%">
-                <span class="sr-only">10% Complete</span>
+                   style="width:30%">
+                <span class="sr-only">50% Complete</span>
               </div>
             </div>
+            </div>
+            </div>
+            <div class="form-top-right">
+              <i class="fa fa-pencil"></i>
             </div>
           </div>
 
@@ -29,11 +35,9 @@
             <form #createProjectForm="ngForm" autocomplete="off" class="registration-form" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="form-group">
-                  <div class="col-sm-3">
-                    <h4>Project title *</h4></div>
-                  <div class="col-sm-9">
+                  <div class="col-sm-12 col-centered">
                     <input type="text" placeholder="Please enter a title.." [(ngModel)]="project.title" name="title"
-                           #title="ngModel" class="form-control form-first-nam" required minlength="4" maxlength="24">
+                           #title="ngModel" class="form-control form-first-name" required minlength="4" maxlength="24">
                     <!--Angular Form Validations-->
                     <div *ngIf="title.errors && (title.dirty || title.touched)"
                          class="alert alert-danger">
@@ -54,12 +58,12 @@
               <!--Project Type-->
               <div class="row">
                 <div class="form-group">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <br>
                       <h4>Project type *</h4>
                     </div>
                     <br>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                       <div class="dropdown">
                       <button class="btn btn-primary dropdown-toggle" value="Please select" type="button"
                               data-toggle="dropdown">{{selectedProjectType.protjectType}}
@@ -76,21 +80,22 @@
               <br>
               <!--Projects required level-->
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                   <h4>Required level *</h4></div>
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                   <div *ngFor="let educationLevel of educationLevels">
-                    <input type="checkbox" name="educationLevel"> {{educationLevel.level}}
+                    <input type="checkbox" name="educationLevel">
+                    <label class="customCheckbox">{{educationLevel.level}}</label>
                   </div>
                 </div>
               </div>
               <!--Projects faculty-->
               <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <br>
                     <h4>Faculty *</h4></div>
                   <br>
-                  <div class="col-sm-9">
+                  <div class="col-sm-8">
                     <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                       {{selectedFaculty.name}}
@@ -104,11 +109,11 @@
               </div>
               <!--Projects chair-->
               <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <br>
                     <h4>Chair *</h4></div>
                   <br>
-                  <div class="col-sm-9">
+                  <div class="col-sm-8">
                     <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                       {{selectedChair.name}}
@@ -122,30 +127,28 @@
               <br>
               <!--Projects language-->
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                   <h4>Language *</h4>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                   <div *ngFor="let language of languages">
-                    <input type="checkbox" name="language"> {{language.language}}
+                    <input type="checkbox" name="language">
+                    <label class="customCheckbox">{{language.language}}</label>
                   </div>
                 </div>
               </div>
               <br>
               <!--Projects company partner-->
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                   <h4>Company partner</h4></div>
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                   <div class="form-group">
                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Company
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedCompany}}
                       <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                      <!--Mocked data-->
-                      <li><a>Siemens</a></li>
-                      <li><a>BMW</a></li>
-                      <li><a>IBM</a></li>
+                      <li *ngFor="let company of companies"><a (click)="dropdownselectedCompany(company)">{{company}}</a></li>
                     </ul>
                   </div>
                   </div>
@@ -154,10 +157,7 @@
               <br>
               <!--Projects description-->
               <div class="row">
-                <div class="col-lg-3">
-                  <br>
-                  <h4>Description</h4></div>
-                <div class="col-lg-9">
+                <div class="col-lg-12 col-centered">
                   <div class="form-group">
                 <textarea class="form-control" placeholder="Please describe the project here..." rows="5" id="description" [(ngModel)]="project.description"
                           name="description" #description="ngModel" required minlength="10"></textarea>
@@ -178,16 +178,16 @@
               <!--Projects skills-->
               <div class="row">
                 <div class="form-group">
-                  <div class="col-lg-3">
-                    <h4>Needed skills</h4></div>
-                  <div class="col-lg-9">
+                <!--  <div class="col-lg-3">
+                    <h4>Needed skills</h4></div> -->
+                  <div class="col-lg-12 col-centered">
                     <div class="form-group">
                       <div class="btn-toolbar">
                         <button *ngFor="let skill of selSkills" class="btn skillsButton1" type="button">
                           {{skill.skill}}
                         </button>
                       </div>
-                      <input class="form-control" placeholder="Search for skills" (input)="term$.next($event.target.value)">
+                      <input class="form-control form-first-name customInputSkills" placeholder="Type to search for skills..." (input)="term$.next($event.target.value)">
                       <div class="btn-toolbar">
                         <div *ngFor="let item of skills">
                           <button class="btn skillsButton" type="button" (click)="selectedSkills(item)">
