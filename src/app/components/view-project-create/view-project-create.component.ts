@@ -119,6 +119,7 @@ export class CreateProjectComponent implements OnInit {
     this.project._requeredLevel = this.educationLevels;
     this.project._languages = this.languages;
     this.project._superadvisor = this.selectedAcademic;
+    this.project._requeredSkills = this.selSkills;
     //TODO add projects for academic
     //this.selectedAcademic.projects = [project];
     //this.academicsService.update(this.selectedAcademic);
@@ -127,7 +128,6 @@ export class CreateProjectComponent implements OnInit {
   }
   // --save selected skills
   selectedSkills(item: Skill) {
-    console.log(item + ' was selected as skill.');
     this.selSkills.push(item);
   }
 

@@ -1,17 +1,18 @@
-<div class="jumbotron text-center">
-  <h1 class="animated slideInDown">New project</h1>
-  <p class="text-muted animated slideInDown ">Enter a new research project.</p>
-</div>
+
 <div class="container">
   <h2></h2>
+  <div id="container">
   <div class="container-fluid text-center">
+    <div class="row">
+      <br><br>
+    </div>
     <div class="row content">
-      <div class="col-sm-2 sidenav">
+      <div class="col-lg-3 sidenav">
       </div>
-      <div class="col-sm-10 text-left col-lg-10">
-        <div class="panel panel-default">
-
-          <div class="panel-heading">
+      <div class="col-lg-9 text-left">
+        <div class="form-box animated fadeIn">
+          <div class="form-top">
+            <div class="form-top-left">
             <div class="progress">
               <div class="progress-bar progress-bar-striped customProgress" role="progressbar" aria-valuenow="70"
                    aria-valuemin="0"
@@ -20,18 +21,19 @@
                 <span class="sr-only">10% Complete</span>
               </div>
             </div>
+            </div>
           </div>
 
-          <div class="panel-body">
+          <div class="form-bottom">
             <!--Projects Form-->
-            <form #createProjectForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+            <form #createProjectForm="ngForm" autocomplete="off" class="registration-form" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="form-group">
                   <div class="col-sm-3">
-                    <label>Project title *</label></div>
+                    <h4>Project title *</h4></div>
                   <div class="col-sm-9">
-                    <input type="text" placeholder="Please enter title" [(ngModel)]="project.title" name="title"
-                           #title="ngModel" class="form-control" required minlength="4" maxlength="24">
+                    <input type="text" placeholder="Please enter a title.." [(ngModel)]="project.title" name="title"
+                           #title="ngModel" class="form-control form-first-nam" required minlength="4" maxlength="24">
                     <!--Angular Form Validations-->
                     <div *ngIf="title.errors && (title.dirty || title.touched)"
                          class="alert alert-danger">
@@ -52,13 +54,13 @@
               <!--Project Type-->
               <div class="row">
                 <div class="form-group">
-                  <div class="dropdown">
                     <div class="col-sm-3">
                       <br>
-                      <label>Project type *</label>
+                      <h4>Project type *</h4>
                     </div>
                     <br>
                     <div class="col-sm-9">
+                      <div class="dropdown">
                       <button class="btn btn-primary dropdown-toggle" value="Please select" type="button"
                               data-toggle="dropdown">{{selectedProjectType.protjectType}}
                         <span class="caret"></span></button>
@@ -75,7 +77,7 @@
               <!--Projects required level-->
               <div class="row">
                 <div class="col-sm-3">
-                  <label>Required level *</label></div>
+                  <h4>Required level *</h4></div>
                 <div class="col-sm-9">
                   <div *ngFor="let educationLevel of educationLevels">
                     <input type="checkbox" name="educationLevel"> {{educationLevel.level}}
@@ -84,12 +86,12 @@
               </div>
               <!--Projects faculty-->
               <div class="row">
-                <div class="dropdown">
                   <div class="col-sm-3">
                     <br>
-                    <label>Faculty *</label></div>
+                    <h4>Faculty *</h4></div>
                   <br>
                   <div class="col-sm-9">
+                    <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                       {{selectedFaculty.name}}
                       <span class="caret"></span></button>
@@ -102,12 +104,12 @@
               </div>
               <!--Projects chair-->
               <div class="row">
-                <div class="dropdown">
                   <div class="col-sm-3">
                     <br>
-                    <label>Chair *</label></div>
+                    <h4>Chair *</h4></div>
                   <br>
                   <div class="col-sm-9">
+                    <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                       {{selectedChair.name}}
                       <span class="caret"></span></button>
@@ -121,7 +123,7 @@
               <!--Projects language-->
               <div class="row">
                 <div class="col-sm-3">
-                  <label>Language *</label>
+                  <h4>Language *</h4>
                 </div>
                 <div class="col-sm-9">
                   <div *ngFor="let language of languages">
@@ -129,15 +131,13 @@
                   </div>
                 </div>
               </div>
+              <br>
               <!--Projects company partner-->
               <div class="row">
                 <div class="col-sm-3">
-                  <br>
-                  <label>Company partner</label></div>
+                  <h4>Company partner</h4></div>
                 <div class="col-sm-9">
-                  <div class="checkbox">
-                    <label><input type="checkbox" name="company">Yes</label>
-                  </div>
+                  <div class="form-group">
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Company
                       <span class="caret"></span></button>
@@ -148,6 +148,7 @@
                       <li><a>IBM</a></li>
                     </ul>
                   </div>
+                  </div>
                 </div>
               </div>
               <br>
@@ -155,10 +156,10 @@
               <div class="row">
                 <div class="col-lg-3">
                   <br>
-                  <label>Description</label></div>
+                  <h4>Description</h4></div>
                 <div class="col-lg-9">
                   <div class="form-group">
-                <textarea class="form-control" rows="5" id="description" [(ngModel)]="project.description"
+                <textarea class="form-control" placeholder="Please describe the project here..." rows="5" id="description" [(ngModel)]="project.description"
                           name="description" #description="ngModel" required minlength="10"></textarea>
                     <!--Angular Form Validations-->
                     <div *ngIf="description.errors && (description.dirty || description.touched)"
@@ -178,7 +179,7 @@
               <div class="row">
                 <div class="form-group">
                   <div class="col-lg-3">
-                    <label>Needed skills</label></div>
+                    <h4>Needed skills</h4></div>
                   <div class="col-lg-9">
                     <div class="form-group">
                       <div class="btn-toolbar">
@@ -201,7 +202,7 @@
               <div class="row">
                 <div class="form-group">
                   <div class="col-sm-3">
-                    <label>Advisor</label></div>
+                    <h4>Advisor</h4></div>
                   <div class="col-sm-9"><input type="text" placeholder="The user's name" [(ngModel)]="project.advisor"
                                                name="advisor" class="form-control">
                   </div>
@@ -212,8 +213,9 @@
               <div class="row">
                 <div class="form-group">
                   <div class="col-sm-3">
-                    <label>Supervisor</label></div>
+                    <h4>Supervisor</h4></div>
                   <div class="col-sm-9">
+                    <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                       {{selectedAcademic.firstname}}&nbsp;{{selectedAcademic.lastname}}
                       <span class="caret"></span></button>
@@ -222,13 +224,14 @@
                       </a></li>
                     </ul>
                   </div>
+                  </div>
                 </div>
               </div>
               <br><br>
               <!--Actions-->
               <div class="row">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-8">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-9">
                   <button type="submit" [disabled]="!createProjectForm.form.valid"
                           class="btn btn-outline btn-xl btn-form">Create
                   </button>
@@ -242,6 +245,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
 
