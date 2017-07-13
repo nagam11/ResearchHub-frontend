@@ -2,7 +2,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { Research } from '../../research';
+
 import { ProjectsService } from '../../services/projects.service';
 import {Project} from '../../data-model/project';
 
@@ -19,7 +19,7 @@ import 'rxjs/add/operator/map';
   styleUrls: [ './view-rating-dashboard.component.css' ],
 })
 export class DashboardComponent implements OnInit {
-  researches: Research[] = [];
+
   projects: Project[] = [];
   constructor(private ProjectsService: ProjectsService) { }
   ngOnInit(): void {

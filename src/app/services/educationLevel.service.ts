@@ -1,5 +1,5 @@
 /**
- * created by MarlaN. 14.06.2017
+ * created by MarlaN. 07.07.2017
  */
 
 import { Injectable }    from '@angular/core';
@@ -7,15 +7,15 @@ import { Http, Response, Headers, RequestOptions, } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class FacultiesService {
+export class EducationLevelService {
   private headers: Headers;
-  private url = 'http://localhost:3000/api/faculties';
+  private url = 'http://localhost:3000/api/educationlevels';
   options: RequestOptions;
   constructor(private http: Http) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
   }
-  getFaculties(): Promise<any> {
+  getEducationLevels(): Promise<any> {
     return this.http.get(this.url).toPromise()
       .then(this.extractData)
       .catch(this.handleError);

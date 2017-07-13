@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent }   from '../components/view-rating-dashboard/view-rating-dashboard.component';
 import { ResearchRatingComponent }  from '../components/view-project-rating/research-rating.component';
 import {CreateProjectComponent} from '../components/view-project-create/view-project-create.component';
-import {ViewProjectsComponent} from '../components/view-projects/view-projects.component';
-import {CreateProjectSuccessComponent} from '../components/view-project-create-success/view-project-create-success.component';
-import {ViewDashboardComponent} from '../components/view-dashboard/view-dashboard.component';
-import {SearchProjectComponent} from '../components/view-project-search/view-project-search.component';
+import {ViewProjectsComponent} from "../components/view-projects/view-projects.component";
+import {CreateProjectSuccessComponent} from "../components/view-project-create-success/view-project-create-success.component";
+import {ViewDashboardComponent} from "../components/view-dashboard/view-dashboard.component";
+import {SearchProjectComponent} from "../components/view-project-search/view-project-search.component";
+import {EditProjectComponent} from '../components/view-project-edit/view-project-edit.component';
+
 const routes: Routes = [
   { path: 'app.html', redirectTo: '/viewdashboard', pathMatch: 'prefix' },
   { path: 'dashboard',  component: DashboardComponent },
@@ -15,7 +17,8 @@ const routes: Routes = [
   { path: 'projects',     component: ViewProjectsComponent },
   { path: 'createsuccess',     component: CreateProjectSuccessComponent },
   { path: 'viewdashboard',     component: ViewDashboardComponent },
-  { path: 'searchproject',   component: SearchProjectComponent}
+  { path: 'searchproject',   component: SearchProjectComponent},
+  { path: 'editproject/:id',   component: EditProjectComponent}
 ];
 
 @NgModule({

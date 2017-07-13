@@ -2,3 +2,34 @@
   margin-left: 5px;
   margin-right: 5px;
 }
+
+.jumbotron{
+  background-image: url("/app/bootstrap/about-bg.jpg");
+  background-size:auto!important;
+  background-position: bottom;
+}
+h1{
+  color: #fff;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 40px;
+}
+
+.huge {
+  font-size: 40px;
+}
+
+
+.customPanel {
+  background-color: #c4cacf;
+}
+
+.panel{
+  border-color: #c4cacf ;
+}
+
+.panel-group{
+  width: 980px;
+}
+

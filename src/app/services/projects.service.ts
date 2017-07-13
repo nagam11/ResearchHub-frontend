@@ -4,7 +4,6 @@
 import { Injectable }    from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Research } from '../research';
 import {Project} from '../data-model/project';
 
 @Injectable()
@@ -28,22 +27,14 @@ export class ProjectsService {
       .catch(this.handleError);
   }
 
-  /*getResearch(id: number): Promise<Research> {
+  getProject(id: number): Promise<any> {
     const url = `${this.url}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Research)
-      .catch(this.handleError);
-  }*/
-  getProject(id: string): Promise<Project> {
-    const url = encodeURI(`${this.url}/${id}`);
-    console.log(url);
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Project)
+      .then(this.extractDataGet)
       .catch(this.handleError);
   }
-  delete(id: number): Promise<void> {
+  delete(id: any): Promise<void> {
     const url = `${this.url}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
@@ -52,7 +43,6 @@ export class ProjectsService {
   }
   create(project: any): Promise<any> {
     let options = new RequestOptions({ headers: this.headers });
-
     //let user = this.UserService.getCurrentUser(); TODO user services
     return this.http.post(this.url, project, options).toPromise()
       .then(this.extractData)
@@ -67,22 +57,13 @@ export class ProjectsService {
       .then(response => response.json() as Project)
       .catch(this.handleError);
   }
-    /* update(research: Research): Promise<Research> {
-     const url = `${this.url}/${research.id}`;
-     return this.http
-     .put(url, JSON.stringify(research), {headers: this.headers})
-     .toPromise()
-     .then(() => research)
-     .catch(this.handleError);
-     }*/
+
   private extractData(res: Response) {
     let body = res.json();
     return body.data || {};
   }
   private extractDataGet(res: Response) {
     let body = res.json();
-    console.log(body);
-    //return body.data || {};
     return body;
   }
   private handleError(error: any): Promise<any> {
@@ -90,4 +71,3 @@ export class ProjectsService {
     return Promise.reject(error.message || error);
   }
 }
-

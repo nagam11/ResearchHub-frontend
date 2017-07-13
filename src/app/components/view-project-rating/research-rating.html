@@ -1,7 +1,10 @@
+<div class="jumbotron text-center">
+  <h1 class="animated slideInDown">Project rating</h1>
+</div>
+<div class="container">
 <div class="col-sm-2 sidenav">
 </div>
-<div class="col-sm-8 text-left"><br>
-<h1>Rate a Project</h1>
+<div class="col-sm-8 text-left">
 <div *ngIf="project">
   <h2>Project Topic:  {{project.title}}</h2>
   <div class="row">
@@ -30,5 +33,6 @@
   </div>
   <button (click)="goBack()">Back</button>
   <button (click)="save()">Submit</button>
+</div>
 </div>
 </div>

@@ -1,107 +1,147 @@
 /**
  * created by MarlaN. 13.06.2017
  */
+// --import libraries
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
-import { Research } from '../../research';
+import { Location }               from '@angular/common';
+import { Subject } from 'rxjs/subject';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+// --import data models
 import {Chair} from '../../data-model/chair';
 import {Faculty} from '../../data-model/faculty';
 import {ProjectType} from '../../data-model/projectType';
+import {Academic} from '../../data-model/academic';
+import {Project} from '../../data-model/project';
+import {Company} from '../../data-model/company';
+import {EducationLevel} from '../../data-model/educationLevel';
+import {Language} from '../../data-model/language';
+import {Skill} from '../../data-model/skill';
+// ---imports Services
 import { ProjectsService } from '../../services/projects.service';
 import { ChairsService } from '../../services/chairs.service';
 import { FacultiesService } from '../../services/faculties.service';
-import { Location }               from '@angular/common';
-
-import { Injectable } from '@angular/core';
-import { Http }       from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import {ProjectTypeService} from "../../services/projectType.service";
-import {Project} from "../../data-model/project";
-// import {Project} from "../../data-model/project";
+import {AcademicsService} from '../../services/academics.service';
+import {EducationLevelService} from '../../services/educationLevel.service';
+import {ProjectTypeService} from '../../services/projectType.service';
+import {LanguagesService } from '../../services/languages.service';
+import {SkillsService} from '../../services/skills.service';
+import {CompaniesService} from '../../services/companies.service';
 
 @Component({
   selector: 'create-project',
   templateUrl: './view-project-create.component.html',
-  styleUrls: [ './view-project-create.component.css' ]
+  styleUrls: [ './view-project-create.component.css' ],
+  providers: [ProjectsService],
 })
+
 export class CreateProjectComponent implements OnInit {
-  researches: Research[] = [];
   chairs: Chair[] = [];
+  academics: Academic[] = [];
+  companies: Company[] = [];
   faculties: Faculty[] = [];
   projectTypes: ProjectType[] = [];
- // projectTypes: ProjectType[] = [{'_id': 0, 'projectType' : 'Master thesis' }, {'_id': 1, 'projectType' : 'Bachelor thesis' },{'_id': 2, 'projectType' : 'IDP' }];
-  // selectedChair: String = 'Please select';
-  selectedChair: Chair;
- // projectTypes = {};
-  // selectedFaculty: String = 'Please select';
-  selectedFaculty: Faculty;
-  // selectedProjectType: String = 'Please select';
-  selectedProjectType: ProjectType;
+  educationLevels: EducationLevel[] = [];
+  languages: Language[] = [];
   project: Project;
-  /// /project = {};
-
-  // project: {};
+  skills: Array<Skill>;
+  term$ = new Subject<string>();
+  selSkills: Array<Skill> = [];
+  // --selectedItems
+  selectedChair: Chair;
+  selectedFaculty: Faculty;
+  selectedProjectType: ProjectType;
+  selectedAcademic: Academic;
+  selectedCompany: Company;
+  selectedRequiredLevel: EducationLevel[] = [];
+  selectedLanguages: Language[] = [];
 
   constructor(
-    private researchService: ProjectsService,
+    private projectService: ProjectsService,
     private chairsService: ChairsService,
     private facultiesService: FacultiesService,
     private projectTypeService: ProjectTypeService,
+    private academicsService: AcademicsService,
+    private educationLevelService: EducationLevelService,
+    private languageService: LanguagesService,
+    private skillsService: SkillsService,
+    private companiesService: CompaniesService,
     private location: Location,
     private router: Router
-    ) { }
-
+    ) {
+    // --skills instant search
+    this.skillsService.search(this.term$).subscribe(results => this.skills = results);
+  }
+  // ---init
   ngOnInit(): void {
     this.project = new Project();
-    this.selectedProjectType = new ProjectType();
-    this.selectedProjectType.protjectType = 'Select a type of project';
-    this.selectedChair = new Chair();
-    this.selectedChair.name = 'Please select';
-    this.selectedFaculty = new Faculty();
-    this.selectedFaculty.name = 'Please select';
-    // this.researchService.getProjects().then(researches => this.researches = researches);
+    // Perform service calls
     this.projectTypeService.getProjectTypes().then(projectTypes => this.projectTypes = projectTypes);
     this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
     this.chairsService.getChairs().then(chairs => this.chairs = chairs);
-
+    this.academicsService.getAcademics().then(academics => this.academics = academics);
+    this.educationLevelService.getEducationLevels().then(educationLevels => this.educationLevels = educationLevels );
+    this.languageService.getLanguagesLevels().then(languages => this.languages = languages);
+    this.companiesService.getCompanies().then(companies => this.companies = companies);
   }
 
   cancel(): void {
     this.location.back();
   }
 
-  save(): void {
-    // TODO show alert that title should be filled
-    // this.project.title = this.project.title.trim();
-   // if (!title) { return; }
-    /*this.researchService.create(title)
-      .then(research => {
-       // this.researches.push(research);
-        this.cancel();
-      });*/
-    // this.project['projetType'] = this.selectedProjectType['_id'];
-    // this.project.chair = this.selectedChair._id;
+  // ---submit project
+  onSubmit() {
     this.project._chair = this.selectedChair;
     this.project._projetType = this.selectedProjectType;
-    console.log(this.selectedChair);
-    // this.project['chairs'] = this.selectedChair['_id'];
-    this.researchService.create(this.project);
+    this.project._requeredLevel = this.educationLevels;
+    this.project._languages = this.languages;
+    this.project._superadvisor = this.selectedAcademic;
+    this.project._requeredSkills = this.selSkills;
+    this.project._requeredLevel = this.selectedRequiredLevel;
+    this.project._languages = this.selectedLanguages;
+    this.project._partner = this.selectedCompany;
+    //TODO add projects for academic
+    //this.selectedAcademic.projects = [project];
+    //this.academicsService.update(this.selectedAcademic);
+    console.log(this.project);
+    this.projectService.create(this.project);
     this.router.navigate(['/createsuccess']);
+  }
+  // --save selected skills
+  selectedSkills(item: Skill) {
+    this.selSkills.push(item);
+  }
+ // --show only chairs of selected faculty
+ dropdownselectedFaculty(faculty: Faculty) {
+    this.chairs = faculty.chairs;
+ }
 
+  // --save selected required Levels
+  levelsCheckbox(item: EducationLevel, element: HTMLInputElement): void {
+    if (element.checked) {
+      this.selectedRequiredLevel.push(item);
+    } else {
+      this.selectedRequiredLevel = this.selectedRequiredLevel.filter(arrayItem => arrayItem !== item);
+    }
+    for (let entry of this.selectedRequiredLevel) {
+      console.log(entry.level);
+    }
   }
 
-  dropdownselectedProjectType(projectType: ProjectType): void {
-    this.selectedProjectType = projectType;
+  // --save selected languages
+  languageCheckbox(item: Language, element: HTMLInputElement): void {
+    if (element.checked) {
+      this.selectedLanguages.push(item);
+    } else {
+      this.selectedLanguages = this.selectedLanguages.filter(arrayItem => arrayItem !== item);
+    }
+    for (let entry of this.selectedLanguages) {
+      console.log(entry);
+    }
   }
-
-  dropdownselectedChair(chair: Chair): void {
-    this.selectedChair = chair;
-  }
-
-  dropdownselectedFaculty(faculty: Faculty): void {
-    this.selectedFaculty = faculty;
-  }
-
 }
 

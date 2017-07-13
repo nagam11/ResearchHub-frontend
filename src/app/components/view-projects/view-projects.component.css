@@ -1,16 +1,127 @@
+/**
+ * created by MarlaN. 18.06.2017
+ */
 .heading-button {
   margin-left: 5px;
   margin-right: 5px;
 }
 
+.container {
+  background-image:  url("/app/bootstrap/jumbo.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  margin-right: 0px;
+}
+
+header h1 {
+  font-size: 30px;
+
+}
+
 h2 {
-  font-family: "Avenir Next";
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 30px;
+  color: #D3D3D3;
 }
 
 .panel-heading {
-  font-family: "Avenir Next";
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
-.panel-body {
-  font-family: "Avenir Next";
+p {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
 }
+
+.jumbotron{
+  background-image: url("/app/bootstrap/jumbo-backup.jpg");
+  background-size:auto!important;
+  background-position: bottom;
+  margin-bottom: 0px;
+}
+h1{
+  color: #fff;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 40px;
+}
+
+.customPanel {
+  background-color: #A9A9A9;
+}
+
+.panel{
+  border-color: #A9A9A9 ;
+}
+
+.panel-group{
+  width: 820px;
+}
+
+.customButton{
+ background-color: #ff817b;
+  border-color: #ff817b;
+}
+
+.customButton1{
+  background-color: #a0e7a0;
+  border-color: #a0e7a0;
+}
+
+.customButton2{
+  background: rgba(255, 255, 255, 0);
+  border-color: #A9A9A9;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.btn-toolbar {
+  height: 30px;
+  width: 200px;
+}
+
+.modal {
+  top: 100px;
+  right: 100px;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
+
+.semi-transparent-button {
+  display: block;
+  box-sizing: border-box;
+  background: #fff; /* fallback color for old browsers */
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  color: #000;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-out;
+}
+.semi-transparent-button:hover,
+.semi-transparent-button:focus,
+.semi-transparent-button:active {
+  background: #fff;
+  color: #000;
+  transition: all 0.5s ease-in;
+}
+.semi-transparent:focus {
+  outline: none;
+}
+
