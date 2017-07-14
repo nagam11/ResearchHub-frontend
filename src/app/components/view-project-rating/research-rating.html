@@ -7,11 +7,18 @@
 <div class="col-sm-8 text-left">
 <div *ngIf="project">
   <h2>Project Topic:  {{project.title}}</h2>
+
+  <!--Projects company partner-->
   <div class="row">
-    <div class="form-group">
-      <div class="col-sm-3">
-        <label>Company Name:</label></div>
-      <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="project.description" class="form-control" >
+    <div class="col-sm-4">
+      <h4>Company Name</h4></div>
+    <div class="col-sm-8">
+      <div class="form-group">
+        <div class="form-group">
+          <select [(ngModel)]="selectedCompany" class="form-control"  #partner ="ngModel" name='partner'  >
+            <option *ngFor="let company of companies" [ngValue]="company">{{company.name}}</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
@@ -19,7 +26,7 @@
     <div class="form-group">
       <div class="col-sm-3">
         <label>Interested In Fields:</label></div>
-      <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="project.title" class="form-control" >
+      <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="interestedSkills" class="form-control" >
       </div>
     </div>
   </div>
@@ -27,12 +34,14 @@
     <div class="form-group">
       <div class="col-sm-3">
         <label>Description:</label></div>
-      <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="project._id" class="form-control" >
+      <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="description" class="form-control" >
       </div>
     </div>
   </div>
+
+
   <button (click)="goBack()">Back</button>
-  <button (click)="save()">Submit</button>
+  <button (click)="onSubmit()">Submit</button>
 </div>
 </div>
 </div>

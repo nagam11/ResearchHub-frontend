@@ -9,22 +9,24 @@
   <div class="panel panel-primary" *ngFor="let project of projects" (click)="onSelect(project)"
        [class.selected]="project === selectedResearch">
     <div class="panel-heading customPanel"> Project Topic: {{project.title}} </div>
-    <div class="panel-body">Faculty: {{project._chair}}
+    <div class="panel-body">Faculty: {{project._chair.name}}
       <div class="pull-right">
         <button type="button" class="btn btn-default pull-right heading-button" data-toggle="collapse"
                 [attr.data-target]="'#' + project._id">See More...
         </button>
         <button type="button" class="btn btn-default pull-right heading-button" [routerLink]="['/rating', project._id]"
-                routerLinkActive="active">Rating {{project.ratings}}
+                routerLinkActive="active">Rating
         </button>
       </div>
       </div>
       <div class="clearfix"></div>
     <div id="{{project._id}}" class="panel-collapse collapse">
       <div class="panel-body">
-        Needed Skills: {{project.requeredSkills}} <br>
-        Rated by: {{project.ratings}} <br>
-        Description: {{project.description}}
+        <div  *ngFor="let rating of project.ratings">
+        Needed Skills: {{rating.InterestFields}} <br>
+        Rated by: {{project._partner.name}} <br>
+        Description: {{rating.Description}}
+        </div>
       </div>
   </div>
     </div>

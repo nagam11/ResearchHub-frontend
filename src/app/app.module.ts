@@ -17,6 +17,7 @@ import { ViewProjectsComponent }  from './components/view-projects/view-projects
 import {CreateProjectSuccessComponent} from './components/view-project-create-success/view-project-create-success.component';
 import {ViewDashboardComponent} from './components/view-dashboard/view-dashboard.component';
 import {EditProjectComponent} from './components/view-project-edit/view-project-edit.component';
+
 // import Services
 import {ProjectsService} from './services/projects.service';
 import {ChairsService} from './services/chairs.service';
@@ -29,6 +30,7 @@ import {EducationLevelService} from './services/educationLevel.service';
 import {LanguagesService } from './services/languages.service';
 import {SkillsService} from './services/skills.service';
 import {CompaniesService} from './services/companies.service';
+import {RatingsService} from './services/ratings.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import {CompaniesService} from './services/companies.service';
   ],
   providers: [ ProjectsService,
                SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService, AcademicsService,
-    EducationLevelService, LanguagesService, SkillsService, CompaniesService
+    EducationLevelService, LanguagesService, SkillsService, CompaniesService, RatingsService
   ],
   bootstrap: [ AppComponent ]
 })

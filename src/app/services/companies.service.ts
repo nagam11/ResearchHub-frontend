@@ -19,13 +19,24 @@ export class CompaniesService {
       .then(this.extractData)
       .catch(this.handleError);
   }
+  getCompany(id: any): Promise<any> {
+    const url = `${this.url}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(this.extractDataGet)
+      .catch(this.handleError);
+  }
   private extractData(res: Response) {
-    let body = res.json();;
+    let body = res.json();
     return body;
   }
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
+  }
+  private extractDataGet(res: Response) {
+    let body = res.json();
+    return body;
   }
 }
 
