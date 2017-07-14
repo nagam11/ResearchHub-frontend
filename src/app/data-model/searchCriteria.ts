@@ -1,5 +1,6 @@
 import {ProjectType} from "./projectType";
 import {Language} from "./language";
+import {Skill} from "./skill";
 /**
  * Created by Devgen on 06.07.2017.
  */
@@ -10,29 +11,51 @@ export class SearchCriteria {
   startYear: number;
   wsSelected: boolean = false;
   ssSelected: boolean = false;
-  universitySelected: boolean = false;
   companySelected: boolean = false;
-  private newSelectedProejctType: SelectedProjectType;
-  private newSelectableLangauge: SelectedLanguage;
+  skills: Skill[];
+ // private newSelectedProejctType: SelectedProjectType;
+ // private newSelectableLangauge: SelectedLanguage;
   constructor() {
     this.searchText = '';
     this.selectedProjectTypes = [];
     this.selectedLaguages = [];
+    this.skills = [];
     this.startYear = new Date().getFullYear();
   }
 
 
   setProjectTypes(projectTypes: ProjectType[]) {
     for (let projectType of projectTypes){
-      this.newSelectedProejctType = new SelectedProjectType(projectType);
-      this.selectedProjectTypes.push(this.newSelectedProejctType);
+     let newSelectedProejctType = new SelectedProjectType(projectType);
+      this.selectedProjectTypes.push(newSelectedProejctType);
     }
   }
   setSelectableLanguages(selectableLanguages: Language[]) {
     for (let selectableLanguage of selectableLanguages) {
-      this.newSelectableLangauge = new SelectedLanguage(selectableLanguage);
-      this.selectedLaguages.push(this.newSelectableLangauge);
+      let newSelectableLangauge = new SelectedLanguage(selectableLanguage);
+      this.selectedLaguages.push(newSelectableLangauge);
     }
+  }
+
+  getSearchCriteriaToSend(): SearchCriteria {
+    let newSearchCritereia = new SearchCriteria();
+    for (let typesOfProjct of this.selectedProjectTypes) {
+      if (typesOfProjct.selected) {
+        newSearchCritereia.selectedProjectTypes.push(typesOfProjct);
+      }
+    }
+    for (let language of this.selectedLaguages){
+      if (language.selected) {
+        newSearchCritereia.selectedLaguages.push(language);
+      }
+    }
+    newSearchCritereia.searchText = this.searchText;
+    newSearchCritereia.startYear = this.startYear;
+    newSearchCritereia.wsSelected = this.wsSelected;
+    newSearchCritereia.ssSelected = this.ssSelected;
+    newSearchCritereia.companySelected = this.companySelected;
+    newSearchCritereia.skills = this.skills;
+    return newSearchCritereia;
   }
 }
 
