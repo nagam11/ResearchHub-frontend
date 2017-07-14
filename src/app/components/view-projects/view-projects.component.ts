@@ -47,4 +47,11 @@ export class ViewProjectsComponent implements OnInit {
     this.router.navigate(['/editproject', project._id ]);
   }
 
+  open(_id: string) {
+    if (confirm("You are about to delete a project. Click yes to proceed. ") === true) {
+      this.projectsService.delete(_id);
+      this.router.navigate(['/createsuccess']);
+    } else {
+    }
+  }
 }
