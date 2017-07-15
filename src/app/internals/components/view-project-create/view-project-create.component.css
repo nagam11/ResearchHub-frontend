@@ -13,6 +13,9 @@
   float: none;
   margin: 0 auto;
 }
+.customCh {
+  height: 14.625px;
+}
 
 .customCheckbox {
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
@@ -32,10 +35,13 @@
 }
 
 .container {
-  background-image:  url("/app/bootstrap/banner-bg.jpg");
-  background-attachment: fixed;
+  background-image: url("/app/bootstrap/banner-bg.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  width: 1500px;
   margin-right: 0px;
+  margin-left: 0px;
 }
 
 h2 {

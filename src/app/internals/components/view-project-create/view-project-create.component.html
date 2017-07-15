@@ -34,7 +34,7 @@
             <!--Projects Form-->
             <form #createProjectForm="ngForm" autocomplete="off" class="registration-form" (ngSubmit)="onSubmit()">
               <div class="row">
-                <div class="form-group">
+
                   <div class="col-sm-12 col-centered">
                     <input type="text" placeholder="Please enter a title.." [(ngModel)]="project.title" name="title"
                            #title="ngModel" class="form-control form-first-name" required minlength="4" maxlength="24">
@@ -53,11 +53,9 @@
                     </div>
                     <!--End Angular Form Validations-->
                   </div>
-                </div>
               </div>
               <!--Project Type-->
               <div class="row">
-                <div class="form-group">
                     <div class="col-sm-4">
                       <br>
                       <h4>Project type *</h4>
@@ -70,7 +68,6 @@
                         </select>
                       </div>
                   </div>
-                </div>
               </div>
               <br>
               <!--Projects required level-->
@@ -80,7 +77,7 @@
                 <div class="col-sm-8">
                   <div *ngFor="let educationLevel of educationLevels">
                     <label class="customCheckbox">
-                    <input type="checkbox" #cb1 name="educationLevel" (change)="levelsCheckbox(educationLevel,cb1)">
+                    <input type="checkbox" class="customCh" #cb1 name="educationLevel" (change)="levelsCheckbox(educationLevel,cb1)">
                     {{educationLevel.level}}</label>
                   </div>
                 </div>
@@ -165,7 +162,6 @@
               </div>
               <!--Projects skills-->
               <div class="row">
-                <div class="form-group">
                   <div class="col-lg-12 col-centered">
                     <div class="form-group">
                       <div class="btn-toolbar">
@@ -182,32 +178,27 @@
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
               <!--Projects advisor-->
               <div class="row">
-                <div class="form-group">
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <h4>Advisor</h4></div>
-                  <div class="col-sm-9"><input type="text" placeholder="The user's name" [(ngModel)]="project.advisor"
+                  <div class="col-sm-8"><input type="text" placeholder="The user's name" [(ngModel)]="project.advisor"
                                                name="advisor" class="form-control">
                   </div>
-                </div>
               </div>
               <br>
               <!--Projects supervisor-->
               <div class="row">
-                <div class="form-group">
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <h4>Supervisor</h4></div>
-                  <div class="col-sm-9">
+                  <div class="col-sm-8">
                     <div class="form-group">
                       <select [(ngModel)]="selectedAcademic" class="form-control" required  #supervisor ="ngModel" name='supervisor'  >
                         <option *ngFor="let academic of academics" [ngValue]="academic">{{academic.firstname}}&nbsp;{{academic.lastname}}</option>
                       </select>
                     </div>
                   </div>
-                </div>
               </div>
               <br><br>
               <!--Actions-->
