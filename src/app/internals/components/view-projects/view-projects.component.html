@@ -16,7 +16,7 @@
       <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px">
         <button type="button" data-toggle="modal" class="btn pull-left customButton2"> Research Topic: {{project.title}}</button>
         <div class="btn-toolbar pull-right">
-        <button type="button" [routerLink]="['/editproject', project._id]" routerLinkActive="active" class="btn btn-danger pull-right customButton1">Edit </button>&nbsp;
+        <button type="button" [routerLink]="['/internals/editproject', project._id]" routerLinkActive="active" class="btn btn-danger pull-right customButton1">Edit </button>&nbsp;
           <button type="button" (click)="delete(project._id)" class="btn btn-danger pull-right customButton">Delete</button>
           <button type="button" data-target="#deleteModal" data-toggle="modal" class="btn btn-danger pull-right customButton">Test</button></div></div>
       <!-- TODO test Modal -->

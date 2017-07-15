@@ -14,7 +14,7 @@
         <button type="button" class="btn btn-default pull-right heading-button" data-toggle="collapse"
                 [attr.data-target]="'#' + project._id">See More...
         </button>
-        <button type="button" class="btn btn-default pull-right heading-button" [routerLink]="['/rating', project._id]"
+        <button type="button" class="btn btn-default pull-right heading-button" [routerLink]="['/internals/rating', project._id]"
                 routerLinkActive="active">Rating {{project.ratings}}
         </button>
       </div>

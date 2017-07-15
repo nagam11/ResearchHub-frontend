@@ -39,12 +39,12 @@ export class ViewProjectsComponent implements OnInit {
   delete(_id: string) {
     this.projectsService.delete(_id);
     //location.reload();
-    this.router.navigate(['/createsuccess']);
+    this.router.navigate(['/internals/createsuccess']);
   }
 
   // --edit project
   edit(project: Project) {
-    this.router.navigate(['/editproject', project._id ]);
+    this.router.navigate(['/internals/editproject', project._id ]);
   }
 
 }

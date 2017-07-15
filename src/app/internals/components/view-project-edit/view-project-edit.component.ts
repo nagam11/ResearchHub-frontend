@@ -132,7 +132,7 @@ export class EditProjectComponent implements OnInit {
     //this.selectedAcademic.projects = [project];
     //this.academicsService.update(this.selectedAcademic);
     //this.projectsService.update(project);
-    this.router.navigate(['/createsuccess']);
+    this.router.navigate(['/internals/createsuccess']);
   }
 
 }

@@ -109,7 +109,7 @@ export class CreateProjectComponent implements OnInit {
     //this.academicsService.update(this.selectedAcademic);
     console.log(this.project);
     this.projectService.create(this.project);
-    this.router.navigate(['/createsuccess']);
+    this.router.navigate(['/internals/createsuccess']);
   }
   // --save selected skills
   selectedSkills(item: Skill) {
