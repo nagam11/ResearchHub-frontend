@@ -35,9 +35,6 @@ export class EditProjectComponent implements OnInit {
   chair: Chair;
 
   educationLevels: EducationLevel[] = [];
-
-
-
   projects: Project[] = [];
   chairs: Chair[] = [];
   academics: Academic[] = [];

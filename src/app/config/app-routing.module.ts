@@ -8,6 +8,7 @@ import {CreateProjectSuccessComponent} from "../components/view-project-create-s
 import {ViewDashboardComponent} from "../components/view-dashboard/view-dashboard.component";
 import {SearchProjectComponent} from "../components/view-project-search/view-project-search.component";
 import {EditProjectComponent} from '../components/view-project-edit/view-project-edit.component';
+import {ViewProjectComponent} from '../components/view-project/view-project.component';
 
 const routes: Routes = [
   { path: 'app.html', redirectTo: '/viewdashboard', pathMatch: 'prefix' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'createsuccess',     component: CreateProjectSuccessComponent },
   { path: 'viewdashboard',     component: ViewDashboardComponent },
   { path: 'searchproject',   component: SearchProjectComponent},
+  { path: 'viewproject/:id',   component: ViewProjectComponent},
   { path: 'editproject/:id',   component: EditProjectComponent}
 ];
 

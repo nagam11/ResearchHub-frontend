@@ -35,23 +35,20 @@ export class ViewProjectsComponent implements OnInit {
     this.projectsService.getProjects().then(projects => this.projects = projects);
   }
 
-  // --delete project
-  delete(_id: string) {
-    this.projectsService.delete(_id);
-    //location.reload();
-    this.router.navigate(['/createsuccess']);
-  }
-
   // --edit project
   edit(project: Project) {
     this.router.navigate(['/editproject', project._id ]);
   }
 
-  open(_id: string) {
-    if (confirm("You are about to delete a project. Click yes to proceed. ") === true) {
+  delete(_id: string) {
+    if (confirm('You are about to delete a project. Click yes to proceed.') === true) {
       this.projectsService.delete(_id);
       this.router.navigate(['/createsuccess']);
     } else {
     }
+  }
+
+  open( project: Project) {
+    this.router.navigate(['/viewproject', project._id]);
   }
 }

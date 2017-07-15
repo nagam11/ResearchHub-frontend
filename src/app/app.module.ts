@@ -17,6 +17,7 @@ import { ViewProjectsComponent }  from './components/view-projects/view-projects
 import {CreateProjectSuccessComponent} from './components/view-project-create-success/view-project-create-success.component';
 import {ViewDashboardComponent} from './components/view-dashboard/view-dashboard.component';
 import {EditProjectComponent} from './components/view-project-edit/view-project-edit.component';
+import {ViewProjectComponent} from './components/view-project/view-project.component';
 // import Services
 import {ProjectsService} from './services/projects.service';
 import {ChairsService} from './services/chairs.service';
@@ -46,7 +47,8 @@ import {CompaniesService} from './services/companies.service';
     CreateProjectSuccessComponent,
     ViewDashboardComponent,
     SearchProjectComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    ViewProjectComponent
 
   ],
   providers: [ ProjectsService,

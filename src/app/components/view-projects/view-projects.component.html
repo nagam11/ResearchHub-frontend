@@ -14,10 +14,10 @@
   <div class="panel-group">
     <div class="panel panel-primary semi-transparent-button with-border" *ngFor="let project of projects">
       <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px">
-        <button type="button" data-toggle="modal" class="btn pull-left customButton2"> Research Topic: {{project.title}}</button>
+        <button type="button" (click) = "open(project)" class="btn pull-left customButton2"> Research Topic: {{project.title}}</button>
         <div class="btn-toolbar pull-right">
         <button type="button" [routerLink]="['/editproject', project._id]" routerLinkActive="active" class="btn btn-danger pull-right customButton1">Edit </button>&nbsp;
-          <button type="button" (click)="open(project._id)" class="btn btn-danger pull-right customButton">Delete</button>
+          <button type="button" (click)="delete(project._id)" class="btn btn-danger pull-right customButton">Delete</button>
         </div></div>
       <!-- TODO test Modal -->
         <div class="panel-body"><p>Description: {{project.description}}</p>
