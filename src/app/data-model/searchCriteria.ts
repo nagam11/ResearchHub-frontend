@@ -1,11 +1,13 @@
 import {ProjectType} from "./projectType";
 import {Language} from "./language";
 import {Skill} from "./skill";
+import {SearchCriteriaToSend} from "./SearchCriteriaToSend";
 /**
  * Created by Devgen on 06.07.2017.
  */
 export class SearchCriteria {
   searchText: string;
+  // selectedProjectTypes: SelectedProjectType[];
   selectedProjectTypes: SelectedProjectType[];
   selectedLaguages: SelectedLanguage[];
   startYear: number;
@@ -37,40 +39,63 @@ export class SearchCriteria {
     }
   }
 
-  getSearchCriteriaToSend(): SearchCriteria {
+  getSearchCriteriaToSend(): SearchCriteriaToSend {
     let newSearchCritereia = new SearchCriteria();
+    let selProjecttypes: ProjectType[] = [];
     for (let typesOfProjct of this.selectedProjectTypes) {
-      if (typesOfProjct.selected) {
-        newSearchCritereia.selectedProjectTypes.push(typesOfProjct);
+      // let checkIfSelectedTypeOfProject = typesOfProjct as SelectedProjectType;
+      if (typesOfProjct.isSelected()) {
+       // newSearchCritereia.selectedProjectTypes.push(typesOfProjct);
+        selProjecttypes.push(typesOfProjct.projectType);
       }
     }
+    let selLanguages: Language[] = [];
     for (let language of this.selectedLaguages){
+      // let checkIfLanguageIsSelected = language as SelectedLanguage;
       if (language.selected) {
-        newSearchCritereia.selectedLaguages.push(language);
+        // newSearchCritereia.selectedLaguages.push(language);
+        selLanguages.push(language.language);
       }
     }
+    let result = new SearchCriteriaToSend(
+      this.searchText,
+      selProjecttypes,
+      selLanguages,
+      newSearchCritereia.startYear,
+      newSearchCritereia.wsSelected,
+      newSearchCritereia.ssSelected,
+      newSearchCritereia.companySelected,
+      newSearchCritereia.skills
+    );
     newSearchCritereia.searchText = this.searchText;
     newSearchCritereia.startYear = this.startYear;
     newSearchCritereia.wsSelected = this.wsSelected;
     newSearchCritereia.ssSelected = this.ssSelected;
     newSearchCritereia.companySelected = this.companySelected;
     newSearchCritereia.skills = this.skills;
-    return newSearchCritereia;
+    return result;
   }
 }
 
+
+
 export class SelectedProjectType {
   projectType: ProjectType;
-  selected: boolean;
+  private selected: boolean;
   constructor(projectType: ProjectType) {
     this.projectType = projectType;
     this.selected = false;
+  }
+
+
+  isSelected(): boolean {
+    return this.selected ;
   }
 }
 
 export class SelectedLanguage {
   selected: boolean;
-  language: Language;
+   language: Language;
   constructor(language: Language) {
     this.language = language;
     this.selected = false;
