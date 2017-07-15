@@ -31,7 +31,6 @@ export class ViewProjectsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    console.log('Component created');
     this.projectsService.getProjects().then(projects => this.projects = projects);
   }
 

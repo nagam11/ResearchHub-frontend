@@ -75,7 +75,12 @@ export class CreateProjectComponent implements OnInit {
     ) {
     // --skills instant search
     this.skillsService.search(this.term$).subscribe(results => this.skills = results);
+    // --scroll window to front
+    this.router.events.subscribe((path) => {
+      window.scrollTo(0, 0);
+    });
   }
+
   // ---init
   ngOnInit(): void {
     this.project = new Project();

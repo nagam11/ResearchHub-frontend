@@ -65,7 +65,7 @@
                     <br>
                     <div class="col-sm-8">
                       <div class="form-group">
-                        <select [(ngModel)]="selectedProjectType" class="form-control" required  #projectType ="ngModel" name='projectType'  >
+                        <select [(ngModel)]="selectedProjectType" [compareWith]="equals" class="form-control" required name="projectType">
                           <option *ngFor="let projectType of projectTypes" [ngValue]="projectType">{{projectType.protjectType}}</option>
                         </select>
                       </div>
@@ -79,9 +79,10 @@
                     <h4>Required level *</h4></div>
                   <div class="col-sm-8">
                     <div *ngFor="let educationLevel of educationLevels">
-                      <label class="customCheckbox">
-                        <input type="checkbox" #cb1 name="educationLevel" (change)="levelsCheckbox(educationLevel,cb1)">
-                        {{educationLevel.level}}</label>
+                      <label class="customCheckbox" *ngIf="selectedEducationLevels">
+                        <input [checked]="selectedEducationLevels.indexOf(educationLevel) !== -1" type="checkbox" #cb1 name="educationLevel" (change)="levelsCheckbox(educationLevel,cb1)">
+                        {{educationLevel.level}}
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -107,7 +108,7 @@
                   <br>
                   <div class="col-sm-8">
                     <div class="form-group">
-                      <select [(ngModel)]="selectedChair" class="form-control" required  #chair ="ngModel" name='chair'  >
+                      <select [(ngModel)]="selectedChair" class="form-control" [compareWith]="equals" required  #chair ="ngModel" name='chair'  >
                         <option *ngFor="let chair of chairs"  [ngValue]="chair">{{chair.name}}</option>
                       </select>
                     </div>
@@ -202,7 +203,7 @@
                       <h4>Supervisor</h4></div>
                     <div class="col-sm-9">
                       <div class="form-group">
-                        <select [(ngModel)]="selectedAcademic" class="form-control" required  #supervisor ="ngModel" name='supervisor'  >
+                        <select [(ngModel)]="selectedAcademic" class="form-control" required  [compareWith]="equals" #supervisor ="ngModel" name='supervisor'  >
                           <option *ngFor="let academic of academics" [ngValue]="academic">{{academic.firstname}}&nbsp;{{academic.lastname}}</option>
                         </select>
                       </div>
