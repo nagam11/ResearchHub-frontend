@@ -94,7 +94,7 @@
                   <br>
                   <div class="col-sm-8">
                     <div class="form-group">
-                      <select [(ngModel)]="selectedFaculty" (ngModelChange)="dropdownselectedFaculty(selectedFaculty)" class="form-control" required  #faculty ="ngModel" name='faculty'  >
+                      <select [(ngModel)]="selectedFaculty" (ngModelChange)="dropdownselectedFaculty(selectedFaculty)" class="form-control" [compareWith]="equals" required  #faculty ="ngModel" name='faculty'  >
                         <option *ngFor="let faculty of faculties" [ngValue]="faculty">{{faculty.name}}</option>
                       </select>
                     </div>

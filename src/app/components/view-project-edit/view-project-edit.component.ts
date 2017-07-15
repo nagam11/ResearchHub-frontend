@@ -115,7 +115,18 @@ export class EditProjectComponent implements OnInit {
   ngOnInit(): void {
     // Perform service calls
     this.projectTypeService.getProjectTypes().then(projectTypes => this.projectTypes = projectTypes);
-    this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
+    this.facultiesService.getFaculties().then((faculties) => {
+      this.faculties = faculties;
+      // ---workaround in place of service get Faculty for Chair
+      for (let i = 0; i < this.faculties.length; i++) {
+        for (let j = 0; j < this.faculties[i].chairs.length; j++) {
+          if (this.faculties[i].chairs[j].name === this.selectedChair.name) {
+            this.selectedFaculty = this.faculties[i];
+          }
+        }
+      }
+
+    });
     this.chairsService.getChairs().then(chairs => this.chairs = chairs);
     this.academicsService.getAcademics().then(academics => this.academics = academics);
     this.educationLevelService.getEducationLevels().then(educationLevels => this.educationLevels = educationLevels );
