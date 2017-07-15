@@ -40,6 +40,7 @@ import { AlertService } from '../services/alert.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { Profile } from '../services/profile.service';
 import { StudentService } from '../services/student.service';
+import { CompaniesService } from '../services/companies.service';
 
 @NgModule({
   imports: [
@@ -67,7 +68,8 @@ import { StudentService } from '../services/student.service';
   ],
   providers: [ ProjectsService,
     SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService, AcademicsService,
-    EducationLevelService, LanguagesService, SkillsService, AlertService, AuthenticationService, UserService, Profile, StudentService
+    EducationLevelService, LanguagesService, SkillsService, AlertService, AuthenticationService, UserService, Profile,
+    StudentService, CompaniesService
   ],
 })
 export class InternalsModule { }
