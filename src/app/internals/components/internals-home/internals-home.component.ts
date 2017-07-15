@@ -13,19 +13,20 @@ export class InternalsAppComponent {
   Logo = 'ResearchHub';
   UserName = 'username';
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private profileService: Profile,) { }
+  constructor(private router: Router, private authenticationService: AuthenticationService, private profileService: Profile) { }
 
   ngOnInit() {
     this.UserName  = '';
     let token = localStorage.getItem('currentUser');
+    console.log(token);
 
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       let decoded = this.jwtHelper.decodeToken(token).user;
       if (decoded) {
         console.log(decoded);
         console.log(decoded.email);
-        if (decoded.first && decoded.last) {
-          this.UserName = decoded.first.concat(' ', decoded.last);
+        if (decoded.firstname && decoded.lastname) {
+          this.UserName = decoded.firstname.concat(' ', decoded.lastname);
         } else {
           this.UserName = decoded.email;
         }

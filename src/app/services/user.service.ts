@@ -26,7 +26,7 @@ export class UserService {
   }
 
   update(user: any) {
-    return this.http.put('http://localhost:3000/api/students/update/' + user.id, user).map((response: Response) => {
+    return this.http.put('http://localhost:3000/api/user/update/' + user.id, user).map((response: Response) => {
       //if (response.json()) {
       //  localStorage.setItem('update', JSON.stringify(response.json()));
       //}

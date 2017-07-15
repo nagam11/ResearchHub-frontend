@@ -18,6 +18,12 @@ import { AuthGuard } from './guard/guard';
 import { ViewLoginComponent } from './components/view-login/view-login.component';
 import { ViewRegisterComponent } from './components/view-register/view-register.component';
 import { ViewLandingComponent } from './components/view-landing/view-landing.component';
+import { ViewRegisterSelectorComponent } from './components/view-register-sel/view-register-sel.component';
+import { ViewRegisterStudentComponent } from './components/view-register-student/view-register-student.component';
+import { ViewRegisterAcademicComponent } from './components/view-register-academic/view-register-academic.component';
+import { ViewRegisterCompanyComponent } from './components/view-register-company/view-register-company.component';
+import { RegisterSuccessComponent } from './components/view-register-sucess/view-register-success.component';
+import { RegisterFailureComponent } from './components/view-register-failure/view-register-failure.component';
 import { PageNotFoundComponent } from './components/view-not-found/view-not-found.component';
 // import Services
 import { ProjectsService } from './services/projects.service';
@@ -48,8 +54,13 @@ import { AuthenticationService } from './services/authentication.service';
     ViewLoginComponent,
     ViewRegisterComponent,
     ViewLandingComponent,
-    PageNotFoundComponent
-
+    PageNotFoundComponent,
+    ViewRegisterSelectorComponent,
+    ViewRegisterStudentComponent,
+    ViewRegisterAcademicComponent,
+    ViewRegisterCompanyComponent,
+    RegisterSuccessComponent,
+    RegisterFailureComponent
   ],
   providers: [ ProjectsService,
                SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService, AcademicsService,

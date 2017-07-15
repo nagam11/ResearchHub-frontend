@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { User } from '../data-model/user';
+import { Student } from '../data-model/student';
 
 @Injectable()
 export class StudentService {
@@ -36,12 +37,12 @@ export class StudentService {
     return Promise.reject(error.message || error);
   }
 
-  create(user: User) {
-    return this.http.post('http://localhost:3000/api/user/signup', user).map((response: Response) => response.json());
+  createStudent(student: Student) {
+    return this.http.post('http://localhost:3000/api/students/signup', student).map((response: Response) => response.json());
   }
 
-  update(user: any) {
-    return this.http.put('http://localhost:3000/api/user/update/' + user.id, user).map((response: Response) => {
+  updateStudent(student: any) {
+    return this.http.put('http://localhost:3000/api/students/update/' + student.id, student).map((response: Response) => {
       //if (response.json()) {
       //  localStorage.setItem('update', JSON.stringify(response.json()));
       //}

@@ -12,10 +12,12 @@ export class AuthenticationService {
     return this.http.post('http://localhost:3000/api/user/login', { email: email, password: password })
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
+        localStorage.removeItem('currentUser');
         let user = response.json();
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
+          // console.log(localStorage.getItem('currentUser'));
         }
         return user;
       });

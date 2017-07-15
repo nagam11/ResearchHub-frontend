@@ -34,8 +34,8 @@ export class Profile {
     }
   }*/
 
-  updateThisUser(user: Student) {
-    this.studentService.update(user)
+  updateThisUser(student: Student) {
+    this.studentService.updateStudent(student)
       .subscribe(
         data => {
           console.log('profile updated');

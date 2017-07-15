@@ -21,6 +21,7 @@ import { StudentService } from '../../../services/student.service';
 import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import * as edge from "selenium-webdriver/edge";
 import { JwtHelper } from 'angular2-jwt';
+import deleteProperty = Reflect.deleteProperty;
 
 
 const URL = 'https://localhost:3000/api/';
@@ -188,6 +189,7 @@ export class EditProfileComponent implements OnInit {
     this.student.major = this.major;
     this.student.minor = this.minor;
     this.student.graduation = this.graduation;
+    delete this.student['password'];
     console.log(this.student);
     this.profileService.updateThisUser(this.student);
   }
