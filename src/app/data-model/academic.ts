@@ -5,7 +5,6 @@ import {Project} from './project';
 import { Chair } from './chair';
 export class Academic {
   _id: string;
-  username: string;
   password: string;
   email: string;
   firstname: string;

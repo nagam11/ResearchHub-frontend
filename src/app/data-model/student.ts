@@ -2,7 +2,6 @@ import { EducationLevel } from './educationLevel';
 import { Faculty } from './faculty';
 export class Student {
   id: number;
-  username: string;
   password: string;
   photo: string;
   email: string;

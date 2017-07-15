@@ -3,6 +3,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import { CommonModule }  from '@angular/common';
 import { InternalsRoutingModule } from './internals-routing.module';
+import { ImageUploadModule } from 'angular2-image-upload';
 
 // Imports for loading & configuring the in-memory web api
 // TODO delete in memory data service
@@ -48,7 +49,8 @@ import { CompaniesService } from '../services/companies.service';
     InternalsRoutingModule,
     JsonpModule,
     CommonModule,
-    FileUploadModule
+    FileUploadModule,
+    ImageUploadModule
   ],
   declarations: [
     InternalsAppComponent,

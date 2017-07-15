@@ -32,7 +32,7 @@
 }
 
 .container {
-  background-image:  url("/app/bootstrap/banner-bg.jpg");
+  background-image:  url("./app/bootstrap/banner-bg.jpg");
   background-attachment: fixed;
   background-size: cover;
   margin-right: 0px;

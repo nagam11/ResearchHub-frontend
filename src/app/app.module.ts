@@ -17,7 +17,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { AuthGuard } from './guard/guard';
 import { ViewLoginComponent } from './components/view-login/view-login.component';
 import { ViewRegisterComponent } from './components/view-register/view-register.component';
-import { ViewLandingComponent } from './components/view-landing/view-landing.component';
+// import { ViewLandingComponent } from './components/view-landing/view-landing.component';
 import { ViewRegisterSelectorComponent } from './components/view-register-sel/view-register-sel.component';
 import { ViewRegisterStudentComponent } from './components/view-register-student/view-register-student.component';
 import { ViewRegisterAcademicComponent } from './components/view-register-academic/view-register-academic.component';
@@ -53,7 +53,7 @@ import { AuthenticationService } from './services/authentication.service';
     AlertComponent,
     ViewLoginComponent,
     ViewRegisterComponent,
-    ViewLandingComponent,
+    // ViewLandingComponent,
     PageNotFoundComponent,
     ViewRegisterSelectorComponent,
     ViewRegisterStudentComponent,

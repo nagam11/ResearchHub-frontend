@@ -21,7 +21,6 @@ import { StudentService } from '../../../services/student.service';
 import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import * as edge from "selenium-webdriver/edge";
 import { JwtHelper } from 'angular2-jwt';
-import deleteProperty = Reflect.deleteProperty;
 
 
 const URL = 'https://localhost:3000/api/';
@@ -116,7 +115,6 @@ export class EditProfileComponent implements OnInit {
   setFields(info: any) {
     //let info = JSON.parse(_info);
     this.student.id = info._id as number;
-    this.student.username = info.username;
 
     if (info.firstname) {
       this.student.firstname = info.firstname;
@@ -131,7 +129,8 @@ export class EditProfileComponent implements OnInit {
       this.birthday = info.birthday;
     }
     if (info.degree) {
-      this.degree = info.degree;
+      this.degree = this.educationLevels.find(result => result._id === info.degree);
+      console.log(this.degree);
     }
     if (info.skills) {
       this.selSkills = info.skills;
@@ -140,7 +139,8 @@ export class EditProfileComponent implements OnInit {
       this.student.description = info.description;
     }
     if (info.faculty) {
-      this.selectedFaculty = info.faculty;
+      this.selectedFaculty = this.faculties.find(result => result._id === info.faculty);
+      console.log(this.selectedFaculty);
     }
     if (info.major) {
       this.major = info.major;

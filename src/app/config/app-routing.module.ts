@@ -3,7 +3,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { ViewLoginComponent } from '../components/view-login/view-login.component';
 import { ViewRegisterComponent } from '../components/view-register/view-register.component';
 import { AuthGuard } from '../guard/guard';
-import { ViewLandingComponent } from '../components/view-landing/view-landing.component';
+// import { ViewLandingComponent } from '../components/view-landing/view-landing.component';
 import { PageNotFoundComponent } from '../components/view-not-found/view-not-found.component';
 import { ViewRegisterSelectorComponent } from '../components/view-register-sel/view-register-sel.component';
 import { ViewRegisterStudentComponent } from '../components/view-register-student/view-register-student.component';
@@ -14,7 +14,7 @@ import { RegisterFailureComponent } from '../components/view-register-failure/vi
 
 
 const routes: Routes = [
-  { path: '', component: ViewLandingComponent },
+  { path: 'app.html', redirectTo: 'login', pathMatch: 'prefix' },
   { path: 'login', component: ViewLoginComponent },
   { path: 'register', component: ViewRegisterSelectorComponent },
   { path: 'register/student', component: ViewRegisterStudentComponent },

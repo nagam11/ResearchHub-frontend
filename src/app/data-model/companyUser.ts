@@ -2,7 +2,6 @@ import { Company } from './company';
 import { Chair } from './chair';
 export class CompanyUser {
   _id: string;
-  username: string;
   password: string;
   email: string;
   firstname: string;

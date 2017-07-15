@@ -4,7 +4,6 @@ import { AlertService } from '../../services/alert.service';
 import { CompaniesService } from '../../services/companies.service';
 import { Company } from '../../data-model/company';
 
-
 @Component({
   moduleId: module.id,
   templateUrl: './view-register-company.component.html',

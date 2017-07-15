@@ -29,6 +29,7 @@
       'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js',
       'ng2fileupload': 'npm:ng2-file-upload',
       'ng2-file-upload': 'npm:ng2-file-upload',
+      'angular2-image-upload': 'npm:angular2-image-upload/index.js',
       'moment': 'npm:moment/moment.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
@@ -46,6 +47,9 @@
       },
       'npm:ng2-file-upload': {
         format: 'cjs',
+        defaultExtension: 'js'
+      },
+      'npm:angular2-image-upload': {
         defaultExtension: 'js'
       }
     }
