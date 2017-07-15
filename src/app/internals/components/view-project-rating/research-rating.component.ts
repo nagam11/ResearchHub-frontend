@@ -3,8 +3,8 @@ import {Component, OnInit}      from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location}               from '@angular/common';
 
-import {ProjectsService} from '../../services/projects.service';
-import {Project} from '../../data-model/project';
+import {ProjectsService} from '../../../services/projects.service';
+import {Project} from '../../../data-model/project';
 @Component({
   selector: 'hero-detail',
   templateUrl: './research-rating.html',

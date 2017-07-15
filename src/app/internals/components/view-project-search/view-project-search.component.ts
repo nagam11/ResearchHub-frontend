@@ -2,16 +2,16 @@
  * Created by Devgen on 06.07.2017.
  */
 import { Component, OnInit } from '@angular/core';
-import {ProjectType} from '../../data-model/projectType';
+import {ProjectType} from '../../../data-model/projectType';
 import 'rxjs/add/operator/map';
-import {ProjectTypeService} from '../../services/projectType.service';
-import {Project} from '../../data-model/project';
-import {SearchCriteria} from '../../data-model/searchCriteria';
-import {SearchService} from '../../services/search.service';
-import {LanguagesService} from '../../services/languages.service';
-import {SkillsService} from "../../services/skills.service";
-import {Subject} from "rxjs/Subject";
-import {Skill} from "../../data-model/skill";
+import {ProjectTypeService} from '../../../services/projectType.service';
+import {Project} from '../../../data-model/project';
+import {SearchCriteria} from '../../../data-model/searchCriteria';
+import {SearchService} from '../../../services/search.service';
+import {LanguagesService} from '../../../services/languages.service';
+import {SkillsService} from '../../../services/skills.service';
+import {Subject} from 'rxjs/Subject';
+import {Skill} from '../../../data-model/skill';
 import { FormsModule }   from '@angular/forms';
 
 

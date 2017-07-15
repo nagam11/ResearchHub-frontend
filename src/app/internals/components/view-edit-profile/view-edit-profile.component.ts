@@ -112,7 +112,7 @@ export class EditProfileComponent implements OnInit {
     this.studentService.getById(user._id).then(response => this.setFields(response));
   }
 
-  setFields(info: JSON) {
+  setFields(info: any) {
     //let info = JSON.parse(_info);
     this.student.id = info._id as number;
     this.student.username = info.username;

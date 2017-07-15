@@ -5,25 +5,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap ,Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {Chair} from '../../data-model/chair';
-import {Faculty} from '../../data-model/faculty';
-import {ProjectType} from '../../data-model/projectType';
-import {Academic} from '../../data-model/academic';
-import { ProjectsService } from '../../services/projects.service';
-import { ChairsService } from '../../services/chairs.service';
-import { FacultiesService } from '../../services/faculties.service';
-import {AcademicsService} from '../../services/academics.service';
+import {Chair} from '../../../data-model/chair';
+import {Faculty} from '../../../data-model/faculty';
+import {ProjectType} from '../../../data-model/projectType';
+import {Academic} from '../../../data-model/academic';
+import { ProjectsService } from '../../../services/projects.service';
+import { ChairsService } from '../../../services/chairs.service';
+import { FacultiesService } from '../../../services/faculties.service';
+import {AcademicsService} from '../../../services/academics.service';
 import { Location }               from '@angular/common';
-import {EducationLevelService} from '../../services/educationLevel.service';
-import {LanguagesService } from '../../services/languages.service';
+import {EducationLevelService} from '../../../services/educationLevel.service';
+import {LanguagesService } from '../../../services/languages.service';
 import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {ProjectTypeService} from "../../services/projectType.service";
-import {Project} from "../../data-model/project";
-import {EducationLevel} from "../../data-model/educationLevel";
-import {Language} from "../../data-model/language";
+import {ProjectTypeService} from '../../../services/projectType.service';
+import {Project} from '../../../data-model/project';
+import {EducationLevel} from '../../../data-model/educationLevel';
+import {Language} from '../../../data-model/language';
 
 @Component({
   selector: 'edit-project',

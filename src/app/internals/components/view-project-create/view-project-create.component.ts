@@ -12,25 +12,25 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 // --import data models
-import {Chair} from '../../data-model/chair';
-import {Faculty} from '../../data-model/faculty';
-import {ProjectType} from '../../data-model/projectType';
-import {Academic} from '../../data-model/academic';
-import {Project} from '../../data-model/project';
-import {Company} from '../../data-model/company';
-import {EducationLevel} from '../../data-model/educationLevel';
-import {Language} from '../../data-model/language';
-import {Skill} from '../../data-model/skill';
+import {Chair} from '../../../data-model/chair';
+import {Faculty} from '../../../data-model/faculty';
+import {ProjectType} from '../../../data-model/projectType';
+import {Academic} from '../../../data-model/academic';
+import {Project} from '../../../data-model/project';
+import {Company} from '../../../data-model/company';
+import {EducationLevel} from '../../../data-model/educationLevel';
+import {Language} from '../../../data-model/language';
+import {Skill} from '../../../data-model/skill';
 // ---imports Services
-import { ProjectsService } from '../../services/projects.service';
-import { ChairsService } from '../../services/chairs.service';
-import { FacultiesService } from '../../services/faculties.service';
-import {AcademicsService} from '../../services/academics.service';
-import {EducationLevelService} from '../../services/educationLevel.service';
-import {ProjectTypeService} from '../../services/projectType.service';
-import {LanguagesService } from '../../services/languages.service';
-import {SkillsService} from '../../services/skills.service';
-import {CompaniesService} from '../../services/companies.service';
+import { ProjectsService } from '../../../services/projects.service';
+import { ChairsService } from '../../../services/chairs.service';
+import { FacultiesService } from '../../../services/faculties.service';
+import {AcademicsService} from '../../../services/academics.service';
+import {EducationLevelService} from '../../../services/educationLevel.service';
+import {ProjectTypeService} from '../../../services/projectType.service';
+import {LanguagesService } from '../../../services/languages.service';
+import {SkillsService} from '../../../services/skills.service';
+import {CompaniesService} from '../../../services/companies.service';
 
 @Component({
   selector: 'create-project',
