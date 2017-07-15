@@ -1,0 +1,46 @@
+<!--<div class="jumbotron text-center">
+  <h1 class="animated slideInDown">My projects</h1>
+</div> -->
+<div class="container">
+<div class="col-sm-2 sidenav">
+</div>
+<div class="col-sm-10 text-left"><br>
+  <div class="row">
+  <div class="col-lg-10 col-centered">
+  <header>
+    <h1 align="center"><b>MY PROJECTS</b></h1>
+  </header>
+</div></div>
+  <div class="panel-group">
+    <div class="panel panel-primary semi-transparent-button with-border" *ngFor="let project of projects">
+      <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px">
+        <button type="button" data-toggle="modal" class="btn pull-left customButton2"> Research Topic: {{project.title}}</button>
+        <div class="btn-toolbar pull-right">
+        <button type="button" [routerLink]="['/internals/editproject', project._id]" routerLinkActive="active" class="btn btn-danger pull-right customButton1">Edit </button>&nbsp;
+          <button type="button" (click)="delete(project._id)" class="btn btn-danger pull-right customButton">Delete</button>
+          <button type="button" data-target="#deleteModal" data-toggle="modal" class="btn btn-danger pull-right customButton">Test</button></div></div>
+      <!-- TODO test Modal -->
+      <div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Attention ! </h4>
+            </div>
+            <div class="modal-body">
+              <p>You are about to delete a project.Do you wish to proceed?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" (click)="delete(project._id)" class="btn btn-default" data-dismiss="modal">Delete</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="panel-body"><p>Description: {{project.description}}</p>
+          <p>Chair: {{project._chair.name}}</p><p>Type of project: {{project._projetType.protjectType}}</p>
+         </div>
+    </div>
+  </div>
+</div>
+</div>
