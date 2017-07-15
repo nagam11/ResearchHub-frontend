@@ -30,9 +30,9 @@ export class RatingsService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-  createRating(rating: any): Promise<any> {
+  createRating(rating: Rating): Promise<any> {
     let options = new RequestOptions({ headers: this.headers });
-    //let user = this.UserService.getCurrentUser(); TODO user services
+    // let user = this.UserService.getCurrentUser(); TODO user services
     return this.http.post(this.url, rating, options).toPromise()
       .then(this.extractData)
       .catch(this.handleError);

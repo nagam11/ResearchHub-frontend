@@ -19,11 +19,13 @@ import {visitProjectedRenderNodes} from "@angular/core/src/view/util";
 export class ResearchRatingComponent implements OnInit {
   researches: Project;
   project: Project;
-  rating: Rating;
+ // rating: Rating;
   rate: Rating;
   ratings: Rating[] = [];
+  temp: any;
 
   companies: Company[] = [];
+  id: string;
 
   selectedCompany: Company;
   interestedSkills: string;
@@ -38,8 +40,8 @@ export class ResearchRatingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.project = new Project();
-    this.rating = new Rating();
+    this.project = new Project();
+   // this.rating = new Rating();
     this.rate = new Rating();
     this.route.params
       .subscribe((params: Params) => { this.projectsService.getProject(params['id']).then((project) => {
@@ -47,15 +49,35 @@ export class ResearchRatingComponent implements OnInit {
         console.log(this.project);
       });
   } );
-    this.companiesService.getCompanies().then(companies => this.companies = companies);
+   // this.ratings = this.project.ratings;
+   // this.companiesService.getCompanies().then(companies => this.companies = companies);
 }
 
   save(): void {
-    this.ratingsService.createRating(this.rating)
-      .then((rating) => {
-        this.rating = rating;
-        this.goBack();
+    this.rate.InterestFields = this.interestedSkills;
+    this.rate.Description = this.Description;
+    this.ratingsService.createRating(this.rate).then((rate) => {
+      this.rate = rate;
+       // this.goBack();
       });
+    // this.ratingsService.getRatings().then((ratings) => {
+    //  this.ratings = ratings;
+    // });
+    this.ratings = this.project.ratings;
+    console.log('received data...');
+    console.log(this.project.ratings);
+    this.ratings.push(this.rate);
+    this.project.ratings = this.ratings;
+    console.log('ID for created rating...');
+    console.log(this.rate);
+    console.log(this.rate._id);
+   // alert(this.rate._id);
+   // console.log(this.temp._id);
+   // this.project.ratings.push(this.rate);
+
+    this.projectsService.update(this.project).then(project  => {
+      this.project = project;
+    });
   }
 
   goBack(): void {

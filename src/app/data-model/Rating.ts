@@ -2,9 +2,9 @@
  * created by Moawiah. 13.07.2017
  */
 export class Rating {
- // _id: number;
+  _id: string;
   InterestFields: String;
   Description: String;
-  company: String;
+ // company: String;
  // Company1?: any;
 }

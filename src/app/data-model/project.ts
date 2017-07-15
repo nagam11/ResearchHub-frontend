@@ -23,7 +23,7 @@ export class Project {
   _advisor: Academic;
   _superadvisor: Academic;
   _requeredSkills: Skill[];
-  ratings: any;
+  ratings: Rating[];
   // _rate: Rating;
   ratingDes: string;
   ratingFields: string;
