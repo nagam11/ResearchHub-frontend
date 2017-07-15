@@ -79,8 +79,8 @@
                     <h4>Required level *</h4></div>
                   <div class="col-sm-8">
                     <div *ngFor="let educationLevel of educationLevels">
-                      <label class="customCheckbox" *ngIf="selectedEducationLevels">
-                        <input [checked]="selectedEducationLevels.indexOf(educationLevel) !== -1" type="checkbox" #cb1 name="educationLevel" (change)="levelsCheckbox(educationLevel,cb1)">
+                      <label class="customCheckbox">
+                        <input [checked]="stringOfLevels.indexOf(educationLevel.level) != -1" type="checkbox" #cb1 name="educationLevel" (change)="levelsCheckbox(educationLevel,cb1)">
                         {{educationLevel.level}}
                       </label>
                     </div>
@@ -123,7 +123,7 @@
                   <div class="col-sm-8">
                     <div *ngFor="let language of languages">
                       <label class="customCheckbox">
-                        <input type="checkbox" #cb2 name="language" (change)="languageCheckbox(language,cb2)">
+                        <input type="checkbox" [checked]="stringsOfLanguages.indexOf(language.language) != -1" #cb2 name="language" (change)="languageCheckbox(language,cb2)">
                         {{language.language}}</label>
                     </div>
                   </div>
@@ -136,7 +136,7 @@
                   <div class="col-sm-8">
                     <div class="form-group">
                       <div class="form-group">
-                        <select [(ngModel)]="selectedCompany" class="form-control"  #partner ="ngModel" name='partner'  >
+                        <select [(ngModel)]="selectedCompany" class="form-control" [compareWith]="equals" #partner ="ngModel" name='partner'  >
                           <option *ngFor="let company of companies" [ngValue]="company">{{company.name}}</option>
                         </select>
                       </div>

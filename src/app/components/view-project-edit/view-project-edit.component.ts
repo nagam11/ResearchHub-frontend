@@ -59,6 +59,8 @@ export class EditProjectComponent implements OnInit {
   selectedRequiredLevel: EducationLevel[] = [];
   selectedLanguages: Language[] = [];
   selectedEducationLevels: EducationLevel[] = [];
+  stringOfLevels: String = '';
+  stringsOfLanguages: String = '';
 
   constructor(
     // Service init
@@ -93,8 +95,18 @@ export class EditProjectComponent implements OnInit {
         this.selectedAcademic = project._superadvisor;
         this.selSkills = project._requeredSkills;
         this.selectedEducationLevels = project._requeredLevel;
-        console.log(this.selectedEducationLevels);
-        console.log(this.selectedEducationLevels.indexOf(this.selectedEducationLevels[0]) !== -1);
+        this.selectedLanguages = project._languages;
+        this.selectedCompany = project._partner;
+        if (this.selectedEducationLevels.length > 1) {
+            this.stringOfLevels = this.selectedEducationLevels[0].level.concat(this.selectedEducationLevels[1].level);
+        } else {
+          this.stringOfLevels = this.selectedEducationLevels[0].level;
+        }
+        if (this.selectedLanguages.length > 1) {
+          this.stringsOfLanguages = this.selectedLanguages[0].language.concat(this.selectedLanguages[1].language);
+        } else {
+          this.stringsOfLanguages = this.selectedLanguages[0].language;
+        }
       });
       });
   }
@@ -108,6 +120,7 @@ export class EditProjectComponent implements OnInit {
     this.academicsService.getAcademics().then(academics => this.academics = academics);
     this.educationLevelService.getEducationLevels().then(educationLevels => this.educationLevels = educationLevels );
     this.languageService.getLanguagesLevels().then(languages => this.languages = languages);
+    this.companiesService.getCompanies().then(companies => this.companies = companies);
   }
 
   cancel(): void {
@@ -138,12 +151,14 @@ export class EditProjectComponent implements OnInit {
     //this.selectedAcademic.projects = [project];
     //this.academicsService.update(this.selectedAcademic);
     console.log(this.project);
-    this.projectService.create(this.project);
-    this.router.navigate(['/createsuccess']);
+   // this.projectService.create(this.project);
+    //this.router.navigate(['/createsuccess']);
   }
 
   equals(o1: any, o2: any) {
-    return o1._id === o2._id;
+    if (o1 != null && o2 != null) {
+      return o1._id === o2._id;
+    }
   }
 
   // --save selected required Levels
