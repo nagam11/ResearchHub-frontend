@@ -1,6 +1,6 @@
 import 'rxjs/add/operator/switchMap';
 import {Component, OnInit}      from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import { ActivatedRoute, ParamMap ,Params, Router } from '@angular/router';
 import {Location}               from '@angular/common';
 
 
@@ -27,12 +27,13 @@ export class ResearchRatingComponent implements OnInit {
 
   selectedCompany: Company;
   interestedSkills: string;
-  description: string;
+  Description: string;
   constructor(
               private projectsService: ProjectsService,
               private route: ActivatedRoute,
               private ratingsService: RatingsService,
               private companiesService: CompaniesService,
+              private router: Router,
               private location: Location) {
   }
 
@@ -64,15 +65,15 @@ export class ResearchRatingComponent implements OnInit {
   onSubmit() {
    // this.rate.InterestFields = this.interestedSkills;
    // this.rate.Description = this.description;
-    this.project._partner = this.selectedCompany;
-    this.project.ratings.Description = this.description;
-    this.project.ratings.InterestFields = this.interestedSkills;
+   // this.project._partner = this.selectedCompany;
+    this.project.ratingDes = this.Description;
+    this.project.ratingFields = this.interestedSkills;
    // this.project.ratings.push(this.rate);
     // this.project.ratings = this.rate;
     console.log(this.project);
     this.projectsService.update(this.project).then(project  => {
       this.project = project;
     });
-    // this.router.navigate(['/createsuccess']);
+     this.router.navigate(['/ratesuccess']);
   }
 }

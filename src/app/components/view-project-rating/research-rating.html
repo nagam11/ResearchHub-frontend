@@ -8,20 +8,7 @@
 <div *ngIf="project">
   <h2>Project Topic:  {{project.title}}</h2>
 
-  <!--Projects company partner-->
-  <div class="row">
-    <div class="col-sm-4">
-      <h4>Company Name</h4></div>
-    <div class="col-sm-8">
-      <div class="form-group">
-        <div class="form-group">
-          <select [(ngModel)]="selectedCompany" class="form-control"  #partner ="ngModel" name='partner'  >
-            <option *ngFor="let company of companies" [ngValue]="company">{{company.name}}</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <div class="row">
     <div class="form-group">
       <div class="col-sm-3">
@@ -30,18 +17,34 @@
       </div>
     </div>
   </div>
+  <form #createProjectForm="ngForm" autocomplete="off" class="registration-form" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="form-group">
       <div class="col-sm-3">
         <label>Description:</label></div>
-      <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="description" class="form-control" >
+      <div class="col-sm-9">
+        <textarea type="text" placeholder="Please enter title" id="description" [(ngModel)]="Description" class="form-control"
+                  name="description" #description="ngModel" required minlength="10">
+      </textarea>
+        <!--Angular Form Validations-->
+        <div *ngIf="description.errors && (description.dirty || description.touched)"
+             class="alert alert-danger">
+          <div [hidden]="!description.errors.required">
+            Description is required
+          </div>
+          <div [hidden]="!description.errors.minlength">
+            Description must be at least 10 characters long.
+          </div>
+        </div>
+        <!--End Angular Form Validations-->
       </div>
     </div>
   </div>
+  </form>
 
 
-  <button (click)="goBack()">Back</button>
-  <button (click)="onSubmit()">Submit</button>
+  <button class="ControlButton" (click)="goBack()">Back</button>
+  <button type="submit" class="ControlButton" [disabled]="!createProjectForm.form.valid" (click)="onSubmit()">Submit</button>
 </div>
 </div>
 </div>

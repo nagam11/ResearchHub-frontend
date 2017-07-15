@@ -37,7 +37,7 @@ export class RatingsService {
       .then(this.extractData)
       .catch(this.handleError);
   }
-  update(rating: Rating): Promise<Rating> {
+  /*update(rating: Rating): Promise<Rating> {
     const url = `${this.url}/${rating._id}`;
     console.log(url);
     return this.http
@@ -45,5 +45,5 @@ export class RatingsService {
       .toPromise()
       .then(response => response.json() as Rating)
       .catch(this.handleError);
-  }
+  }*/
 }

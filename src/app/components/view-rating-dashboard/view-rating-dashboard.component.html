@@ -15,18 +15,18 @@
                 [attr.data-target]="'#' + project._id">See More...
         </button>
         <button type="button" class="btn btn-default pull-right heading-button" [routerLink]="['/rating', project._id]"
-                routerLinkActive="active">Rating
+                routerLinkActive="active">Rate
         </button>
       </div>
       </div>
       <div class="clearfix"></div>
     <div id="{{project._id}}" class="panel-collapse collapse">
       <div class="panel-body">
-        <div  *ngFor="let rating of project.ratings">
-        Needed Skills: {{rating.InterestFields}} <br>
-        Rated by: {{project._partner.name}} <br>
-        Description: {{rating.Description}}
-        </div>
+     <!--   <div  *ngFor="let rating of project.ratings"> -->
+        Needed Skills: {{project.ratingFields}} <br>
+        Description: {{project.ratingDes}}
+        <!--  Rated by: {{project._partner.name}} <br> -->
+      <!--  </div> -->
       </div>
   </div>
     </div>
