@@ -22,13 +22,12 @@ export class AcademicsService {
   }
   private extractData(res: Response) {
     let body = res.json();
-    //return body.data || {};
     return body;
   }
   update(academic: any): Promise<any> {
-    //const url = `${this.url}/${academic._id}`;
+    const url = `${this.url}/${academic._id}`;
     return this.http
-      .put(this.url, JSON.stringify(academic), {headers: this.headers})
+      .put(url, JSON.stringify(academic), {headers: this.headers})
       .toPromise()
       .then(() => academic)
       .catch(this.handleError);

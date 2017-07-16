@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {ResearchHubService} from "./researchHubService";
 import {Project} from "../data-model/project";
 import {SearchCriteria} from "../data-model/searchCriteria";
+import {SearchCriteriaToSend} from "../data-model/SearchCriteriaToSend";
 @Injectable()
 export class SearchService extends ResearchHubService {
   private resource = 'projects/search';
@@ -11,7 +12,7 @@ export class SearchService extends ResearchHubService {
     super();
 
   }
-  searchForProjectsByCriteria(searchCriteria: SearchCriteria): Promise<any> {
+  searchForProjectsByCriteria(searchCriteria: SearchCriteriaToSend): Promise<any> {
     let options = new RequestOptions({ headers: this.getHeaders() });
     // let user = this.UserService.getCurrentUser(); TODO user services
     console.log(JSON.stringify(searchCriteria));

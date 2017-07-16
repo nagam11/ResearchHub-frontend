@@ -1,6 +1,9 @@
 /**
  * created by MarlaN. 13.06.2017
  */
+/**
+ * Modified by Moawiah. 08.07.2017
+ */
 import { Injectable }    from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -41,11 +44,12 @@ export class ProjectsService {
       .then(() => null)
       .catch(this.handleError);
   }
-  create(project: any): Promise<any> {
+  create(project: Project): Promise<any> {
+    console.log('test');
     let options = new RequestOptions({ headers: this.headers });
     //let user = this.UserService.getCurrentUser(); TODO user services
     return this.http.post(this.url, project, options).toPromise()
-      .then(this.extractData)
+      .then(this.extractDataGet)
       .catch(this.handleError);
   }
   update(project: Project): Promise<Project> {
@@ -58,10 +62,6 @@ export class ProjectsService {
       .catch(this.handleError);
   }
 
-  private extractData(res: Response) {
-    let body = res.json();
-    return body.data || {};
-  }
   private extractDataGet(res: Response) {
     let body = res.json();
     return body;

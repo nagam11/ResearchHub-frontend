@@ -187,9 +187,9 @@
               <!--Projects advisor-->
               <div class="row">
                 <div class="form-group">
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <h4>Advisor</h4></div>
-                  <div class="col-sm-9"><input type="text" placeholder="The user's name" [(ngModel)]="project.advisor"
+                  <div class="col-sm-8"><input type="text" placeholder="The user's name" [(ngModel)]="project.advisor"
                                                name="advisor" class="form-control">
                   </div>
                 </div>
@@ -198,9 +198,9 @@
               <!--Projects supervisor-->
               <div class="row">
                 <div class="form-group">
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <h4>Supervisor</h4></div>
-                  <div class="col-sm-9">
+                  <div class="col-sm-8">
                     <div class="form-group">
                       <select [(ngModel)]="selectedAcademic" class="form-control" required  #supervisor ="ngModel" name='supervisor'  >
                         <option *ngFor="let academic of academics" [ngValue]="academic">{{academic.firstname}}&nbsp;{{academic.lastname}}</option>

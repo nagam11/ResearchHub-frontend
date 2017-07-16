@@ -1,0 +1,166 @@
+
+<div class="container">
+  <h2></h2>
+  <div id="container">
+    <div class="container-fluid text-center">
+      <div class="row">
+        <br><br>
+      </div>
+      <div class="row content">
+        <div class="col-lg-3 sidenav">
+        </div>
+        <div class="col-lg-9 text-left">
+          <div class="form-box animated fadeIn">
+
+            <div class="form-bottom">
+              <!--Projects Form-->
+              <form #createProjectForm="ngForm" autocomplete="off" class="registration-form" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-12 col-centered">
+                      <input type="text" placeholder="Please enter a title.." [(ngModel)]="project.title" name="title"
+                             #title="ngModel" class="form-control form-first-name" required minlength="4" maxlength="24" disabled>
+                    </div>
+                  </div>
+                </div>
+                <!--Project Type-->
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-4">
+                      <br>
+                      <h4>Project type *</h4>
+                    </div>
+                    <br>
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <select disabled class="form-control">
+                          <option >{{selProjectType.protjectType}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!--Projects required level-->
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h4>Required level *</h4></div>
+                  <div class="col-sm-8">
+                    <div *ngFor="let educationLevel of selLevels">
+                      <label class="customCheckbox">
+                        <input type="checkbox" name="educationLevel" checked disabled>
+                        {{educationLevel.level}}</label>
+                    </div>
+                  </div>
+                </div>
+                <!--Projects chair-->
+                <div class="row">
+                  <div class="col-sm-4">
+                    <br>
+                    <h4>Chair *</h4></div>
+                  <br>
+                  <div class="col-sm-8">
+                    <div class="form-group">
+                      <select disabled class="form-control" >
+                        <option>{{selectedChair.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!--Projects language-->
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h4>Language *</h4>
+                  </div>
+                  <div class="col-sm-8">
+                    <div *ngFor="let language of selLanguages">
+                      <label class="customCheckbox">
+                        <input type="checkbox" checked disabled name="language">
+                        {{language.language}}</label>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!--Projects company partner-->
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h4>Company partner</h4></div>
+                  <div class="col-sm-8">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <select disabled class="form-control"  >
+                          <option *ngIf="selCompany">{{selCompany.name}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!--Projects description-->
+                <div class="row">
+                  <div class="col-lg-12 col-centered">
+                    <div class="form-group">
+                <textarea class="form-control" disabled rows="5" id="description" [(ngModel)]="project.description"
+                          name="description" #description="ngModel" required minlength="10"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <!--Projects skills-->
+                <div class="row" *ngIf="selSkills?.length > 0">
+                    <div class="col-sm-4">
+                      <h4>Skills </h4></div>
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <div class="btn-toolbar">
+                          <button *ngFor="let skill of selSkills" class="btn skillsButton1" type="button" disabled>
+                            {{skill.skill}}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!--Projects advisor-->
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-4">
+                      <h4>Advisor</h4></div>
+                    <div class="col-sm-8"><input type="text" disabled placeholder="The user's name" [(ngModel)]="project.advisor"
+                                                 name="advisor" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!--Projects supervisor-->
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-4">
+                      <h4>Supervisor</h4></div>
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <select  disabled class="form-control"   >
+                          <option >{{selectedSupervisor.firstname}} {{selectedSupervisor.lastname}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br><br>
+                <div class="row">
+                  <div class="col-lg-4"></div>
+                  <div class="col-lg-8">
+                    <button type="button" (click)="edit(project)" class="btn btn-outline btn-xl btn-form ">Edit</button>
+                  </div>
+                </div>
+                <br>
+              </form>
+              <!--End Projects Form-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

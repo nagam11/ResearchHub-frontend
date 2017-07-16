@@ -31,10 +31,10 @@ export class ViewProjectsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    console.log('Component created');
     this.projectsService.getProjects().then(projects => this.projects = projects);
   }
 
+<<<<<<< HEAD:src/app/internals/components/view-projects/view-projects.component.ts
   // --delete project
   delete(_id: string) {
     this.projectsService.delete(_id);
@@ -42,9 +42,22 @@ export class ViewProjectsComponent implements OnInit {
     this.router.navigate(['/internals/createsuccess']);
   }
 
+=======
+>>>>>>> master:src/app/components/view-projects/view-projects.component.ts
   // --edit project
   edit(project: Project) {
     this.router.navigate(['/internals/editproject', project._id ]);
   }
 
+  delete(_id: string) {
+    if (confirm('You are about to delete a project. Click yes to proceed.') === true) {
+      this.projectsService.delete(_id);
+      this.router.navigate(['/createsuccess']);
+    } else {
+    }
+  }
+
+  open( project: Project) {
+    this.router.navigate(['/viewproject', project._id]);
+  }
 }

@@ -11,6 +11,11 @@ import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+// import data model
+import {Rating} from '../../data-model/Rating';
+// import service
+//import { RatingsService } from '../../services/ratings.service';
+import { CompaniesService } from '../../services/companies.service';
 
 
 @Component({
@@ -20,10 +25,20 @@ import 'rxjs/add/operator/map';
 })
 export class DashboardComponent implements OnInit {
 
+  ratings: Rating[] = [];
   projects: Project[] = [];
-  constructor(private ProjectsService: ProjectsService) { }
+  // selected rating
+  // selectedRating: Rating;
+  constructor(
+    private projectsService: ProjectsService,
+    private companiesService: CompaniesService
+    // private ratingsService: RatingsService
+  ) { }
   ngOnInit(): void {
-    this.ProjectsService.getProjects().then(projects => this.projects = projects);
+    this.projectsService.getProjects().then(projects => {
+      this.projects = projects;
+    });
+    // this.ratingsService.getRatings().then(ratings => this.ratings = ratings);
   }
 }
 

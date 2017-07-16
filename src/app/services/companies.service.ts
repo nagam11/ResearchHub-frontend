@@ -21,6 +21,13 @@ export class CompaniesService {
       .then(this.extractData)
       .catch(this.handleError);
   }
+  getCompany(id: any): Promise<any> {
+    const url = `${this.url}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(this.extractDataGet)
+      .catch(this.handleError);
+  }
   private extractData(res: Response) {
     let body = res.json();
     return body;
@@ -30,8 +37,13 @@ export class CompaniesService {
     return Promise.reject(error.message || error);
   }
 
+  private extractDataGet(res: Response) {
+    let body = res.json();
+    return body;
+  }
+
   createRepresentative(companyUser: CompanyUser) {
     return this.http.post('http://localhost:3000/api/companyUsers/signup', companyUser).map((response: Response) => response.json());
-  }
 }
 
+}
