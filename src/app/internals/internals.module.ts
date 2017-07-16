@@ -27,6 +27,7 @@ import { EditProfileComponent } from './components/view-edit-profile/view-edit-p
 import { UpdateSuccessComponent } from './components/view-update-sucess/view-update-success.component';
 import { UpdateFailureComponent } from './components/view-update-failure/view-update-failure.component';
 import {ViewProjectComponent} from './components/view-project/view-project.component';
+import {ViewApplicationsComponent} from './components/view-applications/view-applications.component';
 import {CreateProjectRatingSuccessComponent} from './components/view-project-rate-success/view-project-rate-success.component';
 // import Services
 import { ProjectsService } from '../services/projects.service';
@@ -71,6 +72,7 @@ import {StudentGuard} from '../guard/StudentGuard';
     EditProfileComponent,
     UpdateSuccessComponent,
     UpdateFailureComponent,
+    ViewApplicationsComponent,
     ViewProjectComponent,
     CreateProjectRatingSuccessComponent,
     ImagePreview

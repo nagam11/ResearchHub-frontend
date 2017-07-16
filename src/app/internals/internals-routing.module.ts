@@ -13,6 +13,7 @@ import { InternalsAppComponent } from './components/internals-home/internals-hom
 import {CreateProjectRatingSuccessComponent} from './components/view-project-rate-success/view-project-rate-success.component';
 import {ViewProjectComponent} from './components/view-project/view-project.component';
 import { EditProfileComponent } from './components/view-edit-profile/view-edit-profile.component';
+import {ViewApplicationsComponent} from './components/view-applications/view-applications.component';
 import { UpdateSuccessComponent } from './components/view-update-sucess/view-update-success.component';
 import { UpdateFailureComponent } from './components/view-update-failure/view-update-failure.component';
 import { AuthGuard } from '../guard/guard';
@@ -42,6 +43,7 @@ const internalsRoutes: Routes = [
           { path: 'updatefailure', component: UpdateFailureComponent },
           { path: 'ratesuccess',   component: CreateProjectRatingSuccessComponent},
           { path: 'viewproject/:id',   component: ViewProjectComponent},
+          {path: 'viewapplications', component: ViewApplicationsComponent}
         ]
       }
     ]
