@@ -63,6 +63,7 @@ export class ResearchRatingComponent implements OnInit {
     this.rate.Representative = this.Representative;
     this.ratingsService.createRating(this.rate).then((rating) => {
       this.rating = rating;
+      console.log(this.rating);
       this.project.ratings.push(this.rating);
       this.projectsService.update(this.project);
     });

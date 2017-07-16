@@ -23,6 +23,7 @@ export class RatingsService {
   }
   private extractData(res: Response) {
     let body = res.json();
+    console.log(body);
     //return body.data || {};
     return body;
   }
