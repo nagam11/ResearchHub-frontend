@@ -30,6 +30,7 @@
        [class.selected]="project === selectedResearch">
     <div class="panel-heading customPanel"> Project Topic: {{project.title}} </div>
     <div class="panel-body">Faculty: {{project._chair.name}}
+      <br> Type: {{project._projetType.protjectType}}
       <div class="pull-right">
         <button type="button" class="btn btn-default pull-right heading-button" data-toggle="collapse"
                 [attr.data-target]="'#' + project._id">See More...
@@ -43,10 +44,11 @@
     <div id="{{project._id}}" class="panel-collapse collapse">
       <div class="panel-body">
         <div  *ngFor="let rating of project.ratings">
-        Representative: {{rating.Representative}}<br>
-        Skills of Interest: {{rating.InterestFields}} <br>
-        Description: {{rating.Description}}<br>
+          Representative: {{rating.Representative}}
+          <br>Skills of Interest: {{rating.InterestFields}}
+          <br>Description: {{rating.Description}}
 
+          <br>
           <br>
        <!--   Rated by: {{project._partner.name}} <br> -->
         </div>

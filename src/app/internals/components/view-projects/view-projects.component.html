@@ -16,7 +16,8 @@
         <div class="btn-toolbar pull-right">
         <button type="button" [routerLink]="['/internals/editproject', project._id]" routerLinkActive="active" class="btn btn-danger pull-right customButton1">Edit </button>&nbsp;
           <button type="button" (click)="delete(project._id)" class="btn btn-danger pull-right customButton">Delete</button>
-        </div></div></div>
+        </div></div>
+      </div>
         <div class="panel-body"><p>Description: {{project.description}}</p>
           <p>Chair: {{project._chair.name}}</p><p>Type of project: {{project._projetType.protjectType}}</p>
          </div>
