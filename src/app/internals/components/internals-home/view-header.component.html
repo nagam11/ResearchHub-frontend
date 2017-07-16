@@ -1,0 +1,148 @@
+<nav class="navbar navbar-default navbar-fixed-top ">
+  <div class="navbar-header">
+    <a class="navbar-brand" routerLink="/internals/viewdashboard">ResearchHub</a>
+  </div>
+  <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav navbar-right">
+      <li><input #searchBox id="search-box" class="form-control searchinput" (keyup)="search(searchBox.value)" placeholder="Search"/></li>
+      <!--TODO fix dropdowns-->
+
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-messages">
+          <li>
+            <a href="#">
+              <div>
+                <strong class="customerDropdown">Marla Narazani</strong>
+                <span class="pull-right text-muted">
+                                        <em class="custom-em">Yesterday</em>
+                                    </span>
+              </div>
+              <div>Test message</div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <strong class="customerDropdown">Muawiya Assali</strong>
+                <span class="pull-right text-muted">
+                                        <em class="custom-em">Yesterday</em>
+                                    </span>
+              </div>
+              <div>Test message</div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <strong class="customerDropdown">Wagram Aiiran</strong>
+                <span class="pull-right text-muted">
+                                        <em class="custom-em">Yesterday</em>
+                                    </span>
+              </div>
+              <div>Test 3</div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a class="text-center" href="#">
+              <strong class="customerDropdown">Read All Messages</strong>
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- /.dropdown-messages -->
+      </li>
+
+      <li class="nav-item dropdown" ngbDropdown>
+        <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+          <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <a href="javascript:void(0)" class="dropdown-item">Pending Task <span class="badge badge-info">6</span></a>
+          <a href="javascript:void(0)" class="dropdown-item">In queue <span class="badge badge-info"> 13</span></a>
+          <a href="javascript:void(0)" class="dropdown-item">Mail <span class="badge badge-info"> 45</span></a>
+          <li class="dropdown-divider"></li>
+          <a href="javascript:void(0)" class="dropdown-item">View All</a>
+        </ul>
+      </li>
+      <li class="nav-item dropdown" ngbDropdown>
+        <a routerLink="/internals/editprofile" [routerLinkActive]="['router-link-active']" class="nav-link" ngbDropdownToggle>
+          <i class="fa fa-user-circle"></i> {{UserName}} <b class="caret"></b>
+          <a (click)="logout()" style="text-decoration: none; font-size: 11pt;">Sign Out</a>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-user"></i> Profile</a>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-gear"></i> Settings</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+  <ul class="list-group">
+    <ul class="sidebar-nav sidebar1">
+      <li class="sidebar-brand">
+      </li>
+
+      <a routerLink="/internals/viewdashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-dashboard"></i>&nbsp;Dashboard
+      </a>
+
+      <a routerLink="/internals/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-cubes"></i>&nbsp;Rating Dashboard
+      </a>
+
+      <a routerLink="/internals/createproject" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-fw fa-edit"></i>&nbsp;New Project
+      </a>
+
+      <a routerLink="/internals/projects" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-newspaper-o"></i>&nbsp;My Projects
+      </a>
+
+      <a routerLink="/internals/searchproject" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fa fa-search"></i> Search for a project
+      </a>
+
+    </ul>
+  </ul>
+  <div class="sidebar-footer custom-footer">
+    <div class="col-xs-4">
+      <a href="https://github.com/nagam11/ResearchHub-frontend/" target="_blank">
+        Github
+      </a>
+    </div>
+    <div class="col-xs-4">
+      <a href="https://github.com/nagam11/ResearchHub-frontend/blob/master/README.md" target="_blank">
+        About
+      </a>
+    </div>
+    <div class="col-xs-4">
+      <a href="#">
+        Support
+      </a>
+    </div>
+  </div>
+</div>
+<!-- End Sidebar -->
+<!--<a class="btn btn-primary" [routerLink]="['/internals/viewdashboard', { outlets: { sidebar: ['internals/sidenav'] } }]">Sidebar</a>-->
+<!--<router-outlet name="sidebar"></router-outlet>-->
+
+<div class="page-content">
+  <div id="content-wrapper">
+    <div>
+      <br>
+      <br>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

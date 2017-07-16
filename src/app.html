@@ -5,25 +5,36 @@
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
     <!--Links-->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <noscript>
+      <link rel="stylesheet" href="./css/skel.css" />
+      <link rel="stylesheet" href="./css/style.css" />
+      <link rel="stylesheet" href="./css/style-xlarge.css" />
+    </noscript>
+    <link rel="icon" type="image/png" href="favicon.ico">
 
     <!--Scripts-->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="node_modules/core-js/client/shim.min.js"></script>
-      <script src="node_modules/zone.js/dist/zone.js"></script>
-      <script src="node_modules/systemjs/dist/system.src.js"></script>
-      <script src="systemjs.config.js"></script>
-      <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script src="./js/jquery.min.js"></script>
+
+    <script>
         System.import('main.js').catch(function(err){ console.error(err); });
-      </script>
-    </head>
-    <body >
+    </script>
+  </head>
+  <body>
       <my-app>Loading AppComponent content here ...</my-app>
-    </body>
-  </html>
+  </body>
+</html>
