@@ -158,12 +158,8 @@ export class EditProjectComponent implements OnInit {
     this.project._requeredLevel = this.selectedRequiredLevel;
     this.project._languages = this.selectedLanguages;
     this.project._partner = this.selectedCompany;
-    //TODO add projects for academic
-    //this.selectedAcademic.projects = [project];
-    //this.academicsService.update(this.selectedAcademic);
-    console.log(this.project);
-   // this.projectService.create(this.project);
-    //this.router.navigate(['/createsuccess']);
+    this.projectService.update(this.project);
+    this.router.navigate(['/createsuccess']);
   }
 
   equals(o1: any, o2: any) {
@@ -180,7 +176,6 @@ export class EditProjectComponent implements OnInit {
       this.selectedRequiredLevel = this.selectedRequiredLevel.filter(arrayItem => arrayItem !== item);
     }
     for (let entry of this.selectedRequiredLevel) {
-      console.log(entry.level);
     }
   }
 
@@ -192,7 +187,6 @@ export class EditProjectComponent implements OnInit {
       this.selectedLanguages = this.selectedLanguages.filter(arrayItem => arrayItem !== item);
     }
     for (let entry of this.selectedLanguages) {
-      console.log(entry);
     }
   }
 }

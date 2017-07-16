@@ -39,12 +39,7 @@ export class SkillsService {
   }
   rawsearch(terms: string) {
        return this.http.get(this.url + terms).toPromise()
-         .then(this.extractDataGet)
+         .then(this.extractData)
          .catch(this.handleError);
-  }
-
-  private extractDataGet(res: Response) {
-    let body = res.json();
-    return body;
   }
 }

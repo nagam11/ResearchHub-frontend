@@ -109,11 +109,13 @@ export class CreateProjectComponent implements OnInit {
     this.project._requeredLevel = this.selectedRequiredLevel;
     this.project._languages = this.selectedLanguages;
     this.project._partner = this.selectedCompany;
-    //TODO add projects for academic
-    //this.selectedAcademic.projects = [project];
-    //this.academicsService.update(this.selectedAcademic);
-    console.log(this.project);
-    this.projectService.create(this.project);
+    this.projectService.create(this.project).then((project) => {
+      // ----add projects for academic
+      this.project = project;
+      this.selectedAcademic.projects.push(this.project);
+      console.log(this.selectedAcademic);
+      this.academicsService.update(this.selectedAcademic);
+    });
     this.router.navigate(['/createsuccess']);
   }
   // --save selected skills
@@ -133,7 +135,6 @@ export class CreateProjectComponent implements OnInit {
       this.selectedRequiredLevel = this.selectedRequiredLevel.filter(arrayItem => arrayItem !== item);
     }
     for (let entry of this.selectedRequiredLevel) {
-      console.log(entry.level);
     }
   }
 
@@ -145,7 +146,6 @@ export class CreateProjectComponent implements OnInit {
       this.selectedLanguages = this.selectedLanguages.filter(arrayItem => arrayItem !== item);
     }
     for (let entry of this.selectedLanguages) {
-      console.log(entry);
     }
   }
 }
