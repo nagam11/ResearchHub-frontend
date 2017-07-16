@@ -22,7 +22,6 @@ export class Profile {
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       let decoded = this.jwtHelper.decodeToken(token).user;
       if (decoded) {
-        console.log(decoded.kind);
         return decoded.kind;
       }
     }

@@ -5,7 +5,12 @@ import { Student } from '../data-model/student';
 
 @Injectable()
 export class StudentService {
-  constructor(private http: Http) { }
+  options: RequestOptions;
+  private headers: Headers;
+  constructor(private http: Http) {
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
+  }
 
   getAll() {
     return this.http.get('http://localhost:3000/api/user/').map((response: Response) => response.json());
@@ -48,5 +53,12 @@ export class StudentService {
       //}
       return response;
     });
+  }
+
+  putStudent(student: any) {
+    console.log(student);
+    return this.http
+      .put('http://localhost:3000/api/students/update/' + student._id, JSON.stringify(student), {headers: this.headers})
+      .toPromise();
   }
 }

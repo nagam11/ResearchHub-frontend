@@ -1,5 +1,6 @@
 import { EducationLevel } from './educationLevel';
 import { Faculty } from './faculty';
+import {Project} from './project';
 export class Student {
   id: number;
   password: string;
@@ -16,4 +17,5 @@ export class Student {
   minor: string;
   graduation: string;
   cv: string;
+  projectsApplied: Project[];
 }
