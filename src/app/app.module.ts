@@ -1,3 +1,7 @@
+/**
+ * created by MarlaN. 10.06.2017
+ */
+
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
@@ -17,6 +21,7 @@ import { ViewProjectsComponent }  from './components/view-projects/view-projects
 import {CreateProjectSuccessComponent} from './components/view-project-create-success/view-project-create-success.component';
 import {ViewDashboardComponent} from './components/view-dashboard/view-dashboard.component';
 import {EditProjectComponent} from './components/view-project-edit/view-project-edit.component';
+import {CreateProjectRatingSuccessComponent} from './components/view-project-rate-success/view-project-rate-success.component';
 import {ViewProjectComponent} from './components/view-project/view-project.component';
 // import Services
 import {ProjectsService} from './services/projects.service';
@@ -30,6 +35,7 @@ import {EducationLevelService} from './services/educationLevel.service';
 import {LanguagesService } from './services/languages.service';
 import {SkillsService} from './services/skills.service';
 import {CompaniesService} from './services/companies.service';
+import {RatingsService} from './services/ratings.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -47,13 +53,13 @@ import {CompaniesService} from './services/companies.service';
     CreateProjectSuccessComponent,
     ViewDashboardComponent,
     SearchProjectComponent,
+    CreateProjectRatingSuccessComponent,
     EditProjectComponent,
     ViewProjectComponent
-
   ],
   providers: [ ProjectsService,
                SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService, AcademicsService,
-    EducationLevelService, LanguagesService, SkillsService, CompaniesService
+    EducationLevelService, LanguagesService, SkillsService, CompaniesService, RatingsService
   ],
   bootstrap: [ AppComponent ]
 })

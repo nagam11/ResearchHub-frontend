@@ -3,7 +3,7 @@
  */
 // --import libraries
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap ,Params }            from '@angular/router';
+import { Router, ActivatedRoute, ParamMap , Params }            from '@angular/router';
 import { Location }               from '@angular/common';
 import { Subject } from 'rxjs/subject';
 import 'rxjs/add/operator/map';
@@ -29,6 +29,10 @@ import {AcademicsService} from '../../services/academics.service';
 import {EducationLevelService} from '../../services/educationLevel.service';
 import {ProjectTypeService} from '../../services/projectType.service';
 import {LanguagesService } from '../../services/languages.service';
+import { Injectable } from '@angular/core';
+import { Http }       from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import {SkillsService} from '../../services/skills.service';
 import {CompaniesService} from '../../services/companies.service';
 
@@ -190,4 +194,3 @@ export class EditProjectComponent implements OnInit {
     }
   }
 }
-
