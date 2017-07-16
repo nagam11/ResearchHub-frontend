@@ -49,4 +49,10 @@ export class StudentService {
       return response;
     });
   }
+
+  getStudentPhoto(id: number): Promise<any> {
+    return this.http.get('http://localhost:3000/api/photos/' + id).toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
 }

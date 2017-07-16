@@ -24,7 +24,16 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-3">
-                <label>Upload photo </label>
+                <label>Your photo </label>
+              </div>
+              <div class="col-sm-4">
+                <img *ngIf="!reload" src={{photo}} style="width:250px; height:250px;" />
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-3">
+                <label>Upload new photo </label>
               </div>
               <div class="col-sm-4">
                 <div ng2FileDrop
@@ -36,7 +45,7 @@
                   <span *ngIf="!uploader.getNotUploadedItems().length">Drop your photo</span>
                   <div *ngFor="let item of uploader.queue" class="media">
                     <div class="media-left">
-                      <img src="" imgPreview [image]="item?._file" class="media-object" style="max-width:250px; max-height:250px;" />
+                      <img src="" imgPreview [image]="item?._file" class="media-object" style="width:250px; height:250px;" />
                     </div>
                     <div class="media-body">
                       <p>{{ item?.file?.name }}</p>
@@ -45,14 +54,9 @@
                 </div>
               </div>
               <div class="col-sm-1">
-                <button class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload</button>
-                <br>
+                <button class="btn btn-success btn-s" (click)="uploadPhoto()" [disabled]="!uploader.getNotUploadedItems().length">Upload</button>
                 <button class="btn btn-primary" type="button" *ngIf="uploader.getNotUploadedItems().length"
-                        (click)="discardPhoto()" [disabled]="!uploader.getNotUploadedItems().length">Discard</button>
-              </div>
-              <br>
-              <div class="col-sm-4">
-                <img src="" imgPreview [image]="" style="max-width:250px; max-height:250px;" />
+                        (click)="discardPhoto()" [disabled]="!uploader.getNotUploadedItems().length" style="margin-top: 10px;">Discard</button>
               </div>
             </div>
             <!--Profile Form-->

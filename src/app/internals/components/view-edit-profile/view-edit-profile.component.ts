@@ -49,13 +49,11 @@ export class EditProfileComponent implements OnInit {
   minor: string;
   programs: Array<string> = [];
   graduation: string;
-  cv: string;
   uploader: FileUploader;
   hasBaseDropZoneOver: boolean = false;
-  hasAnotherDropZoneOver: boolean = false;
-  filename: string;
-
   private jwtHelper: JwtHelper = new JwtHelper();
+  private user: number;
+  reload: boolean;
 
   constructor(
     // Service init
@@ -75,6 +73,8 @@ export class EditProfileComponent implements OnInit {
   // ---init
   ngOnInit(): void {
     this.student = new Student();
+    this.photo = '/images/PHOTO.png';
+    this.reload = false;
     this.birthday = '';
     this.graduation = '';
     this.degree.level = 'Bachelor';
@@ -104,15 +104,23 @@ export class EditProfileComponent implements OnInit {
       'Women and Gender Studies', 'Writing'];
 
     // Perform service calls
+    this.user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user._id as number;
     this.prepareData();
-    this.uploader = new FileUploader({ url: 'http://localhost:3000/api/photos/', allowedMimeType: ['image/png', 'image/jpeg'], queueLimit: 1, itemAlias: 'photo' });
+    this.uploader = new FileUploader({ url: 'http://localhost:3000/api/uploads/' + this.user.toString(),
+      allowedMimeType: ['image/png', 'image/jpeg'], queueLimit: 1, itemAlias: 'photo' });
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
     };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       this.uploader.clearQueue();
       console.log('ImageUpload:uploaded:', item, status, response);
+      this.reload = false;
     };
+  }
+
+  uploadPhoto(): void {
+    this.reload = true;
+    this.uploader.uploadAll();
   }
 
   prepareData(): void {
@@ -141,12 +149,11 @@ export class EditProfileComponent implements OnInit {
   }
 
   getStudent(): void {
-    let user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user;
-    this.studentService.getById(user._id).then(response => this.setFields(response));
+    this.studentService.getById(this.user.toString()).then(response => this.setFields(response));
   }
 
   setFields(info: any) {
-    this.student.id = info._id as number;
+    this.student.id = this.user;
 
     if (info.firstname) {
       this.student.firstname = info.firstname;
@@ -191,7 +198,8 @@ export class EditProfileComponent implements OnInit {
       this.skills = [];
     }
     if (info.photo) {
-
+      this.photo = 'http://localhost:3000/api/uploads/' + this.user.toString();
+      localStorage.setItem('photo', this.photo);
     }
     if (info.faculty) {
       this.selectedFaculty = this.faculties.find(result => result._id === info.faculty);
@@ -240,7 +248,6 @@ export class EditProfileComponent implements OnInit {
 
   // ---submit project
   onSubmit() {
-    this.student.photo = this.filename;
     this.student.birthday = this.birthday;
     this.student.degree = this.degree;
     this.student.skills = this.selSkills;
