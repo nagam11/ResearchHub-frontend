@@ -37,7 +37,7 @@
                   <div class="form-group">
                     <div class="col-sm-12 col-centered">
                       <input type="text" placeholder="Please enter a title.." [(ngModel)]="project.title" name="title"
-                             #title="ngModel" class="form-control form-first-name" required minlength="4" maxlength="24">
+                             #title="ngModel" class="form-control form-first-name" required minlength="4" maxlength="100">
                       <!--Angular Form Validations-->
                       <div *ngIf="title.errors && (title.dirty || title.touched)"
                            class="alert alert-danger">
