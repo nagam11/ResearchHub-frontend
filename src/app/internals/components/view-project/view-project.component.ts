@@ -92,18 +92,21 @@ export class ViewProjectComponent implements OnInit {
 
   // --apply
   apply() {
-    let user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user;
-    this.studentService.getById(user._id).then((student) => {
-      this.student = student;
-      //  update the students array in projects
-      this.project.applications.push(this.student);
-      this.projectsService.update(this.project).then((project) => {
-        this.student.projectsApplied.push(project);
-        //  update the projects array in students
-        this.studentService.putStudent(this.student);
+    if (confirm('You are about to apply for this project. Click yes to proceed.') === true) {
+      let user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user;
+      this.studentService.getById(user._id).then((student) => {
+        this.student = student;
+        //  update the students array in projects
+        this.project.applications.push(this.student);
+        this.projectsService.update(this.project).then((project) => {
+          this.student.projectsApplied.push(project);
+          //  update the projects array in students
+          this.studentService.putStudent(this.student);
+        });
+        this.router.navigate(['/internals/createsuccess']);
       });
-      this.router.navigate(['/internals/createsuccess']);
-    });
+    } else {
+    }
   }
 }
 

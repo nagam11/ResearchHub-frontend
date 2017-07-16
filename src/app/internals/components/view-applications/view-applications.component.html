@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div class="col-sm-2 sidenav">
+  </div>
+  <div class="col-sm-10 text-left"><br>
+    <div class="row">
+      <div class="col-lg-10 col-centered">
+        <header>
+          <h1 align="center"><b>MY APPLICATIONS</b></h1>
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#all" data-toggle="tab"><i class="fa fa-tasks"></i> All applications</a></li>
+            <li><a href="#active" data-toggle="tab"><i class="fa fa-hourglass-3"></i> Active </a></li>
+            <li><a href="#closed" data-toggle="tab"><i class="fa fa-check"></i> Closed </a></li>
+          </ul>
+        </header>
+      </div>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="all">
+        <div class="panel panel-primary semi-transparent-button with-border" *ngFor="let project of projects">
+          <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px">
+            <button type="button" (click) = "open(project)" class="btn pull-left customButton2"> Research Topic: {{project.title}}</button>
+            <div *ngIf="academicGuard.canActivate()">
+              <div class="btn-toolbar pull-right">
+                <button type="button" [routerLink]="['/internals/editproject', project._id]" routerLinkActive="active" class="btn btn-danger pull-right customButton1">Edit </button>&nbsp;
+                <button type="button" (click)="delete(project._id)" class="btn btn-danger pull-right customButton">Delete</button>
+              </div></div></div>
+          <div class="panel-body"><p>Description: {{project.description}}</p>
+            <p>Chair: {{project._chair.name}}</p><p>Type of project: {{project._projetType.protjectType}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="active">
+        <div class="panel panel-primary semi-transparent-button with-border" *ngFor="let project of projects">
+          <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px">
+            <button type="button" (click) = "open(project)" class="btn pull-left customButton2"> Research Topic: {{project.title}}</button>
+            <div *ngIf="academicGuard.canActivate()">
+              <div class="btn-toolbar pull-right">
+                <button type="button" [routerLink]="['/internals/editproject', project._id]" routerLinkActive="active" class="btn btn-danger pull-right customButton1">Edit </button>&nbsp;
+                <button type="button" (click)="delete(project._id)" class="btn btn-danger pull-right customButton">Delete</button>
+              </div></div></div>
+          <div class="panel-body"><p>Description: {{project.description}}</p>
+            <p>Chair: {{project._chair.name}}</p><p>Type of project: {{project._projetType.protjectType}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="closed">
+        <div class="panel panel-primary semi-transparent-button with-border" *ngFor="let project of projects">
+          <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px">
+            <button type="button" (click) = "open(project)" class="btn pull-left customButton2"> Research Topic: {{project.title}}</button>
+            <div *ngIf="academicGuard.canActivate()">
+              <div class="btn-toolbar pull-right">
+                <button type="button" [routerLink]="['/internals/editproject', project._id]" routerLinkActive="active" class="btn btn-danger pull-right customButton1">Edit </button>&nbsp;
+                <button type="button" (click)="delete(project._id)" class="btn btn-danger pull-right customButton">Delete</button>
+              </div></div></div>
+          <div class="panel-body"><p>Description: {{project.description}}</p>
+            <p>Chair: {{project._chair.name}}</p><p>Type of project: {{project._projetType.protjectType}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
