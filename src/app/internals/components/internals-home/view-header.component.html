@@ -74,7 +74,10 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a routerLink="/internals/editprofile" [routerLinkActive]="['router-link-active']" class="nav-link" >
+        <a *ngIf="!studentGuard.canActivate()" class="nav-link" >
+          <i class="fa fa-user-circle"></i> {{UserName}}
+        </a>
+        <a *ngIf="studentGuard.canActivate()" routerLink="/internals/editprofile" [routerLinkActive]="['router-link-active']" class="nav-link" >
           <i class="fa fa-user-circle"></i> {{UserName}}
         </a>
       </li>
