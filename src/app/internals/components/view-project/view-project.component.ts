@@ -5,17 +5,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {Chair} from '../../data-model/chair';
-import {ProjectType} from '../../data-model/projectType';
-import {Academic} from '../../data-model/academic';
-import {Company} from '../../data-model/company';
-import { ProjectsService } from '../../services/projects.service';
+import {Chair} from '../../../data-model/chair';
+import {ProjectType} from '../../../data-model/projectType';
+import {Academic} from '../../../data-model/academic';
+import {Company} from '../../../data-model/company';
+import { ProjectsService } from '../../../services/projects.service';
 import { Location }               from '@angular/common';
 import 'rxjs/add/operator/map';
-import {Project} from "../../data-model/project";
-import {EducationLevel} from "../../data-model/educationLevel";
-import {Language} from "../../data-model/language";
-import {Skill} from "../../data-model/skill";
+import {Project} from "../../../data-model/project";
+import {EducationLevel} from "../../../data-model/educationLevel";
+import {Language} from "../../../data-model/language";
+import {Skill} from "../../../data-model/skill";
 
 @Component({
   selector: 'view-project',
@@ -74,7 +74,7 @@ export class ViewProjectComponent implements OnInit {
 
   // ---edit
   edit(project: Project) {
-    this.router.navigate(['/editproject', project._id]);
+    this.router.navigate(['/internals/editproject', project._id]);
   }
 
 }

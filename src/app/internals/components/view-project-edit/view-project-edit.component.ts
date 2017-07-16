@@ -33,10 +33,6 @@ import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {ProjectTypeService} from '../../../services/projectType.service';
-import {Project} from '../../../data-model/project';
-import {EducationLevel} from '../../../data-model/educationLevel';
-import {Language} from '../../../data-model/language';
 import {SkillsService} from '../../../services/skills.service';
 import {CompaniesService} from '../../../services/companies.service';
 

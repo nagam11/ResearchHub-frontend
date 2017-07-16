@@ -6,8 +6,8 @@ import {ProjectsService} from '../../../services/projects.service';
 import {RatingsService} from '../../../services/ratings.service';
 import {CompaniesService} from '../../../services/companies.service';
 import {Project} from '../../../data-model/project';
-import {Rating} from '../../data-model/Rating';
-import {Company} from '../../data-model/company';
+import {Rating} from '../../../data-model/Rating';
+import {Company} from '../../../data-model/company';
 import {visitProjectedRenderNodes} from "@angular/core/src/view/util";
 @Component({
   selector: 'hero-detail',
@@ -74,6 +74,6 @@ export class ResearchRatingComponent implements OnInit {
   /*  this.projectsService.update(this.project).then(project  => {
       this.project = project;
     });*/
-    this.router.navigate(['/ratesuccess']);
+    this.router.navigate(['/internals/ratesuccess']);
   }
 }

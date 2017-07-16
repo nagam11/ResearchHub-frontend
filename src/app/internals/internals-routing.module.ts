@@ -10,6 +10,8 @@ import { SearchProjectComponent } from './components/view-project-search/view-pr
 import { EditProjectComponent } from './components/view-project-edit/view-project-edit.component';
 import { ViewSidebarComponent } from './components/view-sideboard/view-sidebar.component';
 import { InternalsAppComponent } from './components/internals-home/internals-home.component';
+import {CreateProjectRatingSuccessComponent} from './components/view-project-rate-success/view-project-rate-success.component';
+import {ViewProjectComponent} from './components/view-project/view-project.component';
 import { EditProfileComponent } from './components/view-edit-profile/view-edit-profile.component';
 import { UpdateSuccessComponent } from './components/view-update-sucess/view-update-success.component';
 import { UpdateFailureComponent } from './components/view-update-failure/view-update-failure.component';
@@ -37,7 +39,9 @@ const internalsRoutes: Routes = [
           { path: 'sidenav', component: ViewSidebarComponent, outlet: 'sidebar'},
           { path: 'editprofile', component: EditProfileComponent },
           { path: 'updatesuccess', component: UpdateSuccessComponent },
-          { path: 'updatefailure', component: UpdateFailureComponent }
+          { path: 'updatefailure', component: UpdateFailureComponent },
+          { path: 'ratesuccess',   component: CreateProjectRatingSuccessComponent},
+          { path: 'viewproject/:id',   component: ViewProjectComponent},
         ]
       }
     ]

@@ -26,6 +26,8 @@ import { ViewSidebarComponent } from './components/view-sideboard/view-sidebar.c
 import { EditProfileComponent } from './components/view-edit-profile/view-edit-profile.component';
 import { UpdateSuccessComponent } from './components/view-update-sucess/view-update-success.component';
 import { UpdateFailureComponent } from './components/view-update-failure/view-update-failure.component';
+import {ViewProjectComponent} from './components/view-project/view-project.component';
+import {CreateProjectRatingSuccessComponent} from './components/view-project-rate-success/view-project-rate-success.component';
 // import Services
 import { ProjectsService } from '../services/projects.service';
 import { ChairsService } from '../services/chairs.service';
@@ -66,6 +68,8 @@ import { CompaniesService } from '../services/companies.service';
     EditProfileComponent,
     UpdateSuccessComponent,
     UpdateFailureComponent,
+    ViewProjectComponent,
+    CreateProjectRatingSuccessComponent,
     ImagePreview
   ],
   providers: [ ProjectsService,

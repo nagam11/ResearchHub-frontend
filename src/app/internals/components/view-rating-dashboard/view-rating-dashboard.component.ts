@@ -12,10 +12,10 @@ import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 // import data model
-import {Rating} from '../../data-model/Rating';
+import {Rating} from '../../../data-model/Rating';
 // import service
 //import { RatingsService } from '../../services/ratings.service';
-import { CompaniesService } from '../../services/companies.service';
+import { CompaniesService } from '../../../services/companies.service';
 
 
 @Component({
