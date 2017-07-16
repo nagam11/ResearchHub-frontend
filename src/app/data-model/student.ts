@@ -1,5 +1,6 @@
 import { EducationLevel } from './educationLevel';
 import { Faculty } from './faculty';
+import { Skill } from './skill';
 export class Student {
   id: number;
   password: string;
@@ -9,7 +10,7 @@ export class Student {
   lastname: string;
   birthday: string;
   degree: EducationLevel;
-  skills: string[];
+  skills: Skill[];
   description: string;
   faculty: Faculty;
   major: string;
