@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-lg-10 col-centered">
         <header>
-          <h1 align="center"><b>MY APPLICATIONS</b></h1>
+          <h1 align="center" class="animated fadeIn"><b>MY APPLICATIONS</b></h1>
           <ul class="nav nav-tabs">
             <li class="active"><a href="#all" data-toggle="tab"><i class="fa fa-tasks"></i> All applications</a></li>
             <li><a href="#active" data-toggle="tab"><i class="fa fa-hourglass-3"></i> Active </a></li>
@@ -15,7 +15,7 @@
         </header>
       </div>
     </div>
-    <div class="tab-content">
+    <div class="tab-content animated fadeIn">
       <div class="tab-pane active" id="all">
         <div class="panel panel-primary semi-transparent-button with-border" *ngFor="let project of projects">
           <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px">
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="tab-pane" id="active">
-        <div class="panel panel-primary semi-transparent-button with-border" *ngFor="let project of projects">
+        <div class="panel panel-primary semi-transparent-button with-border" *ngFor="let project of appliedProjects">
           <div class="panel-heading customPanel clearfix" style="padding-top: 7.5px; font-size: 16px">
             <button type="button" (click) = "open(project)" class="btn pull-left customButton2"> Research Topic: {{project.title}}</button>
             <div *ngIf="academicGuard.canActivate()">

@@ -10,10 +10,11 @@ import { ProjectsService } from '../../../services/projects.service';
 import { ChairsService } from '../../../services/chairs.service';
 import { FacultiesService } from '../../../services/faculties.service';
 import { Location }               from '@angular/common';
+import { StudentService} from '../../../services/student.service';
 import {CompanyGuard} from '../../../guard/CompanyGuard';
 import {AcademicGuard} from '../../../guard/AcademicGuard';
 import {StudentGuard} from '../../../guard/StudentGuard';
-
+import { JwtHelper } from 'angular2-jwt';
 import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
@@ -27,9 +28,12 @@ import {Project} from '../../../data-model/project';
 })
 export class ViewApplicationsComponent implements OnInit {
   projects: Project[] = [];
+  private jwtHelper: JwtHelper = new JwtHelper();
+  appliedProjects: Project[] = [];
 
   constructor(
     private projectsService: ProjectsService,
+    private studentService: StudentService,
     private location: Location,
     private router: Router,
     private companyGuard: CompanyGuard,
@@ -38,6 +42,16 @@ export class ViewApplicationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectsService.getProjects().then(projects => this.projects = projects);
+    let user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user;
+    this.studentService.getById(user._id).then((student) => {
+      console.log(student.projectsApplied);
+      for (let project of student.projectsApplied){
+        console.log(project);
+        this.projectsService.getProject(project).then((f_project) => {
+          this.appliedProjects.push(f_project);
+        });
+      }
+    });
   }
 
   // --edit project
