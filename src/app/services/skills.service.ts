@@ -18,6 +18,12 @@ export class SkillsService {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
   }
+  getAllSkills(): Promise<any> {
+    return this.http.get('http://localhost:3000/api/skills/').toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
+
   getSkills(): Promise<any> {
     return this.http.get(this.url).toPromise()
       .then(this.extractData)

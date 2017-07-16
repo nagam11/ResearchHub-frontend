@@ -22,77 +22,92 @@
           </div>
 
           <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <label>Your photo </label>
+              </div>
+              <div class="col-sm-4">
+                <img *ngIf="!reload" src={{photo}} style="width:250px; height:250px;" />
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-3">
+                <label>Upload new photo </label>
+              </div>
+              <div class="col-sm-4">
+                <div ng2FileDrop
+                     [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                     (fileOver)="fileOverBase($event)"
+                     [uploader]="uploader"
+
+                     class="well my-drop-zone" type="file" name="file">
+                  <span *ngIf="!uploader.getNotUploadedItems().length">Drop your photo</span>
+                  <div *ngFor="let item of uploader.queue" class="media">
+                    <div class="media-left">
+                      <img src="" imgPreview [image]="item?._file" class="media-object" style="width:250px; height:250px;" />
+                    </div>
+                    <div class="media-body">
+                      <p>{{ item?.file?.name }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <button class="btn btn-success btn-s" (click)="uploadPhoto()" [disabled]="!uploader.getNotUploadedItems().length">Upload</button>
+                <button class="btn btn-primary" type="button" *ngIf="uploader.getNotUploadedItems().length"
+                        (click)="discardPhoto()" [disabled]="!uploader.getNotUploadedItems().length" style="margin-top: 10px;">Discard</button>
+              </div>
+            </div>
             <!--Profile Form-->
             <form #updateProfileForm="ngForm" (ngSubmit)="onSubmit()">
+              <br>
               <div class="row">
                 <div class="col-sm-3">
-                  <label>Upload photo </label>
+                  <label>First name *</label>
                 </div>
-                <div class="col-md-3">
-                  <div ng2FileDrop
-                       [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-                       (fileOver)="fileOverBase($event)"
-                       [uploader]="uploader"
-                       class="well my-drop-zone">
-                    Drop your photo
-                    <div *ngFor="let item of uploader.queue" class="media" [style.width]="width" [style.height]="height">
-                      <div class="media-left">
-                        <img src="" imgPreview [image]="item?._file" class="media-object" />
-                      </div>
-                      <div class="media-body">
-                        <p>{{ item?.file?.name }}</p>
-                      </div>
+                <div class="col-sm-9">
+                  <input type="text" placeholder="Please enter your first name" [(ngModel)]="student.firstname" name="firstname"
+                         #firstname="ngModel" class="form-control" required minlength="1" maxlength="50">
+                  <!--Angular Form Validations-->
+                  <div *ngIf="firstname.errors && (firstname.dirty || firstname.touched)"
+                       class="alert alert-danger">
+                    <div [hidden]="!firstname.errors.required">
+                      Name is required
+                    </div>
+                    <div [hidden]="!firstname.errors.minlength">
+                      Name must be at least 1 character long.
+                    </div>
+                    <div [hidden]="!firstname.errors.maxlength">
+                      Name cannot be more than 50 characters long.
                     </div>
                   </div>
+                  <!--End Angular Form Validations-->
                 </div>
               </div>
               <br>
               <div class="row">
-                  <div class="col-sm-3">
-                    <label>First name *</label>
-                  </div>
-                  <div class="col-sm-9">
-                    <input type="text" placeholder="Please enter your first name" [(ngModel)]="student.firstname" name="firstname"
-                           #firstname="ngModel" class="form-control" required minlength="1" maxlength="50">
-                    <!--Angular Form Validations-->
-                    <div *ngIf="firstname.errors && (firstname.dirty || firstname.touched)"
-                         class="alert alert-danger">
-                      <div [hidden]="!firstname.errors.required">
-                        Name is required
-                      </div>
-                      <div [hidden]="!firstname.errors.minlength">
-                        Name must be at least 1 character long.
-                      </div>
-                      <div [hidden]="!firstname.errors.maxlength">
-                        Name cannot be more than 50 characters long.
-                      </div>
+                <div class="col-sm-3">
+                  <label>Last name *</label>
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" placeholder="Please enter your last name" [(ngModel)]="student.lastname" name="lastname"
+                         #lastname="ngModel" class="form-control" required minlength="1" maxlength="50">
+                  <!--Angular Form Validations-->
+                  <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)"
+                       class="alert alert-danger">
+                    <div [hidden]="!lastname.errors.required">
+                      Name is required
                     </div>
-                    <!--End Angular Form Validations-->
-                  </div>
-              </div>
-              <br>
-              <div class="row">
-                  <div class="col-sm-3">
-                    <label>Last name *</label>
-                  </div>
-                  <div class="col-sm-9">
-                    <input type="text" placeholder="Please enter your last name" [(ngModel)]="student.lastname" name="lastname"
-                           #lastname="ngModel" class="form-control" required minlength="1" maxlength="50">
-                    <!--Angular Form Validations-->
-                    <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)"
-                         class="alert alert-danger">
-                      <div [hidden]="!lastname.errors.required">
-                        Name is required
-                      </div>
-                      <div [hidden]="!lastname.errors.minlength">
-                        Name must be at least 1 character long.
-                      </div>
-                      <div [hidden]="!lastname.errors.maxlength">
-                        Name cannot be more than 50 characters long.
-                      </div>
+                    <div [hidden]="!lastname.errors.minlength">
+                      Name must be at least 1 character long.
                     </div>
-                    <!--End Angular Form Validations-->
+                    <div [hidden]="!lastname.errors.maxlength">
+                      Name cannot be more than 50 characters long.
+                    </div>
                   </div>
+                  <!--End Angular Form Validations-->
+                </div>
               </div>
               <br>
               <div class="row">
@@ -120,11 +135,14 @@
                 <div class="col-sm-3">
                   <label>Your degree *</label></div>
                 <div class="col-sm-9">
-                    <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default" *ngFor="let educationLevel of educationLevels">
-                        <input type="radio" [(ngModel)]="degree.level" name="degree" value={{educationLevel.level}}>{{educationLevel.level}}<br>
-                      </label>
-                    </div>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{degree.level}}
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li *ngFor="let educationLevel of educationLevels"><a (click)="dropdownselectedDegree(educationLevel)">{{educationLevel.level}}</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               <br>
@@ -187,10 +205,10 @@
                     <div class="btn-toolbar">
                       <div *ngFor="let item of skills">
                         <button class="btn skillsButton" type="button" (click)="selectedSkills(item)">
-                          {{item}}
+                          {{item.skill}}
                         </button></div>
                     </div>
-                    <p *ngFor="let skill of selSkills">{{skill}}</p>
+                    <p *ngFor="let skill of selSkills"><a (click)="removeSkill(skill)">{{skill.skill}}</a></p>
                   </div>
                 </div>
               </div>
@@ -201,7 +219,7 @@
                 <div class="col-sm-9">
                   <div class="form-group">
                     <textarea placeholder="Please enter any extra skills or useful information" class="form-control" rows="5" id="description" [(ngModel)]="student.description"
-                          name="description" #description="ngModel" required minlength="10"></textarea>
+                              name="description" #description="ngModel" required minlength="10"></textarea>
                     <!--Angular Form Validations-->
                     <div *ngIf="description.errors && (description.dirty || description.touched)"
                          class="alert alert-danger">

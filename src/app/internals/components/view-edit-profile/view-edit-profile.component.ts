@@ -21,6 +21,8 @@ import { StudentService } from '../../../services/student.service';
 import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import * as edge from "selenium-webdriver/edge";
 import { JwtHelper } from 'angular2-jwt';
+import { Skill } from '../../../data-model/skill';
+import 'rxjs/operator/timestamp';
 
 
 const URL = 'https://localhost:3000/api/';
@@ -35,25 +37,23 @@ export class EditProfileComponent implements OnInit {
   educationLevels: EducationLevel[] = [];
   student: Student;
   faculties: Faculty[] = [];
-  selectedFaculty: Faculty;
+  selectedFaculty: Faculty = new Faculty();
   photo: string;
   birthday: string;
   degree: EducationLevel = new EducationLevel();
-  skills: Array<string> = [];
+  initSkill: Skill = new Skill();
+  skills: Skill[] = [];
   term$ = new Subject<string>();
-  selSkills: Array<string> = [];
+  selSkills: Skill[] = [];
   major: string;
   minor: string;
   programs: Array<string> = [];
   graduation: string;
-  cv: string;
-  uploader: FileUploader = new FileUploader({url: URL});
+  uploader: FileUploader;
   hasBaseDropZoneOver: boolean = false;
-  hasAnotherDropZoneOver: boolean = false;
-  width = 100;
-  height = 50;
-
   private jwtHelper: JwtHelper = new JwtHelper();
+  private user: number;
+  reload: boolean;
 
   constructor(
     // Service init
@@ -67,16 +67,22 @@ export class EditProfileComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     // --skills instant search
-    this.skillsService.search(this.term$)
-      .subscribe(results => this.skills = results);
+    this.skillsService.search(this.term$).subscribe(results => this.skills = results);
   }
 
   // ---init
   ngOnInit(): void {
     this.student = new Student();
+    this.photo = '/images/PHOTO.png';
+    this.reload = false;
     this.birthday = '';
     this.graduation = '';
     this.degree.level = 'Bachelor';
+    this.selectedFaculty.name = 'Your faculty';
+    console.log(this.selectedFaculty);
+    this.initSkill._id = '0';
+    this.initSkill.skill = 'Your skills';
+    this.selSkills.push(this.initSkill);
     this.major = 'Your major';
     this.minor = 'Your minor';
     this.programs = ['Aerospace Engineering', 'American Studies', 'Ancient and Medieval Studies', 'Anthropology',
@@ -97,24 +103,57 @@ export class EditProfileComponent implements OnInit {
       'Spanish', 'Statistics and Data Science', 'Theater Arts', 'Toxicology and Environmental Health', 'Urban Studies and Planning',
       'Women and Gender Studies', 'Writing'];
 
-    this.selectedFaculty = new Faculty();
-    this.selectedFaculty.name = 'Your faculty';
-
     // Perform service calls
-    this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
-    this.educationLevelService.getEducationLevels().then(educationLevels => this.educationLevels = educationLevels );
-    // this.educationLevelService.getEducationLevels().then(educationLevels => this.educationLevels = educationLevels );
-    // Get existing user info
-    //this.profileService.getThisUserInfo();
-    //console.log(localStorage.getItem('profile'));
-    //this.setFields(localStorage.getItem('profile'));
-    let user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user;
-    this.studentService.getById(user._id).then(response => this.setFields(response));
+    this.user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user._id as number;
+    this.prepareData();
+    this.uploader = new FileUploader({ url: 'http://localhost:3000/api/uploads/' + this.user.toString(),
+      allowedMimeType: ['image/png', 'image/jpeg'], queueLimit: 1, itemAlias: 'photo' });
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+    };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      this.uploader.clearQueue();
+      console.log('ImageUpload:uploaded:', item, status, response);
+      this.reload = false;
+    };
+  }
+
+  uploadPhoto(): void {
+    this.reload = true;
+    this.uploader.uploadAll();
+  }
+
+  prepareData(): void {
+    this.getFaculties();
+  }
+
+  getFaculties(): void {
+    this.facultiesService.getFaculties().then(faculties => {
+      this.faculties = faculties;
+      this.getDegrees();
+    });
+  }
+
+  getDegrees(): void {
+    this.educationLevelService.getEducationLevels().then(educationLevels => {
+      this.educationLevels = educationLevels;
+      this.getSkills();
+    });
+  }
+
+  getSkills(): void {
+    this.skillsService.getAllSkills().then(skills => {
+      this.skills = skills;
+      this.getStudent();
+    });
+  }
+
+  getStudent(): void {
+    this.studentService.getById(this.user.toString()).then(response => this.setFields(response));
   }
 
   setFields(info: any) {
-    //let info = JSON.parse(_info);
-    this.student.id = info._id as number;
+    this.student.id = this.user;
 
     if (info.firstname) {
       this.student.firstname = info.firstname;
@@ -132,15 +171,8 @@ export class EditProfileComponent implements OnInit {
       this.degree = this.educationLevels.find(result => result._id === info.degree);
       console.log(this.degree);
     }
-    if (info.skills) {
-      this.selSkills = info.skills;
-    }
     if (info.description) {
       this.student.description = info.description;
-    }
-    if (info.faculty) {
-      this.selectedFaculty = this.faculties.find(result => result._id === info.faculty);
-      console.log(this.selectedFaculty);
     }
     if (info.major) {
       this.major = info.major;
@@ -151,20 +183,45 @@ export class EditProfileComponent implements OnInit {
     if (info.graduation) {
       this.graduation = info.graduation;
     }
+    if (info.skills) {
+      for (let id of info.skills) {
+        console.log(id);
+        console.log(this.skills.find(result => result._id === id));
+        this.selSkills.push(this.skills.find(result => result._id === id));
+      }
+      if (this.selSkills.length > 1) {
+        let index: number = this.selSkills.indexOf(this.initSkill);
+        if (index !== -1) {
+          this.selSkills.splice(index, 1);
+        }
+      }
+      this.skills = [];
+    }
+    if (info.photo) {
+      this.photo = 'http://localhost:3000/api/uploads/' + this.user.toString();
+      localStorage.setItem('photo', this.photo);
+    }
+    if (info.faculty) {
+      this.selectedFaculty = this.faculties.find(result => result._id === info.faculty);
+      console.log(this.selectedFaculty);
+    }
   }
 
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
-    this.width = 300;
-    this.height = 300;
   }
 
-  fileOverAnother(e: any): void {
-    this.hasAnotherDropZoneOver = e;
+  discardPhoto(): void {
+    this.uploader.cancelAll();
+    this.uploader.clearQueue();
   }
 
   cancel(): void {
     this.location.back();
+  }
+
+  dropdownselectedDegree(educationLevel: EducationLevel): void {
+    this.degree = educationLevel;
   }
 
   dropdownselectedFaculty(faculty: Faculty): void {
@@ -179,10 +236,20 @@ export class EditProfileComponent implements OnInit {
     this.minor = program;
   }
 
+  removeSkill(skill: Skill) {
+    let index: number = this.selSkills.indexOf(skill);
+    if (index !== -1) {
+      this.selSkills.splice(index, 1);
+    }
+    if (this.selSkills.length < 1) {
+      this.selSkills.push(this.initSkill);
+    }
+  }
+
   // ---submit project
   onSubmit() {
     this.student.birthday = this.birthday;
-    this.student.degree = this.educationLevels[0];
+    this.student.degree = this.degree;
     this.student.skills = this.selSkills;
     this.student.faculty = this.selectedFaculty;
     this.student.birthday = this.birthday;
@@ -195,9 +262,16 @@ export class EditProfileComponent implements OnInit {
   }
 
   // --save selected skills
-  selectedSkills(item: string) {
+  selectedSkills(item: Skill) {
     console.log(item + ' was selected as skill.');
-    this.selSkills.push(item);
+    if (!this.selSkills.find(result => result._id === item._id)) {
+      this.selSkills.push(item);
+    }
+    if (this.selSkills.length > 1) {
+      let index: number = this.selSkills.indexOf(this.initSkill);
+      if (index !== -1) {
+        this.selSkills.splice(index, 1);
+      }
+    }
   }
-
 }
