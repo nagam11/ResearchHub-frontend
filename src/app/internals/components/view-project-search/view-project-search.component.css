@@ -49,6 +49,14 @@ h1{
   letter-spacing: 2px;
 }
 
+span.glyphicon {
+  font-size: 15px;
+}
+
+a.glyphicon {
+  font-size: 20px;
+  padding-right: 10px;
+}
 .customBody{
 
 }
