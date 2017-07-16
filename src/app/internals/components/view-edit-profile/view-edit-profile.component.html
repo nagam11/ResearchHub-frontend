@@ -22,30 +22,41 @@
           </div>
 
           <div class="panel-body">
-            <!--Profile Form-->
-            <form #updateProfileForm="ngForm" (ngSubmit)="onSubmit()">
-              <div class="row">
-                <div class="col-sm-3">
-                  <label>Upload photo </label>
-                </div>
-                <div class="col-md-3">
-                  <div ng2FileDrop
-                       [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-                       (fileOver)="fileOverBase($event)"
-                       [uploader]="uploader"
-                       class="well my-drop-zone">
-                    Drop your photo
-                    <div *ngFor="let item of uploader.queue" class="media" [style.width]="width" [style.height]="height">
-                      <div class="media-left">
-                        <img src="" imgPreview [image]="item?._file" class="media-object" />
-                      </div>
-                      <div class="media-body">
-                        <p>{{ item?.file?.name }}</p>
-                      </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <label>Upload photo </label>
+              </div>
+              <div class="col-sm-4">
+                <div ng2FileDrop
+                     [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                     (fileOver)="fileOverBase($event)"
+                     [uploader]="uploader"
+
+                     class="well my-drop-zone" type="file" name="file">
+                  <span *ngIf="!uploader.getNotUploadedItems().length">Drop your photo</span>
+                  <div *ngFor="let item of uploader.queue" class="media">
+                    <div class="media-left">
+                      <img src="" imgPreview [image]="item?._file" class="media-object" style="max-width:250px; max-height:250px;" />
+                    </div>
+                    <div class="media-body">
+                      <p>{{ item?.file?.name }}</p>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="col-sm-1">
+                <button class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload</button>
+                <br>
+                <button class="btn btn-primary" type="button" *ngIf="uploader.getNotUploadedItems().length"
+                        (click)="discardPhoto()" [disabled]="!uploader.getNotUploadedItems().length">Discard</button>
+              </div>
+              <br>
+              <div class="col-sm-4">
+                <img src="" imgPreview [image]="" style="max-width:250px; max-height:250px;" />
+              </div>
+            </div>
+            <!--Profile Form-->
+            <form #updateProfileForm="ngForm" (ngSubmit)="onSubmit()">
               <br>
               <div class="row">
                 <div class="col-sm-3">

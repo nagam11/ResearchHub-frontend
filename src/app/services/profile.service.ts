@@ -47,4 +47,16 @@ export class Profile {
           this.router.navigate(['/internals/updatefailure']);
         });
   }
+
+  /*
+  getThisUserPhoto(user_id: number) {
+    this.studentService.getPhotoLink(user_id)
+      .subscribe(
+        data => {
+          console.log('photo recieved');
+        },
+        error => {
+          console.log(error);
+        });
+  }*/
 }

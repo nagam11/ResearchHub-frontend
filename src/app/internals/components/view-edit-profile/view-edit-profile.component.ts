@@ -22,6 +22,7 @@ import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-u
 import * as edge from "selenium-webdriver/edge";
 import { JwtHelper } from 'angular2-jwt';
 import { Skill } from '../../../data-model/skill';
+import 'rxjs/operator/timestamp';
 
 
 const URL = 'https://localhost:3000/api/';
@@ -49,11 +50,10 @@ export class EditProfileComponent implements OnInit {
   programs: Array<string> = [];
   graduation: string;
   cv: string;
-  uploader: FileUploader = new FileUploader({url: URL});
+  uploader: FileUploader;
   hasBaseDropZoneOver: boolean = false;
   hasAnotherDropZoneOver: boolean = false;
-  width = 100;
-  height = 50;
+  filename: string;
 
   private jwtHelper: JwtHelper = new JwtHelper();
 
@@ -79,6 +79,7 @@ export class EditProfileComponent implements OnInit {
     this.graduation = '';
     this.degree.level = 'Bachelor';
     this.selectedFaculty.name = 'Your faculty';
+    console.log(this.selectedFaculty);
     this.initSkill._id = '0';
     this.initSkill.skill = 'Your skills';
     this.selSkills.push(this.initSkill);
@@ -103,9 +104,43 @@ export class EditProfileComponent implements OnInit {
       'Women and Gender Studies', 'Writing'];
 
     // Perform service calls
-    this.facultiesService.getFaculties().then(faculties => this.faculties = faculties);
-    this.educationLevelService.getEducationLevels().then(educationLevels => this.educationLevels = educationLevels );
-    this.skillsService.getAllSkills().then(skills => this.skills = skills);
+    this.prepareData();
+    this.uploader = new FileUploader({ url: 'http://localhost:3000/api/photos/', allowedMimeType: ['image/png', 'image/jpeg'], queueLimit: 1, itemAlias: 'photo' });
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+    };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      this.uploader.clearQueue();
+      console.log('ImageUpload:uploaded:', item, status, response);
+    };
+  }
+
+  prepareData(): void {
+    this.getFaculties();
+  }
+
+  getFaculties(): void {
+    this.facultiesService.getFaculties().then(faculties => {
+      this.faculties = faculties;
+      this.getDegrees();
+    });
+  }
+
+  getDegrees(): void {
+    this.educationLevelService.getEducationLevels().then(educationLevels => {
+      this.educationLevels = educationLevels;
+      this.getSkills();
+    });
+  }
+
+  getSkills(): void {
+    this.skillsService.getAllSkills().then(skills => {
+      this.skills = skills;
+      this.getStudent();
+    });
+  }
+
+  getStudent(): void {
     let user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user;
     this.studentService.getById(user._id).then(response => this.setFields(response));
   }
@@ -132,10 +167,6 @@ export class EditProfileComponent implements OnInit {
     if (info.description) {
       this.student.description = info.description;
     }
-    if (info.faculty) {
-      this.selectedFaculty = this.faculties.find(result => result._id === info.faculty);
-      console.log(this.selectedFaculty);
-    }
     if (info.major) {
       this.major = info.major;
     }
@@ -159,17 +190,22 @@ export class EditProfileComponent implements OnInit {
       }
       this.skills = [];
     }
+    if (info.photo) {
+
+    }
+    if (info.faculty) {
+      this.selectedFaculty = this.faculties.find(result => result._id === info.faculty);
+      console.log(this.selectedFaculty);
+    }
   }
 
   fileOverBase(e: any): void {
-    this.uploader.clearQueue();
     this.hasBaseDropZoneOver = e;
-    this.width = 300;
-    this.height = 300;
   }
 
-  fileOverAnother(e: any): void {
-    this.hasAnotherDropZoneOver = e;
+  discardPhoto(): void {
+    this.uploader.cancelAll();
+    this.uploader.clearQueue();
   }
 
   cancel(): void {
@@ -204,6 +240,7 @@ export class EditProfileComponent implements OnInit {
 
   // ---submit project
   onSubmit() {
+    this.student.photo = this.filename;
     this.student.birthday = this.birthday;
     this.student.degree = this.degree;
     this.student.skills = this.selSkills;
