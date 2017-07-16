@@ -1,58 +1,116 @@
-<div class="jumbotron text-center">
-  <h1 class="animated slideInDown">Project rating</h1>
-</div>
+
 <div class="container">
-<div class="col-sm-2 sidenav">
-</div>
-<div class="col-sm-8 text-left">
-<div *ngIf="project">
-  <h2>Project Topic:  {{project.title}}</h2>
+  <h2></h2>
+  <div id="container">
+    <div class="container-fluid text-center">
+      <div class="row">
+        <br><br>
+      </div>
+      <div class="row content">
+        <div class="col-lg-3 sidenav">
+        </div>
+        <div class="col-lg-9 text-left">
+          <div class="form-box animated fadeIn">
+            <div class="form-top">
+              <div class="form-top-left">
+                <div class="col-lg-12 col-centered">
+                  <h3>Rate a Project</h3>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped customProgress" role="progressbar" aria-valuenow="70"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         style="width:30%">
+                      <span class="sr-only">70% Complete</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-top-right">
+                <i class="fa fa-pencil"></i>
+              </div>
+            </div>
+
+            <div class="form-bottom">
+              <!--Projects Form-->
+              <form #createProjectForm="ngForm" autocomplete="off" class="registration-form" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-12 col-centered">
+                      <!--End Angular Form Validations-->
+                    </div>
+                  </div>
+                </div>
+
+                <br>
+                <!--Rating Representative-->
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-3">
+                      <h4>Representative*</h4></div>
+                    <div class="col-sm-9"><input type="text" placeholder="Rating party that you present" required [(ngModel)]="Representative"
+                                                 name="advisor" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!--Rating skills-->
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-3">
+                      <h4>Interested In Fields*</h4></div>
+                    <div class="col-sm-9"><input type="text" placeholder="Fields that are required for this project & interests you" required [(ngModel)]="interestedSkills"
+                                                 name="advisor" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!--Rating description-->
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-3">
+                      <h4>Description*</h4></div>
+                    <div class="col-sm-9">
+                      <textarea type="text" placeholder="How does this project overlap/match your future vision" id="description" [(ngModel)]="Description" class="form-control"
+                         name="description" #description="ngModel" required minlength="10">
+                      </textarea>
+                      <!--Angular Form Validations-->
+                      <div *ngIf="description.errors && (description.dirty || description.touched)"
+                           class="alert alert-danger">
+                        <div [hidden]="!description.errors.required">
+                          Description is required
+                        </div>
+                        <div [hidden]="!description.errors.minlength">
+                          Description must be at least 10 characters long.
+                        </div>
+                      </div>
+                      <!--End Angular Form Validations-->
+                    </div>
+                  </div>
+                </div>
 
 
-  <div class="row">
-    <div class="form-group">
-      <div class="col-sm-3">
-        <label>Representative:</label></div>
-      <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="Representative" class="form-control" >
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <div class="col-sm-3">
-        <label>Interested In Fields:</label></div>
-      <div class="col-sm-9"><input type="text" placeholder="Please enter title" [(ngModel)]="interestedSkills" class="form-control" >
-      </div>
-    </div>
-  </div>
-  <form #createProjectForm="ngForm" autocomplete="off" class="registration-form" (ngSubmit)="onSubmit()">
-  <div class="row">
-    <div class="form-group">
-      <div class="col-sm-3">
-        <label>Description*:</label></div>
-      <div class="col-sm-9">
-        <textarea type="text" placeholder="Please enter title" id="description" [(ngModel)]="Description" class="form-control"
-                  name="description" #description="ngModel" required minlength="10">
-      </textarea>
-        <!--Angular Form Validations-->
-        <div *ngIf="description.errors && (description.dirty || description.touched)"
-             class="alert alert-danger">
-          <div [hidden]="!description.errors.required">
-            Description is required
-          </div>
-          <div [hidden]="!description.errors.minlength">
-            Description must be at least 10 characters long.
+                <br>
+
+                <br><br>
+                <!--Actions-->
+                <div class="row">
+                  <div class="col-lg-3"></div>
+                  <div class="col-lg-9">
+                    <button type="submit" [disabled]="!createProjectForm.form.valid"
+                            class="btn btn-outline btn-xl btn-form">Submit
+                    </button>
+                    <button type="button" (click)="goBack()" class="btn btn-outline btn-xl btn-form ">Back</button>
+                  </div>
+                </div>
+                <br>
+              </form>
+              <!--End Projects Form-->
+            </div>
           </div>
         </div>
-        <!--End Angular Form Validations-->
       </div>
     </div>
   </div>
-  </form>
+</div>
 
 
-  <button class="ControlButton" (click)="goBack()">Back</button>
-  <button type="submit" class="ControlButton" [disabled]="!createProjectForm.form.valid" (click)="onSubmit()">Submit</button>
-</div>
-</div>
-</div>
