@@ -13,6 +13,7 @@ import {ViewDashboardComponent} from '../components/view-dashboard/view-dashboar
 import {SearchProjectComponent} from '../components/view-project-search/view-project-search.component';
 import {EditProjectComponent} from '../components/view-project-edit/view-project-edit.component';
 import {CreateProjectRatingSuccessComponent} from '../components/view-project-rate-success/view-project-rate-success.component';
+import {ViewProjectComponent} from '../components/view-project/view-project.component';
 
 const routes: Routes = [
   { path: 'app.html', redirectTo: '/viewdashboard', pathMatch: 'prefix' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'viewdashboard',     component: ViewDashboardComponent },
   { path: 'searchproject',   component: SearchProjectComponent},
   { path: 'ratesuccess',   component: CreateProjectRatingSuccessComponent},
+  { path: 'viewproject/:id',   component: ViewProjectComponent},
   { path: 'editproject/:id',   component: EditProjectComponent}
 ];
 

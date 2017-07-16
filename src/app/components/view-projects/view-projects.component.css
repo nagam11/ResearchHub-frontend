@@ -60,14 +60,16 @@ h1{
 
 .customPanel {
   background-color: #A9A9A9;
+  border-color:  #A9A9A9;
 }
 
 .panel{
   border-color: #A9A9A9 ;
+  width: 820px;
 }
 
 .panel-group{
-  width: 820px;
+
 }
 
 .customButton{
@@ -117,8 +119,7 @@ h1{
 .semi-transparent-button:hover,
 .semi-transparent-button:focus,
 .semi-transparent-button:active {
-  background: #fff;
-  color: #000;
+  background: #f7f7f7;
   transition: all 0.5s ease-in;
 }
 .semi-transparent:focus {

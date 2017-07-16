@@ -22,7 +22,7 @@ import {CreateProjectSuccessComponent} from './components/view-project-create-su
 import {ViewDashboardComponent} from './components/view-dashboard/view-dashboard.component';
 import {EditProjectComponent} from './components/view-project-edit/view-project-edit.component';
 import {CreateProjectRatingSuccessComponent} from './components/view-project-rate-success/view-project-rate-success.component';
-
+import {ViewProjectComponent} from './components/view-project/view-project.component';
 // import Services
 import {ProjectsService} from './services/projects.service';
 import {ChairsService} from './services/chairs.service';
@@ -54,7 +54,8 @@ import {RatingsService} from './services/ratings.service';
     ViewDashboardComponent,
     SearchProjectComponent,
     CreateProjectRatingSuccessComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    ViewProjectComponent
   ],
   providers: [ ProjectsService,
                SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService, AcademicsService,
