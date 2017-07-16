@@ -5,6 +5,5 @@ export class Rating {
   _id: string;
   InterestFields: String;
   Description: String;
- // company: String;
- // Company1?: any;
+  Representative: String;
 }

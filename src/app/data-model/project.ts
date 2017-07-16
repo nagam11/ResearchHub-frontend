@@ -25,8 +25,8 @@ export class Project {
   _requeredSkills: Skill[];
   ratings: Rating[];
   // _rate: Rating;
-  ratingDes: string;
-  ratingFields: string;
+ // ratingDes: string;
+ // ratingFields: string;
   _partner: Company;
   _requeredLevel: EducationLevel[];
 

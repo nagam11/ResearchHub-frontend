@@ -3,16 +3,6 @@ div {
   font-stretch: expanded;
   display: block;
 }
-label {
-  color: #607D8B;
-  font-weight: bold;
-  float: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-}
 input {
   font-size: 1em;
 }
@@ -55,6 +45,6 @@ h1{
   font-size: 40px;
 }
 .ControlButton {
-  background-color: #a0e7a0;
-  border-color: #a0e7a0;
+  background-color: #607D8B;
+  border-color: #607D8B;
 }
