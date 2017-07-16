@@ -7,17 +7,26 @@ import { AuthenticationService } from './authentication.service';
 import { StudentService } from './student.service';
 import { JwtHelper } from 'angular2-jwt';
 import { Student } from '../data-model/student';
+import {UserService} from './user.service';
 
 @Injectable()
 export class Profile {
   private jwtHelper: JwtHelper = new JwtHelper();
 
   constructor(private http: Http, private router: Router, private studentService: StudentService,
-              private authenticationService: AuthenticationService) { }
+              private authenticationService: AuthenticationService, private userService: UserService) { }
 
-  /*
+
   getThisUserInfo() {
     let token = localStorage.getItem('currentUser');
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      let decoded = this.jwtHelper.decodeToken(token).user;
+      if (decoded) {
+        console.log(decoded.kind);
+        return decoded.kind;
+      }
+    }
+    /*
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       let decoded = this.jwtHelper.decodeToken(token).user;
       let id = decoded._id;
@@ -31,8 +40,8 @@ export class Profile {
           });
     } else {
       this.authenticationService.logout();
-    }
-  }*/
+    }*/
+  }
 
   updateThisUser(student: Student) {
     this.studentService.updateStudent(student)

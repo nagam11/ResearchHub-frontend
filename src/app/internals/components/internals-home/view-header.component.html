@@ -97,21 +97,25 @@
         <i class="fa fa-dashboard"></i>&nbsp;Dashboard
       </a>
 
+      <div *ngIf="companyGuard.canActivate()">
       <a routerLink="/internals/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-cubes"></i>&nbsp;Rating Dashboard
-      </a>
+      </a></div>
 
+      <div *ngIf="academicGuard.canActivate()">
       <a routerLink="/internals/createproject" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-fw fa-edit"></i>&nbsp;New Project
-      </a>
+      </a></div>
+
 
       <a routerLink="/internals/projects" [routerLinkActive]="['router-link-active']" class="list-group-item">
-        <i class="fa fa-newspaper-o"></i>&nbsp;My Projects
+        <i class="fa fa-newspaper-o"></i>&nbsp;Projects
       </a>
 
+      <div *ngIf="studentGuard.canActivate()">
       <a routerLink="/internals/searchproject" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-search"></i> Search for a project
-      </a>
+      </a></div>
 
     </ul>
   </ul>
