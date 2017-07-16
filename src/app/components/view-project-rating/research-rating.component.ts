@@ -46,7 +46,6 @@ export class ResearchRatingComponent implements OnInit {
     this.route.params
       .subscribe((params: Params) => { this.projectsService.getProject(params['id']).then((project) => {
         this.project = project;
-        console.log(this.project);
       });
   } );
    // this.ratings = this.project.ratings;
@@ -85,17 +84,22 @@ export class ResearchRatingComponent implements OnInit {
   }
   // ---submit project
   onSubmit() {
-   // this.rate.InterestFields = this.interestedSkills;
-   // this.rate.Description = this.description;
-   // this.project._partner = this.selectedCompany;
-    this.project.ratingDes = this.Description;
-    this.project.ratingFields = this.interestedSkills;
-   // this.project.ratings.push(this.rate);
-    // this.project.ratings = this.rate;
-    console.log(this.project);
-    this.projectsService.update(this.project).then(project  => {
-      this.project = project;
+    this.rate.InterestFields = this.interestedSkills;
+    this.rate.Description = this.Description;
+    this.ratingsService.createRating(this.rate).then((rating) => {
+      this.rating = rating;
+      this.project.ratings.push(this.rating);
+      this.projectsService.update(this.project);
     });
-     this.router.navigate(['/ratesuccess']);
+
+   // this.project._partner = this.selectedCompany;
+    //this.project.ratingDes = this.Description;
+    //this.project.ratingFields = this.interestedSkills;
+   // this.project.ratings.push(this.rate);
+    //this.project.ratings = this.rate;
+  /*  this.projectsService.update(this.project).then(project  => {
+      this.project = project;
+    });*/
+    this.router.navigate(['/ratesuccess']);
   }
 }
