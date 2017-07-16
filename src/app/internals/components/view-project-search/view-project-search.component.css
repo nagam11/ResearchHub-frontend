@@ -38,6 +38,25 @@ h1{
   height: 30px;
 }
 
+.skillsButton{
+  margin: 5px;
+  background-color: #D3D3D3;
+  color: white;
+  border-color: white;
+  border: 1px solid;
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+span.glyphicon {
+  font-size: 15px;
+}
+
+a.glyphicon {
+  font-size: 20px;
+  padding-right: 10px;
+}
 .customBody{
 
 }

@@ -9,9 +9,17 @@
   height: 40px;
   padding-top:-30px;
 }
+.customB{
+  color: #999;
+  margin-right: 20px;
+}
 
 .custom-footer a {
   color: #fff;
+}
+
+.logo-header{
+  margin-top: 10px;
 }
 
 .list-group-item {
@@ -46,18 +54,26 @@
   font-family: Montserrat, sans-serif;
 }
 
-.navbar li a, .navbar .navbar-brand {
+.navbar li ul a  {
+  color: #000 !important;
+}
+.navbar-brand{
+  font-size: 22px;
+  color: #fff !important;
+  margin-left: 0px;
+  padding-left: 0px;
+  padding-right:0px;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
   color: #fff !important;
 }
-/*.navbar-nav li a:hover, .navbar-nav li.active a {
-  color: #f4511e !important;
-  background-color: #fff !important;
-} */
+
+
 .navbar-default .navbar-toggle {
   border-color: transparent;
   color: #fff !important;
 }
-
 .searchinput{
   margin-top: 10px;
   margin-bottom: 30px;
@@ -148,7 +164,7 @@
 .sidebar-nav li a:hover {
   text-decoration: none;
   color: #fff;
-  background: rgba(255,255,255,0.2);
+ /* background: rgba(255,255,255,0.2); */
 }
 
 .sidebar-nav li a:active,

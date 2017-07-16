@@ -28,7 +28,7 @@ const internalsRoutes: Routes = [
         canActivateChild: [AuthGuard],
         children: [
           { path: '', pathMatch: 'full', redirectTo: 'viewdashboard' },
-          { path: 'dashboard', component: DashboardComponent, },
+          { path: 'dashboard', component: DashboardComponent },
           { path: 'rating/:id', component: ResearchRatingComponent },
           { path: 'createproject', component: CreateProjectComponent },
           { path: 'projects', component: ViewProjectsComponent },

@@ -12,6 +12,7 @@ import {Academic} from './academic';
 import {Skill} from'./skill';
 import {Company} from './company';
 import {Rating} from './Rating';
+import {Student} from './Student';
 
 export class Project {
   _id: string;
@@ -24,10 +25,7 @@ export class Project {
   _superadvisor: Academic;
   _requeredSkills: Skill[];
   ratings: Rating[];
-  // _rate: Rating;
- // ratingDes: string;
- // ratingFields: string;
   _partner: Company;
   _requeredLevel: EducationLevel[];
-
+  applications: Student[];
 }

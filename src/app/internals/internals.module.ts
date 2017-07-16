@@ -44,6 +44,9 @@ import { AuthenticationService } from '../services/authentication.service';
 import { Profile } from '../services/profile.service';
 import { StudentService } from '../services/student.service';
 import { CompaniesService } from '../services/companies.service';
+import { CompanyGuard } from '../guard/CompanyGuard';
+import { AcademicGuard } from '../guard/AcademicGuard';
+import {StudentGuard} from '../guard/StudentGuard';
 
 @NgModule({
   imports: [
@@ -75,7 +78,7 @@ import { CompaniesService } from '../services/companies.service';
   providers: [ ProjectsService,
     SearchService, ProjectsService, ChairsService, FacultiesService, ProjectTypeService, AcademicsService,
     EducationLevelService, LanguagesService, SkillsService, AlertService, AuthenticationService, UserService, Profile,
-    StudentService, CompaniesService
+    StudentService, CompaniesService, CompanyGuard, AcademicGuard, StudentGuard
   ],
 })
 export class InternalsModule { }

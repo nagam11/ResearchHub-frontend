@@ -54,9 +54,9 @@ export class SearchProjectComponent implements OnInit {
 
   };
 
-  projectTypeCheckbox(item: ProjectType, element: HTMLInputElement): void {
-
-  }
+  addProjectToUserFavorites(project: Project) {
+    // todo
+  };
 
 
 

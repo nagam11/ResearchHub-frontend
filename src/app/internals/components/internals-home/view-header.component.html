@@ -1,9 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top ">
   <div class="navbar-header">
-    <a class="navbar-brand" routerLink="/internals/viewdashboard">ResearchHub</a>
+    <a class="navbar-brand" routerLink="/internals/viewdashboard"></a>
   </div>
   <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav navbar-left" style="width: 220px"><img class="logo-header" src="../../../../images/logo_white.png" style="width:100%; "></ul>
     <ul class="nav navbar-nav navbar-right">
+      <!--<li><img src="../../../../images/logo_white.png" style="width:20%; "></li> -->
       <li><input #searchBox id="search-box" class="form-control searchinput" (keyup)="search(searchBox.value)" placeholder="Search"/></li>
       <!--TODO fix dropdowns-->
 
@@ -14,7 +16,7 @@
         </a>
         <ul class="dropdown-menu dropdown-messages">
           <li>
-            <a href="#">
+            <a >
               <div>
                 <strong class="customerDropdown">Marla Narazani</strong>
                 <span class="pull-right text-muted">
@@ -26,7 +28,7 @@
           </li>
           <li class="divider"></li>
           <li>
-            <a href="#">
+            <a >
               <div>
                 <strong class="customerDropdown">Muawiya Assali</strong>
                 <span class="pull-right text-muted">
@@ -38,7 +40,7 @@
           </li>
           <li class="divider"></li>
           <li>
-            <a href="#">
+            <a >
               <div>
                 <strong class="customerDropdown">Wagram Aiiran</strong>
                 <span class="pull-right text-muted">
@@ -50,7 +52,7 @@
           </li>
           <li class="divider"></li>
           <li>
-            <a class="text-center" href="#">
+            <a class="text-center" >
               <strong class="customerDropdown">Read All Messages</strong>
               <i class="fa fa-angle-right"></i>
             </a>
@@ -60,28 +62,26 @@
       </li>
 
       <li class="nav-item dropdown" ngbDropdown>
-        <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+        <a class="nav-link" ngbDropdownToggle>
           <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
-          <a href="javascript:void(0)" class="dropdown-item">Pending Task <span class="badge badge-info">6</span></a>
-          <a href="javascript:void(0)" class="dropdown-item">In queue <span class="badge badge-info"> 13</span></a>
-          <a href="javascript:void(0)" class="dropdown-item">Mail <span class="badge badge-info"> 45</span></a>
+          <a class="dropdown-item">Pending Task <span class="badge badge-info">6</span></a>
+          <a  class="dropdown-item">In queue <span class="badge badge-info"> 13</span></a>
+          <a  class="dropdown-item">Mail <span class="badge badge-info"> 45</span></a>
           <li class="dropdown-divider"></li>
           <a href="javascript:void(0)" class="dropdown-item">View All</a>
         </ul>
       </li>
-      <li class="nav-item dropdown" ngbDropdown>
-        <a routerLink="/internals/editprofile" [routerLinkActive]="['router-link-active']" class="nav-link" ngbDropdownToggle>
-          <i class="fa fa-user-circle"></i> {{UserName}} <b class="caret"></b>
-          <a (click)="logout()" style="text-decoration: none; font-size: 11pt;">Sign Out</a>
+      <li class="nav-item">
+        <a routerLink="/internals/editprofile" [routerLinkActive]="['router-link-active']" class="nav-link" >
+          <i class="fa fa-user-circle"></i> {{UserName}}
         </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-user"></i> Profile</a>
-          <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-          <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-gear"></i> Settings</a>
-        </div>
       </li>
+      <li class="nav-item">
+        <a (click)="logout()" class="customB nav-link"  [routerLinkActive]="['router-link-active']">
+        <i class="fa fa-sign-out" ></i>
+      </a></li>
     </ul>
   </div>
 
@@ -97,16 +97,19 @@
         <i class="fa fa-dashboard"></i>&nbsp;Dashboard
       </a>
 
+      <div *ngIf="companyGuard.canActivate()">
       <a routerLink="/internals/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-cubes"></i>&nbsp;Rating Dashboard
-      </a>
+      </a></div>
 
+      <div *ngIf="academicGuard.canActivate()">
       <a routerLink="/internals/createproject" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-fw fa-edit"></i>&nbsp;New Project
-      </a>
+      </a></div>
+
 
       <a routerLink="/internals/projects" [routerLinkActive]="['router-link-active']" class="list-group-item">
-        <i class="fa fa-newspaper-o"></i>&nbsp;My Projects
+        <i class="fa fa-newspaper-o"></i>&nbsp;Projects
       </a>
 
       <a routerLink="/internals/searchproject" [routerLinkActive]="['router-link-active']" class="list-group-item">

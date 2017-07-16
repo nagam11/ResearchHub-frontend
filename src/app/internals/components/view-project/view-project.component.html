@@ -146,10 +146,20 @@
                   </div>
                 </div>
                 <br><br>
+                <div *ngIf="academicGuard.canActivate()">
                 <div class="row">
                   <div class="col-lg-4"></div>
                   <div class="col-lg-8">
                     <button type="button" (click)="edit(project)" class="btn btn-outline btn-xl btn-form ">Edit</button>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="studentGuard.canActivate()">
+                  <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-8">
+                      <button type="button" (click)="apply()" class="btn btn-outline btn-xl btn-form ">Apply</button>
+                    </div>
                   </div>
                 </div>
                 <br>

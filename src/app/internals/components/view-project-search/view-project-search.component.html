@@ -136,11 +136,20 @@
             <div class="panel-body customBody">
               <div class="panel panel-success" *ngFor="let project of projects">
 
-                <div class="panel-heading"> Research Topic: {{project.title}}</div>
-                <a href="#" class="btn btn-info btn-lg pull-right" [routerLink]="['/internals/editproject', project._id]" routerLinkActive="active">
-                  <span class="glyphicon glyphicon-eye-open"></span> Eye-open
-                </a>
-                <div class="panel-body">Project type: {{project._projetType.protjectType}}</div>
+                <div class="panel-heading"> Research Topic: {{project.title}}
+
+                  <!-- btn btn-info btn-lg pull-right -->
+                  <a href="#" class="glyphicon glyphicon-eye-open pull-right" [routerLink]="['/internals/viewproject', project._id]" routerLinkActive="active">
+                    <!-- <span class="glyphicon glyphicon-eye-open"></span> -->
+                  </a>
+                </div>
+
+                <div class="panel-body">Project type: {{project._projetType.protjectType}}
+                  <a href="#" class="glyphicon glyphicon-star-empty pull-right" [routerLink]="['/internals/viewproject', project._id]" routerLinkActive="active">
+                    <!-- <span class="glyphicon glyphicon-eye-open"></span> -->
+                  </a>
+
+                </div>
                 <div class="panel-body">Chair: {{project._chair.name}}</div>
                 Skills:
                 <div class="btn-toolbar">
