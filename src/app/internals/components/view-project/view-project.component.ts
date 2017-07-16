@@ -16,6 +16,9 @@ import {Project} from "../../../data-model/project";
 import {EducationLevel} from "../../../data-model/educationLevel";
 import {Language} from "../../../data-model/language";
 import {Skill} from "../../../data-model/skill";
+import {CompanyGuard} from '../../../guard/CompanyGuard';
+import {AcademicGuard} from '../../../guard/AcademicGuard';
+import {StudentGuard} from '../../../guard/StudentGuard';
 
 @Component({
   selector: 'view-project',
@@ -39,7 +42,10 @@ export class ViewProjectComponent implements OnInit {
     private projectsService: ProjectsService,
     private location: Location,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private companyGuard: CompanyGuard,
+    private  studentGuard: StudentGuard,
+    private academicGuard: AcademicGuard
   ) {
     // --scroll window to front
     this.router.events.subscribe((path) => {
