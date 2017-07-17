@@ -258,6 +258,7 @@ export class EditProfileComponent implements OnInit {
     delete this.student['password'];
     console.log(this.student);
     this.profileService.updateThisUser(this.student);
+    this.router.navigate(['/internals/updatesuccess']);
   }
 
   // --save selected skills
