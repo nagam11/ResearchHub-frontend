@@ -77,10 +77,8 @@ export class EditProfileComponent implements OnInit {
     this.reload = false;
     this.birthday = '';
     this.graduation = '';
-    this.degree.level = 'Bachelor';
     this.selectedFaculty.name = 'Your faculty';
     console.log(this.selectedFaculty);
-    this.initSkill._id = '0';
     this.initSkill.skill = 'Your skills';
     this.selSkills.push(this.initSkill);
     this.major = 'Your major';
@@ -137,6 +135,7 @@ export class EditProfileComponent implements OnInit {
   getDegrees(): void {
     this.educationLevelService.getEducationLevels().then(educationLevels => {
       this.educationLevels = educationLevels;
+      this.degree = this.educationLevels[0];
       this.getSkills();
     });
   }
@@ -259,6 +258,7 @@ export class EditProfileComponent implements OnInit {
     delete this.student['password'];
     console.log(this.student);
     this.profileService.updateThisUser(this.student);
+    this.router.navigate(['/internals/updatesuccess']);
   }
 
   // --save selected skills

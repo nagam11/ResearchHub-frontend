@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="panel-body">Project type: {{project._projetType.protjectType}}
-                  <a href="#" class="glyphicon glyphicon-star-empty pull-right" [routerLink]="['/internals/viewproject', project._id]" routerLinkActive="active">
+                  <a class="glyphicon glyphicon-star-empty pull-right" (click)="addProjectToUserFavorites(project)" routerLinkActive="active">
                     <!-- <span class="glyphicon glyphicon-eye-open"></span> -->
                   </a>
 
