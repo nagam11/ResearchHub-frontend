@@ -249,8 +249,14 @@ export class EditProfileComponent implements OnInit {
   onSubmit() {
     this.student.birthday = this.birthday;
     this.student.degree = this.degree;
-    this.student.skills = this.selSkills;
-    this.student.faculty = this.selectedFaculty;
+    if (this.selSkills.find(result => result.skill === 'Your skills')) {
+      this.student.skills = [];
+    } else {
+      this.student.skills = this.selSkills;
+    }
+    if (this.selectedFaculty.name !== 'Your faculty') {
+      this.student.faculty = this.selectedFaculty;
+    }
     this.student.birthday = this.birthday;
     this.student.major = this.major;
     this.student.minor = this.minor;
