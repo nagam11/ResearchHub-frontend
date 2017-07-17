@@ -52,7 +52,7 @@ export class Profile {
         },
         error => {
           console.log(error);
-          this.router.navigate(['/internals/updatefailure']);
+         // this.router.navigate(['/internals/updatefailure']);
         });
   }
 
