@@ -20,6 +20,8 @@ import { Http }       from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {Project} from '../../../data-model/project';
+import {User} from "../../../data-model/user";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'view-applications',
@@ -30,6 +32,8 @@ export class ViewApplicationsComponent implements OnInit {
   projects: Project[] = [];
   private jwtHelper: JwtHelper = new JwtHelper();
   appliedProjects: Project[] = [];
+  favoritProjects: Project[] = [];
+  private user: User;
 
   constructor(
     private projectsService: ProjectsService,
@@ -38,6 +42,7 @@ export class ViewApplicationsComponent implements OnInit {
     private router: Router,
     private companyGuard: CompanyGuard,
     private  studentGuard: StudentGuard,
+    private userService: UserService,
     private academicGuard: AcademicGuard) { }
 
   ngOnInit(): void {
@@ -51,6 +56,10 @@ export class ViewApplicationsComponent implements OnInit {
           this.appliedProjects.push(f_project);
         });
       }
+    });
+    this.userService.getUserFavoritProject(user._id).then((favoritProjects) => {
+      this.favoritProjects = favoritProjects;
+      console.log(JSON.stringify(favoritProjects));
     });
   }
 

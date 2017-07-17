@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { User } from '../data-model/user';
 import {promise} from "selenium-webdriver";
+import {Project} from "../data-model/project";
 
 @Injectable()
 export class UserService {
@@ -58,6 +59,12 @@ export class UserService {
 
   findById(_id: string): Promise<User> {
     return this.http.get('http://localhost:3000/api/user/' + _id).toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getUserFavoritProject(_id:string): Promise<Project[]> {
+    return this.http.get('http://localhost:3000/api/user/' + _id+ '/favoritprojects').toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
