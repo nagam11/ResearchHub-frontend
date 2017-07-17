@@ -73,7 +73,6 @@ export class EditProfileComponent implements OnInit {
   // ---init
   ngOnInit(): void {
     this.student = new Student();
-    this.photo = '/images/PHOTO.png';
     this.reload = false;
     this.birthday = '';
     this.graduation = '';
@@ -104,6 +103,7 @@ export class EditProfileComponent implements OnInit {
 
     // Perform service calls
     this.user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user._id as number;
+    this.photo = 'http://localhost:3000/api/uploads/' + this.user.toString();
     this.prepareData();
     this.uploader = new FileUploader({ url: 'http://localhost:3000/api/uploads/' + this.user.toString(),
       allowedMimeType: ['image/png', 'image/jpeg'], queueLimit: 1, itemAlias: 'photo' });
