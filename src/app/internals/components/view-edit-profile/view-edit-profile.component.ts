@@ -83,6 +83,7 @@ export class EditProfileComponent implements OnInit {
     this.selSkills.push(this.initSkill);
     this.major = 'Your major';
     this.minor = 'Your minor';
+    this.student.description = 'Please enter any extra skills or useful information';
     this.programs = ['Aerospace Engineering', 'American Studies', 'Ancient and Medieval Studies', 'Anthropology',
       'Applied International Studies', 'Archaeology and Materials', 'Architecture', 'Architecture Studies',
       'Art, Culture and Technology', 'Asian and Asian Diaspora Studies', 'Astronomy', 'Atmospheric Chemistry',
