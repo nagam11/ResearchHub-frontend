@@ -13,7 +13,10 @@ import {SkillsService} from '../../../services/skills.service';
 import {Subject} from 'rxjs/Subject';
 import {Skill} from '../../../data-model/skill';
 import { FormsModule }   from '@angular/forms';
-
+import {UserService} from "../../../services/user.service";
+import { JwtHelper } from 'angular2-jwt';
+import {Student} from "../../../data-model/student";
+import {User} from "../../../data-model/user";
 
 @Component({
   selector: 'search-project',
@@ -27,13 +30,16 @@ export class SearchProjectComponent implements OnInit {
 
   private term$ = new Subject<string>();
   private availbaleSkills: Array<Skill> = [];
+  private jwtHelper: JwtHelper = new JwtHelper();
+  private user: User;
 
   // private projectTypeService: ProjectTypeService;
   constructor(
     private projectTypeService: ProjectTypeService,
     private searchService: SearchService,
     private languageService: LanguagesService,
-    private skillsService: SkillsService
+    private skillsService: SkillsService,
+    private userService: UserService
   ) {
     this.skillsService.search(this.term$).subscribe(results => this.availbaleSkills = results);
   };
@@ -56,10 +62,18 @@ export class SearchProjectComponent implements OnInit {
 
   addProjectToUserFavorites(project: Project) {
     // todo
+    console.log('project'+JSON.stringify(project))
+      let user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user;
+      this.userService.findById(user._id).then((userFull) => {
+        this.user = userFull;
+        //  update the students array in projects
+        // this.project.applications.push(this.student);
+        this.user._favoritsprojects.push(project);
+        // console.log(JSON.stringify(this.user));
+        this.userService.updateUsersFavorit(this.user);
+       // this.router.navigate(['/internals/createsuccess']);
+      });
   };
-
-
-
   public searchForAproject(): void {
 
     this.searchService.searchForProjectsByCriteria(this.searchCriteria.getSearchCriteriaToSend()).then(projects => this.projects = projects);
