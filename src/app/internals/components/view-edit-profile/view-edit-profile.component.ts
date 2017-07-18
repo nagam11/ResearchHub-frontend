@@ -262,10 +262,13 @@ export class EditProfileComponent implements OnInit {
     this.student.major = this.major;
     this.student.minor = this.minor;
     this.student.graduation = this.graduation;
-    delete this.student['password'];
-    console.log(this.student);
-    this.profileService.updateThisUser(this.student);
-    this.router.navigate(['/internals/updatesuccess']);
+    let user = this.jwtHelper.decodeToken(localStorage.getItem('currentUser')).user;
+    this.studentService.getById(user._id).then((student) => {
+      this.student.projectsApplied = student.projectsApplied;
+      delete this.student['password'];
+      this.profileService.updateThisUser(this.student);
+      this.router.navigate(['/internals/updatesuccess']);
+    });
   }
 
   // --save selected skills
