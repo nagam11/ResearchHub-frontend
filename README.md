@@ -4,15 +4,15 @@ ResearchHub backend can be found [here](https://github.com/nagam11/ResearchHub-b
 
 ## Technologies
 
-Angular2
+Angular 4 / Typescript 
 
 passport
 
-Heroku
+Bootstrap
 
 ## Prerequisites
 
-Start database server. Start backend.
+Database server and Node.js backend server are running.
 
 ## Install Dependencies
 
